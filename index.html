@@ -3,78 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floresta Cast</title>
+    <meta name="description" content="Floresta Cast - Gestão rural especializada em Eunápolis, Sul da Bahia. Elaboração de Planos de Manejo Florestal, assessoria e consultoria ambiental.">
+    <title>Floresta Cast - Gestão Rural no Sul da Bahia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="icon" href="head_fc.png">
+    <style>
+        :root {
+            --verde-escuro: #2E583A;
+            --verde-medio: #4A8C63;
+            --verde-claro: #8FC99E;
+            --bege: #F5F0E6;
+            --marrom: #8C6D4A;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: var(--bege);
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--verde-escuro);
+        }
+        
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--verde-medio);
+            margin-bottom: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--verde-medio);
+            border-color: var(--verde-medio);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--verde-escuro);
+            border-color: var(--verde-escuro);
+        }
+        
+        .contact-info {
+            background-color: var(--verde-claro);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        footer {
+            background-color: var(--verde-escuro);
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+        
+        /* Otimizações para conexões lentas */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Melhorias de acessibilidade */
+        a:focus {
+            outline: 2px solid var(--verde-medio);
+            outline-offset: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 3rem 0;
+            }
+            
+            .display-4 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header>
-    <div style="text-align: center;">
-        <h1>FLORESTA CAST</h1>
-        <h4>Gestão rural em Eunápolis, Sul da Bahia, Brasil.</h4>
-        <h6>Uma empresa da Bahia.</h6>
-    </div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="head_fc.png" alt="Floresta Cast" height="40" class="d-inline-block align-text-top me-2">
+                    FLORESTA CAST
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#servicos">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#responsavel">Responsável Técnico</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="hero-section">
+            <div class="container">
+                <h1 class="display-4 fw-bold">FLORESTA CAST</h1>
+                <p class="lead">Gestão rural especializada em Eunápolis, Sul da Bahia</p>
+                <p class="mb-0">Soluções que condizem com a realidade da sua propriedade rural</p>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <h5>Aqui você escolhe a solução que condiz com a sua realidade.<br>
-            Neste momento é importante reconhecer de quais recursos dispõe a sua propriedade rural.</h5>
-        <h5>O responsável técnico vai ajudar você a compreender as etapas para o seu empreedimento obter lucro!</h5>
-            <section id="gestao">
-            <h5>QUALIFICAÇÃO:</h5>
-                   <p>- Elaboração de Planos de Manejo Florestal (PMF) e demais estudos técnicos para obtenção de licenças ambientais;<br>
-                    - Assessoria em projetos de reflorestamento, manejo florestal e silvicultura;<br>
-                    - Realização de inventários florestais e estudos de avaliação ambiental;<br>
-                    - Monitoramento ambiental de florestas e projetos florestais;<br>
-                    - Elaboração de Perícias Florestais e Laudos Técnicos;<br>
-                    - Assistência em processos administrativos junto a órgãos ambientais;<br>
-                    - Prestação de serviços de educação ambiental e valorização da floresta.</p>
-            </section>
-
-            <section id="transformacao">
-            <h5>TRANSFORMAÇÃO & INOVAÇÃO:</h5>
-                    <p>- Implementação de sistemas de gestão florestal;<br>
-                    - Elaboração de Planos de Negócio para projetos florestais;<br>
-                    - Assessoria na busca de financiamentos para projetos florestais;<br>
-                    - Realização de auditorias florestais;<br>
-                    - Treinamento de pessoal para manejo florestal e silvicultura.</p>
-            </section>
-
-            <section id="agilidade">
-            <h5>AGILIDADE:</h5>
-                    <p>- Implantação de projetos de reflorestamento e manejo florestal;<br>
-                    - Execução de serviços de inventário florestal e coleta de dados;<br>
-                    - Monitoramento de campo de projetos florestais;<br>
-                    - Elaboração de relatórios técnicos e mapas georreferenciados;<br>
-                    - Prestação de serviços de apoio logístico para projetos florestais.</p>
-            </section>
-
-            <section id="credito">
-            <h6>E ainda, o que você deve saber para obter o crédito rural em bancos públicos: (clique no link disponível para baixar o portfólio): - <a href="https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf">Crédito rural</a></h6>
-            </section>
-        
-        <h4>RESPONSÁVEL TÉCNICO</h4>
-        <h6>Engenheiro florestal, Anderson Mendes Souza.</h6>
-        <article>Com formação em engenharia florestal pela Universidade Federal do Paraná (UFPR), em 2022.<br>
-        e cursando MBA em Data Science Analytics pela Universidade de São Paulo (Esalq-USP), com previsão de conclusão em 2024.<br>
-        Registro profissional CREA PR-214168/D.</article>
-        
-        <h4>CONTATO</h4>
-        <address>Solicite agenda comigo:<br>
-        Celular/WhatsApp: (73) 99911-0708<br>
-        E-mail: florestacast@gmail.com<br>
-        Eunápolis, Bahia, Brasil.</address>
-
-        <div style="text-align: center;">
-        <h4>Visite o meu perfil profissional no <a href="https://linkedin.com/in/mesoander">LinkedIn</a>.</h4>
+    <main class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-10 text-center">
+                <p class="lead">Reconhecemos os recursos disponíveis em sua propriedade e oferecemos as melhores soluções para seu empreendimento obter lucro!</p>
             </div>
+        </div>
+        
+        <h2 id="servicos" class="text-center mb-4">NOSSOS SERVIÇOS</h2>
+        
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                    <h5>QUALIFICAÇÃO</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Planos de Manejo Florestal (PMF)</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Estudos para licenças ambientais</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Assessoria em reflorestamento</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Inventários florestais</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Perícias e laudos técnicos</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="bi bi-lightbulb"></i>
+                    </div>
+                    <h5>TRANSFORMAÇÃO</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Sistemas de gestão florestal</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Planos de negócio florestal</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Assessoria para financiamentos</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Auditorias florestais</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Treinamento de equipes</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="bi bi-speedometer2"></i>
+                    </div>
+                    <h5>AGILIDADE</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Implantação de projetos</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Inventário florestal</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Monitoramento de campo</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Relatórios técnicos</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> Apoio logístico</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="bi bi-cash-coin"></i>
+                    </div>
+                    <h5>CRÉDITO RURAL</h5>
+                    <p>Orientação completa para obtenção de crédito rural em bancos públicos</p>
+                    <a href="https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf" class="btn btn-primary mt-2">
+                        <i class="bi bi-download me-2"></i> Baixar Portfólio
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-5" id="responsavel">
+            <div class="col-lg-8 mx-auto">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">RESPONSÁVEL TÉCNICO</h4>
+                        <h6 class="card-subtitle mb-3 text-muted">Engenheiro Florestal Anderson Mendes Souza</h6>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h6>Formação Acadêmica</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-mortarboard-fill me-2 text-primary"></i> Engenharia Florestal - UFPR (2022)</li>
+                                    <li><i class="bi bi-book-fill me-2 text-primary"></i> MBA Data Science - ESALQ/USP (previsão 2024)</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Registro Profissional</h6>
+                                <p><i class="bi bi-award-fill me-2 text-primary"></i> CREA PR-214168/D</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4" id="contato">
+            <div class="col-lg-8 mx-auto">
+                <div class="contact-info">
+                    <h4 class="text-center mb-4">CONTATO</h4>
+                    <div class="row text-center">
+                        <div class="col-md-4 mb-3">
+                            <i class="bi bi-telephone-fill d-block mb-2" style="font-size: 1.5rem;"></i>
+                            <h6>Celular/WhatsApp</h6>
+                            <p>(73) 99911-0708</p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="bi bi-envelope-fill d-block mb-2" style="font-size: 1.5rem;"></i>
+                            <h6>E-mail</h6>
+                            <p>florestacast@gmail.com</p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="bi bi-geo-alt-fill d-block mb-2" style="font-size: 1.5rem;"></i>
+                            <h6>Localização</h6>
+                            <p>Eunápolis, Bahia, Brasil</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <a href="https://linkedin.com/in/mesoander" class="btn btn-outline-dark">
+                            <i class="bi bi-linkedin me-2"></i> Visite meu LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <div style="text-align: center;">
-        <p>&copy; 2024 - Um site Floresta Cast LTDA.</p>
-    </footer>
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 - Floresta Cast LTDA</p>
         </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+</html>
