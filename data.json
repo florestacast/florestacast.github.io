@@ -1,0 +1,86 @@
+{
+  "empresa": {
+    "nome": "Floresta Cast",
+    "logo": "head_fc.png",
+    "slogan": "Planejamento | Estoque de Área | Indicadores",
+    "descricao": "Retifique sua propriedade. Obtenha controle e conformidade das operações para conquistar qualquer certificação.",
+    "cnpj": "55.900.830/0001-67",
+    "localidade": "Eunápolis - BA"
+  },
+  "servicos": [
+    {
+      "id": "qualificacao",
+      "categoria": "QUALIFICAÇÃO",
+      "icone": "bi-file-earmark-text",
+      "itens": [
+        "Identificação do Negócio",
+        "Licenças Ambientais",
+        "Sistema de Gestão",
+        "Inventários & Ativos",
+        "Perícias - Laudos Técnicos"
+      ]
+    },
+    {
+      "id": "transformacao",
+      "categoria": "TRANSFORMAÇÃO",
+      "icone": "bi-lightbulb",
+      "itens": [
+        "Planejamento",
+        "Logística de produto",
+        "Estoque",
+        "Auditoria Externa",
+        "Treinamentos & Atualizações"
+      ]
+    },
+    {
+      "id": "agilidade",
+      "categoria": "AGILIDADE",
+      "icone": "bi-speedometer2",
+      "itens": [
+        "Fornecedores",
+        "Monitoramento",
+        "Qualidade",
+        "Relatórios & Indicadores",
+        "Preço"
+      ]
+    },
+    {
+      "id": "credito",
+      "categoria": "CRÉDITO RURAL",
+      "icone": "bi-cash-coin",
+      "descricao": "Consultoria completa & Obtenção de crédito rural em bancos públicos",
+      "link_portfolio": "https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf"
+    }
+  ],
+  "responsavel_tecnico": {
+    "nome": "Anderson Mendes Souza",
+    "cargo": "RESPONSÁVEL TÉCNICO",
+    "registro_crea": "PR-214168/D",
+    "descricao_registro": "Registro no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
+    "formacao": [
+      "Universidade Federal do Paraná",
+      "MBA Data Science Esalq USP"
+    ],
+    "competencias": [
+      "Análise de informações.",
+      "Atendimento à conformidade.",
+      "Indicadores."
+    ]
+  },
+  "contato": {
+    "telefone": "(73) 99911-0708",
+    "email": "florestacast@outlook.com",
+    "localizacao": "Eunápolis, Bahia, Brasil",
+    "redes_sociais": {
+      "linkedin": "https://linkedin.com/in/mesoander",
+      "whatsapp": "https://api.whatsapp.com/send?phone=5573999110708"
+    },
+    "mapa_embed": "https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed"
+  },
+  "textos_adicionais": {
+    "destaque": "Obtenha diagnóstico dos recursos operacionais dimensionados para sua finalidade. Otimize o recurso mais escasso que é a sua renda.",
+    "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA",
+    "titulo_contato": "ENTRE EM CONTATO",
+    "area_atuacao": "Atende toda região de Eunápolis, sul da Bahia"
+  }
+}
