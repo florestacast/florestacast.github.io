@@ -70,18 +70,14 @@
         }
         
         .service-image {
-            width: 80px;
-            height: 80px;
+            width: 100%;
+            height: 120px;
             object-fit: cover;
-            border-radius: 50%;
+            border-radius: 4px;
             margin-bottom: 1rem;
-            border: 3px solid var(--verde-medio);
         }
         
         .service-image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin-bottom: 1rem;
         }
         
@@ -171,7 +167,7 @@
         
         <div class="hero-section">
             <div class="container">
-                <h1 class="display-4 fw-bold" id="hero-titulo">Agro Consultoria</h1>
+                <h1 class="display-4 fw-bold" id="hero-titulo">É Agro Consultoria</h1>
                 <p class="lead" id="hero-slogan"></p>
                 <p class="mb-0" id="hero-descricao"></p>
             </div>
@@ -258,94 +254,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Dados em JSON inline como fallback (caso data.json não carregue)
-        const dadosFallback = {
-            "empresa": {
-                "nome": "Floresta Cast",
-                "logo": "head_fc.png",
-                "slogan": "Planejamento | Estoque de Área | Indicadores",
-                "descricao": "Retifique sua propriedade. Obtenha controle e conformidade das operações para conquistar qualquer certificação.",
-                "cnpj": "55.900.830/0001-67",
-                "localidade": "Eunápolis - BA"
-            },
-            "servicos": [
-                {
-                    "id": "qualificacao",
-                    "categoria": "QUALIFICAÇÃO",
-                    "imagem": "qualificacao.jpg",
-                    "itens": [
-                        "Identificação do Negócio",
-                        "Licenças Ambientais",
-                        "Sistema de Gestão",
-                        "Inventários & Ativos",
-                        "Perícias - Laudos Técnicos"
-                    ]
-                },
-                {
-                    "id": "transformacao",
-                    "categoria": "TRANSFORMAÇÃO",
-                    "imagem": "transformacao.jpg",
-                    "itens": [
-                        "Planejamento",
-                        "Logística de produto",
-                        "Estoque",
-                        "Auditoria Externa",
-                        "Treinamentos & Atualizações"
-                    ]
-                },
-                {
-                    "id": "agilidade",
-                    "categoria": "AGILIDADE",
-                    "imagem": "agilidade.jpg",
-                    "itens": [
-                        "Fornecedores",
-                        "Monitoramento",
-                        "Qualidade",
-                        "Relatórios & Indicadores",
-                        "Preço"
-                    ]
-                },
-                {
-                    "id": "credito",
-                    "categoria": "CRÉDITO RURAL",
-                    "imagem": "credito.jpg",
-                    "descricao": "Consultoria completa & Obtenção de crédito rural em bancos públicos",
-                    "link_portfolio": "https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf"
-                }
-            ],
-            "responsavel_tecnico": {
-                "nome": "Anderson Mendes Souza",
-                "cargo": "RESPONSÁVEL TÉCNICO",
-                "registro_crea": "PR-214168/D",
-                "descricao_registro": "Registro no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
-                "formacao": [
-                    "Universidade Federal do Paraná",
-                    "MBA Data Science Esalq USP"
-                ],
-                "competencias": [
-                    "Análise de informações.",
-                    "Atendimento à conformidade.",
-                    "Indicadores."
-                ]
-            },
-            "contato": {
-                "telefone": "(73) 99911-0708",
-                "email": "florestacast@outlook.com",
-                "localizacao": "Eunápolis, Bahia, Brasil",
-                "redes_sociais": {
-                    "linkedin": "https://linkedin.com/in/mesoander",
-                    "whatsapp": "https://api.whatsapp.com/send?phone=5573999110708"
-                },
-                "mapa_embed": "https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed"
-            },
-            "textos_adicionais": {
-                "destaque": "Obtenha diagnóstico dos recursos operacionais dimensionados para sua finalidade. Otimize o recurso mais escasso que é a sua renda.",
-                "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA",
-                "titulo_contato": "ENTRE EM CONTATO",
-                "area_atuacao": "Atende toda região de Eunápolis, sul da Bahia"
-            }
-        };
-
         // Variável global para armazenar o link do download pendente
         let downloadLinkPendente = '';
 
@@ -357,8 +265,94 @@
                 const response = await fetch('data.json');
                 data = await response.json();
             } catch (error) {
-                console.log('Usando dados fallback');
-                data = dadosFallback;
+                console.log('Erro ao carregar data.json, usando dados fallback');
+                // Usaremos dados inline como fallback
+                data = {
+                    "empresa": {
+                        "nome": "Floresta Cast Ltda.",
+                        "logo": "head_fc.png",
+                        "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção",
+                        "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo",
+                        "cnpj": "55.900.830/0001-67",
+                        "localidade": "Eunápolis - BA"
+                    },
+                    "servicos": [
+                        {
+                            "id": "qualificacao",
+                            "categoria": "QUALIFICAÇÃO",
+                            "imagem": "images/qualificacao.jpg",
+                            "itens": [
+                                "Identificação do Negócio",
+                                "Licenças ambientais - atividade de operação",
+                                "Sistema de Gestão",
+                                "Inventários & Ativos",
+                                "Perícias - Laudos Técnicos"
+                            ]
+                        },
+                        {
+                            "id": "transformacao",
+                            "categoria": "TRANSFORMAÇÃO",
+                            "imagem": "images/transformacao.jpg",
+                            "itens": [
+                                "Planejamento",
+                                "Logística de produto",
+                                "Estoque",
+                                "Auditoria",
+                                "Treinamentos & Atualizações"
+                            ]
+                        },
+                        {
+                            "id": "agilidade",
+                            "categoria": "AGILIDADE",
+                            "imagem": "images/agilidade.jpg",
+                            "itens": [
+                                "Fornecedores",
+                                "Monitoramento",
+                                "Qualidade",
+                                "Relatórios & Indicadores",
+                                "Preço"
+                            ]
+                        },
+                        {
+                            "id": "credito",
+                            "categoria": "CRÉDITO RURAL",
+                            "imagem": "images/credito.jpg",
+                            "descricao": "É consultoria completa para obter crédito rural em bancos públicos.",
+                            "link_portfolio": "https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf"
+                        }
+                    ],
+                    "responsavel_tecnico": {
+                        "nome": "Anderson Mendes Souza",
+                        "cargo": "RESPONSÁVEL TÉCNICO",
+                        "registro_crea": "PR-214168/D",
+                        "descricao_registro": "Registro no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
+                        "formacao": [
+                            "Universidade Federal do Paraná",
+                            "MBA Data Science Esalq USP"
+                        ],
+                        "competencias": [
+                            "Análise de informações.",
+                            "Atendimento à conformidade.",
+                            "Indicadores."
+                        ]
+                    },
+                    "contato": {
+                        "telefone": "(73) 99911-0708",
+                        "email": "florestacast@outlook.com",
+                        "localizacao": "Eunápolis, Bahia, Brasil",
+                        "redes_sociais": {
+                            "linkedin": "https://linkedin.com/company/florestacast",
+                            "whatsapp": "https://api.whatsapp.com/send?phone=5573999110708"
+                        },
+                        "mapa_embed": "https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed"
+                    },
+                    "textos_adicionais": {
+                        "destaque": "Obtenha diagnóstico dos recursos operacionais dimensionados para sua finalidade. Otimize o recurso mais escasso que é a sua renda.",
+                        "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA",
+                        "titulo_contato": "ENTRE EM CONTATO",
+                        "area_atuacao": "Atende toda região de Eunápolis, sul da Bahia"
+                    }
+                };
             }
             
             // Preencher dados da empresa
@@ -378,7 +372,7 @@
                         <div class="service-card">
                             <div class="service-image-container">
                                 <img src="${servico.imagem}" alt="${servico.categoria}" class="service-image" 
-                                     onerror="this.src='placeholder.jpg'">
+                                     onerror="this.style.display='none'">
                             </div>
                             <h5>${servico.categoria}</h5>
                 `;
@@ -490,7 +484,7 @@
             `;
             
             // Preencher footer
-            document.getElementById('footer-text').innerHTML = `© 2025 - ${data.empresa.nome} LTDA - Os direitos estão reservados.`;
+            document.getElementById('footer-text').innerHTML = `© 2025 - ${data.empresa.nome} - Os direitos estão reservados.`;
             document.getElementById('footer-cnpj').textContent = `${data.empresa.localidade} | CNPJ ${data.empresa.cnpj}`;
         }
 
