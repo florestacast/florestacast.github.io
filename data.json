@@ -1,9 +1,9 @@
 {
   "empresa": {
-    "nome": "Floresta Cast",
+    "nome": "Floresta Cast Ltda.",
     "logo": "head_fc.png",
-    "slogan": "Planejamento | Estoque de Área | Indicadores",
-    "descricao": "Retifique sua propriedade. Obtenha controle e conformidade das operações para conquistar qualquer certificação.",
+    "slogan": "Automação do planejamento de produção | Controle de estoque de área  | Extrato de recursos envolvidos na produção",
+    "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo",
     "cnpj": "55.900.830/0001-67",
     "localidade": "Eunápolis - BA"
   },
@@ -14,7 +14,7 @@
       "icone": "bi-file-earmark-text",
       "itens": [
         "Identificação do Negócio",
-        "Licenças Ambientais",
+        "Licenças ambientais - atividade de operação",
         "Sistema de Gestão",
         "Inventários & Ativos",
         "Perícias - Laudos Técnicos"
@@ -28,7 +28,7 @@
         "Planejamento",
         "Logística de produto",
         "Estoque",
-        "Auditoria Externa",
+        "Auditoria",
         "Treinamentos & Atualizações"
       ]
     },
@@ -48,7 +48,7 @@
       "id": "credito",
       "categoria": "CRÉDITO RURAL",
       "icone": "bi-cash-coin",
-      "descricao": "Consultoria completa & Obtenção de crédito rural em bancos públicos",
+      "descricao": "É consultoria completa para obter crédito rural em bancos públicos.",
       "link_portfolio": "https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf"
     }
   ],
@@ -72,7 +72,7 @@
     "email": "florestacast@outlook.com",
     "localizacao": "Eunápolis, Bahia, Brasil",
     "redes_sociais": {
-      "linkedin": "https://linkedin.com/in/mesoander",
+      "linkedin": "https://linkedin.com/company/florestacast",
       "whatsapp": "https://api.whatsapp.com/send?phone=5573999110708"
     },
     "mapa_embed": "https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed"
