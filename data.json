@@ -2,7 +2,7 @@
   "empresa": {
     "nome": "Floresta Cast Ltda.",
     "logo": "head_fc.png",
-    "slogan": "Automação do planejamento de produção | Controle de estoque de área  | Extrato de recursos envolvidos na produção",
+    "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção",
     "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo",
     "cnpj": "55.900.830/0001-67",
     "localidade": "Eunápolis - BA"
@@ -11,7 +11,7 @@
     {
       "id": "qualificacao",
       "categoria": "QUALIFICAÇÃO",
-      "icone": "bi-file-earmark-text",
+      "imagem": "images/qualificacao.jpg",
       "itens": [
         "Identificação do Negócio",
         "Licenças ambientais - atividade de operação",
@@ -23,7 +23,7 @@
     {
       "id": "transformacao",
       "categoria": "TRANSFORMAÇÃO",
-      "icone": "bi-lightbulb",
+      "imagem": "images/transformacao.jpg",
       "itens": [
         "Planejamento",
         "Logística de produto",
@@ -35,7 +35,7 @@
     {
       "id": "agilidade",
       "categoria": "AGILIDADE",
-      "icone": "bi-speedometer2",
+      "imagem": "images/agilidade.jpg",
       "itens": [
         "Fornecedores",
         "Monitoramento",
@@ -47,7 +47,7 @@
     {
       "id": "credito",
       "categoria": "CRÉDITO RURAL",
-      "icone": "bi-cash-coin",
+      "imagem": "images/credito.jpg",
       "descricao": "É consultoria completa para obter crédito rural em bancos públicos.",
       "link_portfolio": "https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf"
     }
