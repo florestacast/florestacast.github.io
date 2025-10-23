@@ -207,6 +207,44 @@
         </div>
     </footer>
 
+    <!-- Modal para Captura de Dados -->
+    <div class="modal fade" id="modalCaptura" tabindex="-1" aria-labelledby="modalCapturaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCapturaLabel">📋 Para baixar o portfólio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formCaptura">
+                        <div class="mb-3">
+                            <label for="nomeCompleto" class="form-label">Nome Completo *</label>
+                            <input type="text" class="form-control" id="nomeCompleto" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefone" class="form-label">Telefone/WhatsApp *</label>
+                            <input type="tel" class="form-control" id="telefone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail *</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="autorizacao" required>
+                            <label class="form-check-label" for="autorizacao">
+                                Autorizo o contato para informações sobre crédito rural
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnConfirmarDownload">Baixar Portfólio</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
@@ -298,6 +336,9 @@
             }
         };
 
+        // Variável global para armazenar o link do download pendente
+        let downloadLinkPendente = '';
+
         // Função para carregar e processar os dados
         async function carregarDados() {
             let data;
@@ -333,9 +374,10 @@
                 if (servico.id === 'credito') {
                     servicoHTML += `
                         <p>${servico.descricao}</p>
-                        <a href="${servico.link_portfolio}" class="btn btn-primary mt-2">
+                        <button class="btn btn-primary mt-2 btn-baixar-portfolio" 
+                                data-link="${servico.link_portfolio}">
                             <i class="bi bi-download me-2"></i> Baixar Portfólio
-                        </a>
+                        </button>
                     `;
                 } else {
                     servicoHTML += `
@@ -353,6 +395,14 @@
                 `;
                 
                 servicosContainer.innerHTML += servicoHTML;
+            });
+            
+            // Adicionar event listeners aos botões de download
+            document.querySelectorAll('.btn-baixar-portfolio').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const link = this.getAttribute('data-link');
+                    abrirModalCaptura(link);
+                });
             });
             
             // Preencher responsável técnico
@@ -432,8 +482,51 @@
             document.getElementById('footer-cnpj').textContent = `${data.empresa.localidade} | CNPJ ${data.empresa.cnpj}`;
         }
 
-        // Carregar dados quando a página estiver pronta
-        document.addEventListener('DOMContentLoaded', carregarDados);
+        // Função para abrir o modal de captura
+        function abrirModalCaptura(linkDownload) {
+            downloadLinkPendente = linkDownload;
+            const modal = new bootstrap.Modal(document.getElementById('modalCaptura'));
+            modal.show();
+        }
+
+        // Função para processar o download após captura
+        function processarDownload() {
+            const nome = document.getElementById('nomeCompleto').value;
+            const telefone = document.getElementById('telefone').value;
+            const email = document.getElementById('email').value;
+            const autorizacao = document.getElementById('autorizacao').checked;
+            
+            // Validar campos
+            if (!nome || !telefone || !email || !autorizacao) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+            
+            // Aqui você pode adicionar código para enviar os dados para seu sistema
+            console.log('Dados capturados:', { nome, telefone, email });
+            
+            // Fechar o modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalCaptura'));
+            modal.hide();
+            
+            // Iniciar o download
+            window.open(downloadLinkPendente, '_blank');
+            
+            // Limpar formulário
+            document.getElementById('formCaptura').reset();
+        }
+
+        // Event listener para o botão de confirmar download
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarDados();
+            document.getElementById('btnConfirmarDownload').addEventListener('click', processarDownload);
+            
+            // Permitir submit do form com Enter
+            document.getElementById('formCaptura').addEventListener('submit', function(e) {
+                e.preventDefault();
+                processarDownload();
+            });
+        });
     </script>
 </body>
 </html>
