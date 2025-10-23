@@ -69,9 +69,19 @@
             transform: translateY(-5px);
         }
         
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--verde-medio);
+        .service-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 3px solid var(--verde-medio);
+        }
+        
+        .service-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 1rem;
         }
         
@@ -138,7 +148,7 @@
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <img src="head_fc.png" alt="Floresta Cast - Logo transparente" style="height:100px;">
-                    FLORESTA CAST
+                    <span id="empresa-nome">FLORESTA CAST</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -161,9 +171,9 @@
         
         <div class="hero-section">
             <div class="container">
-                <h1 class="display-4 fw-bold">É AGRO Consultoria</h1>
-                <p class="lead" id="hero-slogan">Planejamento da produção automatizada | Estoque de área | Rercursos envolvidos</p>
-                <p class="mb-0" id="hero-descricao">Retifique sua propriedade. Tenha o ontrole e a conformidade das operações  de seu empreendimento. Obter selos de certificadores abre portas para trocar experiências e vender em qualquer lugar no mundo.</p>
+                <h1 class="display-4 fw-bold" id="hero-titulo">Agro Consultoria</h1>
+                <p class="lead" id="hero-slogan"></p>
+                <p class="mb-0" id="hero-descricao"></p>
             </div>
         </div>
     </header>
@@ -171,11 +181,11 @@
     <main class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-10 text-center">
-                <p class="lead" id="texto-destaque">Obtenha diagnóstico dos recursos operacionais dimensionados para sua finalidade. Otimize o recurso mais escasso que é a sua renda.</p>
+                <p class="lead" id="texto-destaque"></p>
             </div>
         </div>
         
-        <h2 id="titulo-servicos" class="text-center mb-4">ASSESSORIA ADMINISTRATIVA ESPECIALIZADA</h2>
+        <h2 id="titulo-servicos" class="text-center mb-4"></h2>
         
         <div class="row" id="servicos-container">
             <!-- Serviços carregados via JavaScript -->
@@ -202,8 +212,8 @@
 
     <footer class="text-center">
         <div class="container">
-            <p class="mb-0" id="footer-text">© 2025 - Floresta Cast LTDA - Os direitos estão reservados.</p>
-            <small id="footer-cnpj">Eunápolis - BA | CNPJ 55.900.830/0001-67</small>
+            <p class="mb-0" id="footer-text"></p>
+            <small id="footer-cnpj"></small>
         </div>
     </footer>
 
@@ -262,7 +272,7 @@
                 {
                     "id": "qualificacao",
                     "categoria": "QUALIFICAÇÃO",
-                    "icone": "bi-file-earmark-text",
+                    "imagem": "qualificacao.jpg",
                     "itens": [
                         "Identificação do Negócio",
                         "Licenças Ambientais",
@@ -274,7 +284,7 @@
                 {
                     "id": "transformacao",
                     "categoria": "TRANSFORMAÇÃO",
-                    "icone": "bi-lightbulb",
+                    "imagem": "transformacao.jpg",
                     "itens": [
                         "Planejamento",
                         "Logística de produto",
@@ -286,7 +296,7 @@
                 {
                     "id": "agilidade",
                     "categoria": "AGILIDADE",
-                    "icone": "bi-speedometer2",
+                    "imagem": "agilidade.jpg",
                     "itens": [
                         "Fornecedores",
                         "Monitoramento",
@@ -298,7 +308,7 @@
                 {
                     "id": "credito",
                     "categoria": "CRÉDITO RURAL",
-                    "icone": "bi-cash-coin",
+                    "imagem": "credito.jpg",
                     "descricao": "Consultoria completa & Obtenção de crédito rural em bancos públicos",
                     "link_portfolio": "https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf"
                 }
@@ -352,6 +362,7 @@
             }
             
             // Preencher dados da empresa
+            document.getElementById('empresa-nome').textContent = data.empresa.nome;
             document.getElementById('hero-slogan').textContent = data.empresa.slogan;
             document.getElementById('hero-descricao').textContent = data.empresa.descricao;
             document.getElementById('texto-destaque').textContent = data.textos_adicionais.destaque;
@@ -359,14 +370,15 @@
             
             // Preencher serviços
             const servicosContainer = document.getElementById('servicos-container');
-            servicosContainer.innerHTML = ''; // Limpar container
+            servicosContainer.innerHTML = '';
             
             data.servicos.forEach(servico => {
                 let servicoHTML = `
                     <div class="col-md-6 col-lg-3">
                         <div class="service-card">
-                            <div class="service-icon">
-                                <i class="bi ${servico.icone}"></i>
+                            <div class="service-image-container">
+                                <img src="${servico.imagem}" alt="${servico.categoria}" class="service-image" 
+                                     onerror="this.src='placeholder.jpg'">
                             </div>
                             <h5>${servico.categoria}</h5>
                 `;
@@ -496,23 +508,17 @@
             const email = document.getElementById('email').value;
             const autorizacao = document.getElementById('autorizacao').checked;
             
-            // Validar campos
             if (!nome || !telefone || !email || !autorizacao) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
             
-            // Aqui você pode adicionar código para enviar os dados para seu sistema
             console.log('Dados capturados:', { nome, telefone, email });
             
-            // Fechar o modal
             const modal = bootstrap.Modal.getInstance(document.getElementById('modalCaptura'));
             modal.hide();
             
-            // Iniciar o download
             window.open(downloadLinkPendente, '_blank');
-            
-            // Limpar formulário
             document.getElementById('formCaptura').reset();
         }
 
@@ -521,7 +527,6 @@
             carregarDados();
             document.getElementById('btnConfirmarDownload').addEventListener('click', processarDownload);
             
-            // Permitir submit do form com Enter
             document.getElementById('formCaptura').addEventListener('submit', function(e) {
                 e.preventDefault();
                 processarDownload();
