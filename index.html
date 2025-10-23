@@ -77,8 +77,22 @@
             margin-bottom: 1rem;
         }
         
+        .service-icon-fallback {
+            font-size: 2.5rem;
+            color: var(--verde-medio);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+        }
+        
         .service-image-container {
             margin-bottom: 1rem;
+            min-height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .btn-primary {
@@ -367,12 +381,32 @@
             servicosContainer.innerHTML = '';
             
             data.servicos.forEach(servico => {
+                // Determinar o ícone baseado no ID do serviço
+                let icone = '';
+                switch(servico.id) {
+                    case 'qualificacao':
+                        icone = 'bi-file-earmark-text';
+                        break;
+                    case 'transformacao':
+                        icone = 'bi-lightbulb';
+                        break;
+                    case 'agilidade':
+                        icone = 'bi-speedometer2';
+                        break;
+                    case 'credito':
+                        icone = 'bi-cash-coin';
+                        break;
+                }
+                
                 let servicoHTML = `
                     <div class="col-md-6 col-lg-3">
                         <div class="service-card">
                             <div class="service-image-container">
                                 <img src="${servico.imagem}" alt="${servico.categoria}" class="service-image" 
-                                     onerror="this.style.display='none'">
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="service-icon-fallback" style="display: none;">
+                                    <i class="bi ${icone}"></i>
+                                </div>
                             </div>
                             <h5>${servico.categoria}</h5>
                 `;
