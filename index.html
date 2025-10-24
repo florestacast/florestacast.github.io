@@ -69,53 +69,12 @@
             transform: translateY(-5px);
         }
         
-        .service-image {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-        }
-        
-        .service-icon-fallback {
+        .service-icon {
             font-size: 2.5rem;
             color: var(--verde-medio);
             margin-bottom: 1rem;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 80px;
-        }
-        
-        .service-image-container {
-            margin-bottom: 1rem;
-            min-height: 120px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Estilos para botões de redes sociais */
-        .btn-outline-danger {
-            border-color: #E1306C;
-            color: #E1306C;
-        }
-
-        .btn-outline-danger:hover {
-            background-color: #E1306C;
-            border-color: #E1306C;
-            color: white;
-        }
-
-        .btn-outline-dark {
-            border-color: #000000;
-            color: #000000;
-        }
-
-        .btn-outline-dark:hover {
-            background-color: #000000;
-            border-color: #000000;
-            color: white;
         }
         
         .btn-primary {
@@ -149,6 +108,28 @@
             margin: 20px 0;
         }
         
+        .btn-outline-danger {
+            border-color: #E1306C;
+            color: #E1306C;
+        }
+
+        .btn-outline-danger:hover {
+            background-color: #E1306C;
+            border-color: #E1306C;
+            color: white;
+        }
+
+        .btn-outline-dark {
+            border-color: #000000;
+            color: #000000;
+        }
+
+        .btn-outline-dark:hover {
+            background-color: #000000;
+            border-color: #000000;
+            color: white;
+        }
+        
         img {
             max-width: 100%;
             height: auto;
@@ -172,7 +153,6 @@
                 height: 50px;
             }
 
-            /* Botões empilhados em mobile */
             .text-center .btn {
                 display: block;
                 width: 100%;
@@ -188,7 +168,7 @@
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <img src="head_fc.png" alt="Floresta Cast - Logo transparente" style="height:100px;">
-                    <span id="empresa-nome">FLORESTA CAST</span>
+                    FLORESTA CAST
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -211,9 +191,9 @@
         
         <div class="hero-section">
             <div class="container">
-                <h1 class="display-4 fw-bold" id="hero-titulo">É AGRO Consultoria</h1>
-                <p class="lead" id="hero-slogan"></p>
-                <p class="mb-0" id="hero-descricao"></p>
+                <h1 class="display-4 fw-bold">É AGRO Consultoria</h1>
+                <p class="lead">Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção</p>
+                <p class="mb-0">Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo</p>
             </div>
         </div>
     </header>
@@ -221,21 +201,46 @@
     <main class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-10 text-center">
-                <p class="lead" id="texto-destaque"></p>
+                <p class="lead">Obtenha diagnóstico dos recursos operacionais dimensionados para sua finalidade. Otimize o recurso mais escasso que é a sua renda.</p>
             </div>
         </div>
         
-        <h2 id="titulo-servicos" class="text-center mb-4"></h2>
+        <h2 class="text-center mb-4">ASSESSORIA ADMINISTRATIVA ESPECIALIZADA</h2>
         
         <div class="row" id="servicos-container">
-            <!-- Serviços carregados via JavaScript -->
+            <!-- Serviços serão preenchidos via JavaScript -->
         </div>
         
         <div class="row mt-5" id="responsavel">
             <div class="col-lg-10 mx-auto">
                 <div class="card mb-4">
-                    <div class="card-body text-center" id="responsavel-container">
-                        <!-- Conteúdo carregado via JavaScript -->
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Anderson Mendes Souza</h4>
+                        <h6 class="card-subtitle mb-3 text-muted">RESPONSÁVEL TÉCNICO</h6>
+                        
+                        <div class="crea-badge text-center">
+                            <h5><i class="bi bi-award-fill me-2 text-danger"></i> Registro Profissional</h5>
+                            <p class="mb-0">Engenheiro Florestal sob nº CREA PR-214168/D</p>
+                            <small class="text-muted">Registro no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.</small>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h6>Formação Acadêmica</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-mortarboard-fill me-2 text-primary"></i> Universidade Federal do Paraná</li>
+                                    <li><i class="bi bi-book-fill me-2 text-primary"></i> MBA Data Science Esalq USP</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Competências Técnicas</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="bi bi-check-square-fill me-2 text-success"></i> Análise de informações.</li>
+                                    <li><i class="bi bi-check-square-fill me-2 text-success"></i> Atendimento à conformidade.</li>
+                                    <li><i class="bi bi-check-square-fill me-2 text-success"></i> Indicadores.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -243,8 +248,53 @@
         
         <div class="row mt-4" id="contato">
             <div class="col-lg-10 mx-auto">
-                <div class="contact-info" id="contato-container">
-                    <!-- Conteúdo carregado via JavaScript -->
+                <div class="contact-info">
+                    <h4 class="text-center mb-4">ENTRE EM CONTATO</h4>
+                    <p class="text-center">Atende toda região de Eunápolis, sul da Bahia</p>
+                    
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-3">
+                            <i class="bi bi-telephone-fill d-block mb-2" style="font-size: 1.5rem;"></i>
+                            <h6>Celular/WhatsApp</h6>
+                            <p>(73) 99911-0708</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <i class="bi bi-envelope-fill d-block mb-2" style="font-size: 1.5rem;"></i>
+                            <h6>E-mail</h6>
+                            <p>florestacast@outlook.com</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <i class="bi bi-geo-alt-fill d-block mb-2" style="font-size: 1.5rem;"></i>
+                            <h6>Localização</h6>
+                            <p>Eunápolis, Bahia, Brasil</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <i class="bi bi-share-fill d-block mb-2" style="font-size: 1.5rem;"></i>
+                            <h6>Redes Sociais</h6>
+                            <p>Siga-nos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <a href="https://linkedin.com/company/florestacast" class="btn btn-outline-primary me-2 mb-2" target="_blank">
+                            <i class="bi bi-linkedin me-2"></i> LinkedIn
+                        </a>
+                        <a href="https://api.whatsapp.com/send?phone=5573999110708" class="btn btn-success me-2 mb-2" target="_blank">
+                            <i class="bi bi-whatsapp me-2"></i> WhatsApp
+                        </a>
+                        <a href="https://instagram.com/florestacast" class="btn btn-outline-danger me-2 mb-2" target="_blank">
+                            <i class="bi bi-instagram me-2"></i> Instagram
+                        </a>
+                        <a href="https://tiktok.com/@florestacast" class="btn btn-outline-dark me-2 mb-2" target="_blank">
+                            <i class="bi bi-tiktok me-2"></i> TikTok
+                        </a>
+                    </div>
+                    <div class="mt-4">
+                        <iframe
+                            src="https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed"
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -252,8 +302,8 @@
 
     <footer class="text-center">
         <div class="container">
-            <p class="mb-0" id="footer-text"></p>
-            <small id="footer-cnpj"></small>
+            <p class="mb-0">© 2025 - Floresta Cast Ltda. - Os direitos estão reservados.</p>
+            <small>Eunápolis - BA | CNPJ 55.900.830/0001-67</small>
         </div>
     </footer>
 
@@ -298,88 +348,144 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
+        // Dados dos serviços - TUDO NO MESMO ARQUIVO
+        const servicosData = [
+            {
+                "id": "qualificacao",
+                "categoria": "QUALIFICAÇÃO",
+                "icone": "bi-file-earmark-text",
+                "itens": [
+                    "Identificação do Negócio",
+                    "Licenças ambientais - atividade de operação",
+                    "Sistema de Gestão",
+                    "Inventários & Ativos",
+                    "Perícias - Laudos Técnicos"
+                ]
+            },
+            {
+                "id": "transformacao",
+                "categoria": "TRANSFORMAÇÃO",
+                "icone": "bi-lightbulb",
+                "itens": [
+                    "Planejamento",
+                    "Logística de produto",
+                    "Estoque",
+                    "Auditoria",
+                    "Treinamentos & Atualizações"
+                ]
+            },
+            {
+                "id": "agilidade",
+                "categoria": "AGILIDADE",
+                "icone": "bi-speedometer2",
+                "itens": [
+                    "Fornecedores",
+                    "Monitoramento",
+                    "Qualidade",
+                    "Relatórios & Indicadores",
+                    "Preço"
+                ]
+            },
+            {
+                "id": "credito",
+                "categoria": "CRÉDITO RURAL",
+                "icone": "bi-cash-coin",
+                "descricao": "É consultoria completa para obter crédito rural em bancos públicos.",
+                "link_portfolio": "https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf"
+            }
+        ];
+
         // Variável global para armazenar o link do download pendente
         let downloadLinkPendente = '';
 
-        // Função para carregar e processar os dados
-        async function carregarDados() {
-            let data;
+        // Função para carregar serviços
+        function carregarServicos() {
+            const servicosContainer = document.getElementById('servicos-container');
+            servicosContainer.innerHTML = '';
             
-            try {
-                const response = await fetch('data.json');
-                data = await response.json();
-            } catch (error) {
-                console.log('Erro ao carregar data.json, usando dados fallback');
-                // Usaremos dados inline como fallback
-                data = {
-                    "empresa": {
-                        "nome": "Floresta Cast Ltda.",
-                        "logo": "head_fc.png",
-                        "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção",
-                        "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo",
-                        "cnpj": "55.900.830/0001-67",
-                        "localidade": "Eunápolis - BA"
-                    },
-                    "servicos": [
-                        {
-                            "id": "qualificacao",
-                            "categoria": "QUALIFICAÇÃO",
-                            "imagem": "images/qualificacao.jpg",
-                            "itens": [
-                                "Identificação do Negócio",
-                                "Licenças ambientais - atividade de operação",
-                                "Sistema de Gestão",
-                                "Inventários & Ativos",
-                                "Perícias - Laudos Técnicos"
-                            ]
-                        },
-                        {
-                            "id": "transformacao",
-                            "categoria": "TRANSFORMAÇÃO",
-                            "imagem": "images/transformacao.jpg",
-                            "itens": [
-                                "Planejamento",
-                                "Logística de produto",
-                                "Estoque",
-                                "Auditoria",
-                                "Treinamentos & Atualizações"
-                            ]
-                        },
-                        {
-                            "id": "agilidade",
-                            "categoria": "AGILIDADE",
-                            "imagem": "images/agilidade.jpg",
-                            "itens": [
-                                "Fornecedores",
-                                "Monitoramento",
-                                "Qualidade",
-                                "Relatórios & Indicadores",
-                                "Preço"
-                            ]
-                        },
-                        {
-                            "id": "credito",
-                            "categoria": "CRÉDITO RURAL",
-                            "imagem": "images/credito.jpg",
-                            "descricao": "É consultoria completa para obter crédito rural em bancos públicos.",
-                            "link_portfolio": "https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf"
-                        }
-                    ],
-                    "responsavel_tecnico": {
-                        "nome": "Anderson Mendes Souza",
-                        "cargo": "RESPONSÁVEL TÉCNICO",
-                        "registro_crea": "PR-214168/D",
-                        "descricao_registro": "Registro no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
-                        "formacao": [
-                            "Universidade Federal do Paraná",
-                            "MBA Data Science Esalq USP"
-                        ],
-                        "competencias": [
-                            "Análise de informações.",
-                            "Atendimento à conformidade.",
-                            "Indicadores."
-                        ]
-                    },
-                    "contato": {
-                        "telefone": "(73) 99911-0708",
-                        "email": "florestacast@outlook
+            servicosData.forEach(servico => {
+                let servicoHTML = `
+                    <div class="col-md-6 col-lg-3">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="bi ${servico.icone}"></i>
+                            </div>
+                            <h5>${servico.categoria}</h5>
+                `;
+                
+                if (servico.id === 'credito') {
+                    servicoHTML += `
+                        <p>${servico.descricao}</p>
+                        <button class="btn btn-primary mt-2 btn-baixar-portfolio" 
+                                data-link="${servico.link_portfolio}">
+                            <i class="bi bi-download me-2"></i> Baixar Portfólio
+                        </button>
+                    `;
+                } else {
+                    servicoHTML += `
+                        <ul class="list-unstyled">
+                            ${servico.itens.map(item => 
+                                `<li><i class="bi bi-check-circle-fill text-success me-2"></i> ${item}</li>`
+                            ).join('')}
+                        </ul>
+                    `;
+                }
+                
+                servicoHTML += `
+                        </div>
+                    </div>
+                `;
+                
+                servicosContainer.innerHTML += servicoHTML;
+            });
+            
+            // Adicionar event listeners aos botões de download
+            document.querySelectorAll('.btn-baixar-portfolio').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const link = this.getAttribute('data-link');
+                    abrirModalCaptura(link);
+                });
+            });
+        }
+
+        // Função para abrir o modal de captura
+        function abrirModalCaptura(linkDownload) {
+            downloadLinkPendente = linkDownload;
+            const modal = new bootstrap.Modal(document.getElementById('modalCaptura'));
+            modal.show();
+        }
+
+        // Função para processar o download após captura
+        function processarDownload() {
+            const nome = document.getElementById('nomeCompleto').value;
+            const telefone = document.getElementById('telefone').value;
+            const email = document.getElementById('email').value;
+            const autorizacao = document.getElementById('autorizacao').checked;
+            
+            if (!nome || !telefone || !email || !autorizacao) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+            
+            console.log('Dados capturados:', { nome, telefone, email });
+            
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalCaptura'));
+            modal.hide();
+            
+            window.open(downloadLinkPendente, '_blank');
+            document.getElementById('formCaptura').reset();
+        }
+
+        // Event listener para o botão de confirmar download
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarServicos();
+            document.getElementById('btnConfirmarDownload').addEventListener('click', processarDownload);
+            
+            document.getElementById('formCaptura').addEventListener('submit', function(e) {
+                e.preventDefault();
+                processarDownload();
+            });
+        });
+    </script>
+</body>
+</html>
