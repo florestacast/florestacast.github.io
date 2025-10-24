@@ -73,7 +73,9 @@
     "localizacao": "Eunápolis, Bahia, Brasil",
     "redes_sociais": {
       "linkedin": "https://linkedin.com/company/florestacast",
-      "whatsapp": "https://api.whatsapp.com/send?phone=5573999110708"
+      "whatsapp": "https://api.whatsapp.com/send?phone=5573999110708",
+      "instagram": "https://instagram.com/florestacast",
+      "tiktok": "https://tiktok.com/@florestacast"
     },
     "mapa_embed": "https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed"
   },
