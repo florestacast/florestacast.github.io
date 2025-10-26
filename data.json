@@ -2,8 +2,8 @@
   "empresa": {
     "nome": "Floresta Cast Ltda.",
     "logo": "head_fc.png",
-    "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção",
-    "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo",
+    "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção.",
+    "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo.",
     "cnpj": "55.900.830/0001-67",
     "localidade": "Eunápolis - BA"
   },
@@ -59,7 +59,7 @@
     "descricao_registro": "Registro no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
     "formacao": [
       "Universidade Federal do Paraná",
-      "MBA Data Science Esalq USP"
+      "MBA Data Science Esalq/USP"
     ],
     "competencias": [
       "Análise de informações.",
@@ -80,9 +80,9 @@
     "mapa_embed": "https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed"
   },
   "textos_adicionais": {
-    "destaque": "Obtenha diagnóstico dos recursos operacionais dimensionados para sua finalidade. Otimize o recurso mais escasso que é a sua renda.",
-    "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA",
+    "destaque": "Obtenha diagnóstico dos recursos operacionais dimensionados para seu empreendimento. Otimize o recurso mais escasso que é a sua renda.",
+    "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA FLORESTAL",
     "titulo_contato": "ENTRE EM CONTATO",
-    "area_atuacao": "Atende toda região de Eunápolis, sul da Bahia"
+    "area_atuacao": "Uma empresa orgulhosamente brasileira da Bahia."
   }
 }
