@@ -1,11 +1,11 @@
 {
   "empresa": {
-    "nome": "Floresta Cast Ltda.",
+    "nome": "FLORESTA CAST.",
     "logo": "head_fc.png",
     "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção.",
     "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo.",
     "cnpj": "55.900.830/0001-67",
-    "localidade": "Eunápolis - BA"
+    "localidade": "Eunápolis, BA, Brasil."
   },
   "servicos": [
     {
@@ -52,19 +52,19 @@
       "link_portfolio": "https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf"
     }
   ],
-  "responsavel_tecnico": {
+  "Fundador da Floresta Cast LTDA.": {
     "nome": "Anderson Mendes Souza",
     "cargo": "RESPONSÁVEL TÉCNICO",
     "registro_crea": "PR-214168/D",
-    "descricao_registro": "Registro no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
+    "descricao_registro": "Registro Profissional no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
     "formacao": [
-      "Universidade Federal do Paraná",
-      "MBA Data Science Esalq/USP"
+      "Bacharel em Engenharia Florestal pela Universidade Federal do Paraná UFPR",
+      "Data Science Analytics, Escola Superior Luiz de Queiroz Esalq/USP"
     ],
     "competencias": [
-      "Análise de informações.",
-      "Atendimento à conformidade.",
-      "Indicadores."
+      "Análise de dados florestais.",
+      "Indicadores florestais.",
+      "Conformidade florestal."
     ]
   },
   "contato": {
@@ -83,6 +83,6 @@
     "destaque": "Obtenha diagnóstico dos recursos operacionais dimensionados para seu empreendimento. Otimize o recurso mais escasso que é a sua renda.",
     "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA FLORESTAL",
     "titulo_contato": "ENTRE EM CONTATO",
-    "area_atuacao": "Uma empresa orgulhosamente brasileira da Bahia."
+    "area_atuacao": "Uma empresa florestal orgulhosamente brasileira da Bahia."
   }
 }
