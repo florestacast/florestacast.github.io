@@ -1,8 +1,8 @@
 {
   "empresa": {
-    "nome": "FLORESTA CAST.",
+    "nome": "FLORESTA CAST",
     "logo": "head_fc.png",
-    "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção.",
+    "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção | Manejo Florestal Integrado",
     "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo.",
     "cnpj": "55.900.830/0001-67",
     "localidade": "Eunápolis, BA, Brasil."
@@ -59,7 +59,7 @@
     "descricao_registro": "Registro Profissional no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
     "formacao": [
       "Bacharel em Engenharia Florestal pela Universidade Federal do Paraná UFPR",
-      "Data Science Analytics, Escola Superior Luiz de Queiroz Esalq/USP"
+      "MBA Data Science Analytics, Escola Superior Luiz de Queiroz Esalq/USP"
     ],
     "competencias": [
       "Análise de dados florestais.",
