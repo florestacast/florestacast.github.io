@@ -1,88 +1,88 @@
 {
-    "empresa": {
-        "nome": "FLORESTA CAST",
-        "logo": "head_fc.png",
-        "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção | Manejo Florestal Integrado",
-        "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo.",
-        "cnpj": "55.900.830/0001-67",
-        "localidade": "Eunápolis, BA, Brasil."
+  "empresa": {
+    "nome": "FLORESTA CAST",
+    "logo": "head_fc.png",
+    "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção | Manejo Florestal Integrado",
+    "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo.",
+    "cnpj": "55.900.830/0001-67",
+    "localidade": "Eunápolis, BA, Brasil."
+  },
+  "servicos": [
+    {
+      "id": "qualificacao",
+      "categoria": "QUALIFICAÇÃO",
+      "imagem": "images/qualificacao.jpg",
+      "itens": [
+        "Identificação do Negócio",
+        "Licenças ambientais - atividade de operação",
+        "Sistema de Gestão",
+        "Inventários & Ativos",
+        "Perícias - Laudos Técnicos"
+      ]
     },
-    "servicos": [
-        {
-            "id": "qualificacao",
-            "categoria": "QUALIFICAÇÃO",
-            "imagem": "images/qualificacao.jpg",
-            "itens": [
-                "Identificação do Negócio",
-                "Licenças ambientais - atividade de operação",
-                "Sistema de Gestão",
-                "Inventários & Ativos",
-                "Perícias - Laudos Técnicos"
-            ]
-        },
-        {
-            "id": "transformacao",
-            "categoria": "TRANSFORMAÇÃO",
-            "imagem": "images/transformacao.jpg",
-            "itens": [
-                "Planejamento",
-                "Logística de produto",
-                "Estoque",
-                "Auditoria",
-                "Treinamentos & Atualizações"
-            ]
-        },
-        {
-            "id": "agilidade",
-            "categoria": "AGILIDADE",
-            "imagem": "images/agilidade.jpg",
-            "itens": [
-                "Fornecedores",
-                "Monitoramento",
-                "Qualidade",
-                "Relatórios & Indicadores",
-                "Preço"
-            ]
-        },
-        {
-            "id": "credito",
-            "categoria": "CRÉDITO RURAL",
-            "imagem": "images/credito.jpg",
-            "descricao": "É consultoria completa para obter crédito rural em bancos públicos.",
-            "link_portfolio": "https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf"
-        }
-    ],
-    "responsavel_tecnico": {
-        "nome": "Anderson Mendes Souza",
-        "cargo": "Engenheiro Florestal - Fundador da Floresta Cast LTDA.",
-        "registro_crea": "PR-214168/D",
-        "descricao_registro": "Registro Profissional no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
-        "formacao": [
-            "Bacharel em Engenharia Florestal pela Universidade Federal do Paraná UFPR",
-            "MBA Data Science Analytics, Escola Superior Luiz de Queiroz Esalq/USP"
-        ],
-        "competencias": [
-            "Análise de dados florestais.",
-            "Indicadores florestais.",
-            "Conformidade florestal."
-        ]
+    {
+      "id": "transformacao",
+      "categoria": "TRANSFORMAÇÃO",
+      "imagem": "images/transformacao.jpg",
+      "itens": [
+        "Planejamento",
+        "Logística de produto",
+        "Estoque",
+        "Auditoria",
+        "Treinamentos & Atualizações"
+      ]
     },
-    "contato": {
-        "telefone": "(73) 99911-0708",
-        "email": "florestacast@outlook.com",
-        "localizacao": "Eunápolis, Bahia, Brasil",
-        "redes_sociais": {
-            "linkedin": "https://linkedin.com/company/florestacast",
-            "whatsapp": "https://api.whatsapp.com/send?phone=5573999110708",
-            "instagram": "https://instagram.com/florestacast",
-            "tiktok": "https://tiktok.com/@florestacast"
-        },
-        "mapa_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15298.117247967123!2d-39.582132!3d-16.371202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x73693e9b3b8a6a5%3A0x5afb476b2f0c1b0d!2sEunápolis%2C%20BA!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
+    {
+      "id": "agilidade",
+      "categoria": "AGILIDADE",
+      "imagem": "images/agilidade.jpg",
+      "itens": [
+        "Fornecedores",
+        "Monitoramento",
+        "Qualidade",
+        "Relatórios & Indicadores",
+        "Preço"
+      ]
     },
-    "textos_adicionais": {
-        "destaque": "Obtenha diagnóstico dos recursos operacionais dimensionados para seu empreendimento. Otimize o recurso mais escasso que é a sua renda.",
-        "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA FLORESTAL",
-        "titulo_contato": "ENTRE EM CONTATO",
-        "area_atuacao": "Uma empresa florestal orgulhosamente brasileira da Bahia."
+    {
+      "id": "credito",
+      "categoria": "CRÉDITO RURAL",
+      "imagem": "images/credito.jpg",
+      "descricao": "É consultoria completa para obter crédito rural em bancos públicos.",
+      "link_portfolio": "https://raw.githubusercontent.com/florestacast/florestacast.github.io/master/Credito_rural.pdf"
     }
+  ],
+  "Fundador da Floresta Cast LTDA.": {
+    "nome": "Anderson Mendes Souza",
+    "cargo": "RESPONSÁVEL TÉCNICO",
+    "registro_crea": "PR-214168/D",
+    "descricao_registro": "Registro Profissional no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
+    "formacao": [
+      "Bacharel em Engenharia Florestal pela Universidade Federal do Paraná UFPR",
+      "MBA Data Science Analytics, Escola Superior Luiz de Queiroz Esalq/USP"
+    ],
+    "competencias": [
+      "Análise de dados florestais.",
+      "Indicadores florestais.",
+      "Conformidade florestal."
+    ]
+  },
+  "contato": {
+    "telefone": "(73) 99911-0708",
+    "email": "florestacast@outlook.com",
+    "localizacao": "Eunápolis, Bahia, Brasil",
+    "redes_sociais": {
+      "linkedin": "https://linkedin.com/company/florestacast",
+      "whatsapp": "https://api.whatsapp.com/send?phone=5573999110708",
+      "instagram": "https://instagram.com/florestacast",
+      "tiktok": "https://tiktok.com/@florestacast"
+    },
+    "mapa_embed": "https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed"
+  },
+  "textos_adicionais": {
+    "destaque": "Obtenha diagnóstico dos recursos operacionais dimensionados para seu empreendimento. Otimize o recurso mais escasso que é a sua renda.",
+    "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA FLORESTAL",
+    "titulo_contato": "ENTRE EM CONTATO",
+    "area_atuacao": "Uma empresa florestal orgulhosamente brasileira da Bahia."
+  }
 }
