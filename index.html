@@ -86,7 +86,7 @@
             /* imagem centralizada sem qualquer overlay/transparência */
             background-image: url('cabecalho.jpg');
             background-repeat: no-repeat;
-            background-position: center center;
+            background-position: top center;
             background-size: cover;
             background-color: #2E583A; /* fallback sólido caso a imagem não carregue */
             color: white;
@@ -98,13 +98,14 @@
         }
         
         /* remover pseudo-overlay que aplicava transparência sobre a imagem */
-        .hero-section::before {
-            display: none;
-        }
-
-        .hero-section > .container {
-            position: relative;
-            z-index: 1;
+        .hero-section {
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+                url('cabecalho.jpg');
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-size: cover;
+            /* resto do código permanece igual */
         }
         
         .display-4 {
