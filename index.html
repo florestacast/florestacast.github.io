@@ -367,10 +367,15 @@
                 --navbar-height: 76px;
             }
             
+            body {
+                padding-top: 76px;
+            }
+            
              .hero-section {
                  padding: 3.5rem 0;
              }
              
+
              .display-4 {
                  font-size: 2.2rem;
              }
@@ -392,8 +397,15 @@
              }
              
              .floating-whatsapp {
-                 bottom: 15px;
+                 bottom: 90px;
                  right: 15px;
+             }
+            
+             .btn-voltar-topo {
+                 bottom: 80px;
+                 right: 15px;
+                 width: 45px;
+                 height: 45px;
              }
          }
     </style>
@@ -729,7 +741,8 @@
                         col.className = 'col-12 col-md-6 col-lg-3';
                         
                         let html = `
-                            <div class="service-card fade-in h-100 text-center p-3">
+-                           <div class="service-card fade-in h-100 text-center p-3">
++                           <div class="service-card fade-in h-100 ${servico.id === 'credito' ? 'text-center' : 'text-start'} p-3">
                                 <div class="service-image-container">
                                     <img src="${servico.imagem}" alt="${servico.categoria}" class="service-image" 
                                          loading="lazy" onclick="ampliarImagem('${servico.imagem}', '${servico.categoria}')"
@@ -741,7 +754,8 @@
                                         <i class="bi bi-zoom-in text-white fs-1"></i>
                                     </div>
                                 </div>
-                                <h5 class="fw-bold">${servico.categoria}</h5>
+-                               <h5 class="fw-bold">${servico.categoria}</h5>
++                               <h5 class="fw-bold ${servico.id === 'credito' ? '' : 'text-center'}">${servico.categoria}</h5>
                         `;
                         
                         if (servico.id === 'credito') {
