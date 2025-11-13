@@ -454,24 +454,20 @@
                         <i class="bi bi-eye me-2"></i>Nossos Serviços
                     </a>
                 </div>
+            </div>
+        </section>
 
-                <!-- Inserido: informações adicionais dentro do cabeçalho -->
-                <div class="mt-4 mx-auto text-white" style="max-width:900px;">
-                    <p id="texto-destaque" class="lead fs-5 mb-2"></p>
+        <!-- Informações adicionais FORA do cabeçalho, abaixo da imagem -->
+        <section aria-labelledby="texto-destaque" class="py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <p class="lead fs-5" id="texto-destaque"></p>
                 </div>
             </div>
         </section>
     </header>
 
     <main class="container" role="main">
-        <section aria-labelledby="texto-destaque">
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-10 text-center">
-                    <p class="lead fs-5" id="texto-destaque"></p>
-                </div>
-            </div>
-        </section>
-        
         <section aria-labelledby="titulo-servicos">
             <h2 id="titulo-servicos" class="text-center mb-4 display-6 fw-bold"></h2>
             <div class="row g-3" id="servicos">
@@ -741,8 +737,8 @@
                         col.className = 'col-12 col-md-6 col-lg-3';
                         
                         let html = `
--                           <div class="service-card fade-in h-100 text-center p-3">
-+                           <div class="service-card fade-in h-100 ${servico.id === 'credito' ? 'text-center' : 'text-start'} p-3">
+-                           <div class="service-card fade-in h-100 ${servico.id === 'credito' ? 'text-center' : 'text-start'} p-3">
++                           <div class="service-card fade-in h-100 text-center p-3">
                                 <div class="service-image-container">
                                     <img src="${servico.imagem}" alt="${servico.categoria}" class="service-image" 
                                          loading="lazy" onclick="ampliarImagem('${servico.imagem}', '${servico.categoria}')"
@@ -754,8 +750,8 @@
                                         <i class="bi bi-zoom-in text-white fs-1"></i>
                                     </div>
                                 </div>
--                               <h5 class="fw-bold">${servico.categoria}</h5>
-+                               <h5 class="fw-bold ${servico.id === 'credito' ? '' : 'text-center'}">${servico.categoria}</h5>
+-                               <h5 class="fw-bold ${servico.id === 'credito' ? '' : 'text-center'}">${servico.categoria}</h5>
++                               <h5 class="fw-bold">${servico.categoria}</h5>
                         `;
                         
                         if (servico.id === 'credito') {
@@ -767,7 +763,8 @@
                             `;
                         } else {
                             html += `
-                                <ul class="list-unstyled mt-3">
+-                               <ul class="list-unstyled mt-3">
++                               <ul class="list-unstyled mt-3 text-start">
                                     ${servico.itens.map(item => 
                                         `<li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>${item}</li>`
                                     ).join('')}
