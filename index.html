@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Floresta Cast - Responsável técnico florestal em Eunápolis, Sul da Bahia</title>
     
-    <!-- Otimização: Pré-carregar recursos críticos -->
-    <link rel="preload" href="./florestacast_files/bootstrap.min.css" as="style">
-    <link rel="preload" href="./florestacast_files/bootstrap-icons.css" as="style">
+    <!-- Preload crítico -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" as="style">
     
-    <link href="./florestacast_files/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./florestacast_files/bootstrap-icons.css">
-    <link rel="icon" href="./florestacast_files/head_fc.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="icon" href="head_fc.png">
     
-    <!-- CSS crítico inline -->
     <style>
         :root {
             --verde-escuro: #2E583A;
@@ -23,12 +22,8 @@
             --marrom: #8C6D4A;
         }
         
-        /* Fonte solicitada */
-        body, input, button, select, textarea {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
             background-color: var(--bege);
             line-height: 1.6;
@@ -36,44 +31,83 @@
             padding: 0;
         }
         
-        /* Navbar flutuante aprimorada */
+        /* Navbar flutuante */
         .navbar {
-            background-color: transparent;
-            padding: 0.6rem 0;
-            transition: all 0.35s ease;
+            background-color: var(--verde-escuro);
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
         }
-        .navbar-scrolled, .navbar.navbar-scrolled {
-            background-color: var(--verde-escuro) !important;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.15);
-            padding: 0.35rem 0;
+        
+        .navbar.navbar-scrolled {
+            padding: 0.3rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+        
+        .navbar-brand {
+            background-color: transparent !important;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
         .navbar-brand img {
             background: transparent !important;
             height: 80px;
-            transition: height 0.3s ease, transform 0.3s ease;
+            transition: height 0.3s ease;
+            border: none !important;
+            box-shadow: none !important;
         }
-        .navbar-scrolled .navbar-brand img { height: 60px; }
+        
+        .navbar-scrolled .navbar-brand img {
+            height: 60px;
+        }
+        
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
 
-        .navbar-brand, .nav-link { color: white !important; }
-
-        /* Hero: sem parallax para melhor desempenho mobile (imagem rola junto) */
+        #empresa-nome {
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+        
+        /* Hero Section */
         .hero-section {
             background: linear-gradient(rgba(46, 88, 58, 0.78), rgba(46, 88, 58, 0.88)), url('cabecalho.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: scroll; /* sem parallax */
+            background-attachment: scroll;
             color: white;
             padding: 5.5rem 0;
             text-align: center;
             margin-bottom: 2.5rem;
             position: relative;
+            overflow: hidden;
         }
         
-        .hero-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(45deg, rgba(46,88,58,0.25), rgba(0,0,0,0)); pointer-events: none; }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(46,88,58,0.25), rgba(0,0,0,0));
+            pointer-events: none;
+        }
 
-        .display-4 { font-weight: 800; letter-spacing: -0.5px; }
+        .hero-section > .container {
+            position: relative;
+            z-index: 1;
+        }
         
-        /* Cards estruturados */
+        .display-4 {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        /* Service Cards */
         .service-card {
             background: white;
             border-radius: 12px;
@@ -84,103 +118,251 @@
             border-top: 5px solid var(--verde-medio);
             height: 100%;
             overflow: hidden;
+            position: relative;
         }
-        .service-card:hover { transform: translateY(-8px); box-shadow: 0 14px 35px rgba(0,0,0,0.12); }
-
-        /* Container da imagem com zoom ao hover / toque */
-        .service-image-container { position: relative; overflow: hidden; border-radius: 10px; }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(143, 201, 158, 0.1), transparent);
+            transition: left 0.6s;
+            pointer-events: none;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+        }
+        
+        /* Service Image */
+        .service-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            min-height: 180px;
+        }
+        
         .service-image {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
+            border: 3px solid var(--verde-claro);
+            border-radius: 10px;
             transition: transform 0.45s ease, filter 0.25s ease;
             display: block;
+            cursor: pointer;
         }
-        /* Desktop: zoom leve */
-        .service-image:hover { transform: scale(1.08); filter: brightness(0.93); }
-        /* Mobile: toque/active zoom maior */
-        .service-image:active { transform: scale(1.2); filter: brightness(0.87); }
+        
+        .service-image:hover {
+            transform: scale(1.08);
+            filter: brightness(0.93);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        .service-image-container:hover .image-overlay {
+            opacity: 1;
+        }
 
         .service-icon-fallback {
             font-size: 3rem;
             color: var(--verde-medio);
-            margin-bottom: 1rem;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 200px;
+            height: 180px;
             background: linear-gradient(135deg, var(--verde-claro), var(--bege));
             border-radius: 10px;
             border: 3px solid var(--verde-medio);
+            transition: all 0.3s ease;
         }
-
+        
+        /* Buttons */
         .btn-primary {
             background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
             border: none;
             padding: 10px 24px;
             font-weight: 600;
             border-radius: 8px;
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(74, 140, 99, 0.3);
         }
-        .btn-primary:hover { transform: translateY(-2px); }
-
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 140, 99, 0.4);
+        }
+        
         .btn-success {
             background: linear-gradient(135deg, #25D366, #128C7E);
             border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
 
+        .btn-outline-danger {
+            border-color: #E1306C;
+            color: #E1306C;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-danger:hover {
+            background-color: #E1306C;
+            border-color: #E1306C;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-dark {
+            border-color: #000000;
+            color: #000000;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-dark:hover {
+            background-color: #000000;
+            border-color: #000000;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Contact & Footer */
         .contact-info {
             background: linear-gradient(135deg, var(--verde-claro), #A8D5BA);
             padding: 2.5rem;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
         }
-
+        
         footer {
             background: linear-gradient(135deg, var(--verde-escuro), #26432F);
             color: white;
             padding: 1.8rem 0;
             margin-top: 2.5rem;
         }
-
+        
+        .crea-badge {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-left: 5px solid #d00;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        /* Floating WhatsApp */
         .floating-whatsapp {
             position: fixed;
             bottom: 22px;
             right: 22px;
             z-index: 1200;
-            transition: transform 0.2s ease;
+            animation: float 3s ease-in-out infinite;
         }
-        .floating-whatsapp:hover { transform: translateY(-4px); }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--verde-medio), var(--verde-claro));
+            z-index: 1300;
+            transition: width 0.12s linear;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        /* Progress bar */
-        .progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: linear-gradient(90deg, var(--verde-medio), var(--verde-claro)); z-index: 1300; transition: width 0.12s linear; }
-
-        /* Fade-in para animações leves */
-        .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* Responsividade */
+        /* Modal Image */
+        .modal-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero-section { padding: 3.5rem 0; }
-            .service-image { height: 160px; }
-            .service-icon-fallback { height: 160px; }
-            .navbar-brand img { height: 64px; }
+            .hero-section {
+                padding: 3.5rem 0;
+            }
+            
+            .display-4 {
+                font-size: 2.2rem;
+            }
+            
+            .service-image, .service-icon-fallback {
+                height: 160px;
+            }
+            
+            .navbar-brand img {
+                height: 64px;
+            }
+
+            #empresa-nome {
+                font-size: 1.2rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .floating-whatsapp {
+                bottom: 15px;
+                right: 15px;
+            }
         }
     </style>
-    
-    <!-- CSS não crítico carregado de forma assíncrona -->
-    <link rel="stylesheet" href="./florestacast_files/non-critical.css" media="print" onload="this.media='all'">
 </head>
 
 <body>
-    <!-- Barra de progresso -->
     <div class="progress-bar" aria-hidden="true"></div>
     
     <header role="banner">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation" aria-label="Navegação principal">
             <div class="container">
                 <a class="navbar-brand" href="#inicio" aria-label="Floresta Cast - Página inicial">
-                    <img src="./florestacast_files/head_fc.png" alt="Floresta Cast - Logo" width="80" height="80" loading="eager">
+                    <img src="head_fc.png" alt="Floresta Cast - Logo" width="80" height="80" loading="eager">
                     <span id="empresa-nome">FLORESTA CAST</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
@@ -188,15 +370,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto" role="menubar">
-                        <li class="nav-item" role="none">
-                            <a class="nav-link" href="#servicos" role="menuitem">Serviços</a>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#servicos">Serviços</a>
                         </li>
-                        <li class="nav-item" role="none">
-                            <a class="nav-link" href="#responsavel" role="menuitem">Responsável Técnico</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#responsavel">Responsável Técnico</a>
                         </li>
-                        <li class="nav-item" role="none">
-                            <a class="nav-link" href="#contato" role="menuitem">Contato</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -206,14 +388,14 @@
         <section class="hero-section" id="inicio" role="banner" aria-labelledby="hero-titulo">
             <div class="container position-relative">
                 <h1 class="display-4 fw-bold mb-3" id="hero-titulo">É AGRO Consultoria Florestal.</h1>
-                <p class="lead fs-5 mb-2" id="hero-slogan">Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção | Manejo Florestal Integrado</p>
-                <p class="mb-3 fs-6" id="hero-descricao">Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo.</p>
+                <p class="lead fs-5 mb-2" id="hero-slogan"></p>
+                <p class="mb-3 fs-6" id="hero-descricao"></p>
                 <div class="mt-3">
-                    <a href="#contato" class="btn btn-primary btn-lg me-2" aria-label="Fale conosco">
-                        <i class="bi bi-chat-dots me-2" aria-hidden="true"></i>Fale Conosco
+                    <a href="#contato" class="btn btn-primary btn-lg me-2">
+                        <i class="bi bi-chat-dots me-2"></i>Fale Conosco
                     </a>
-                    <a href="#servicos" class="btn btn-outline-light btn-lg" aria-label="Conheça nossos serviços">
-                        <i class="bi bi-eye me-2" aria-hidden="true"></i>Nossos Serviços
+                    <a href="#servicos" class="btn btn-outline-light btn-lg">
+                        <i class="bi bi-eye me-2"></i>Nossos Serviços
                     </a>
                 </div>
             </div>
@@ -224,16 +406,15 @@
         <section aria-labelledby="texto-destaque">
             <div class="row justify-content-center mb-4">
                 <div class="col-lg-10 text-center">
-                    <p class="lead fs-5" id="texto-destaque">Obtenha diagnóstico dos recursos operacionais dimensionados para seu empreendimento. Otimize o recurso mais escasso que é a sua renda.</p>
+                    <p class="lead fs-5" id="texto-destaque"></p>
                 </div>
             </div>
         </section>
         
         <section aria-labelledby="titulo-servicos">
-            <h2 id="titulo-servicos" class="text-center mb-4 display-6 fw-bold">ASSESSORIA ADMINISTRATIVA ESPECIALIZADA FLORESTAL</h2>
-            
+            <h2 id="titulo-servicos" class="text-center mb-4 display-6 fw-bold"></h2>
             <div class="row g-3" id="servicos">
-                <div id="servicos-container" class="w-100 d-flex flex-wrap"></div>
+                <div id="servicos-container" class="w-100"></div>
             </div>
         </section>
         
@@ -241,9 +422,7 @@
             <div class="row mt-4" id="responsavel">
                 <div class="col-lg-10 mx-auto">
                     <div class="card border-0 shadow-lg">
-                        <div class="card-body p-4 text-center" id="responsavel-container">
-                            <!-- Conteúdo do responsável técnico será carregado via JavaScript -->
-                        </div>
+                        <div class="card-body p-4 text-center" id="responsavel-container"></div>
                     </div>
                 </div>
             </div>
@@ -252,9 +431,7 @@
         <section aria-labelledby="contato-titulo">
             <div class="row mt-4" id="contato">
                 <div class="col-lg-10 mx-auto">
-                    <div class="contact-info" id="contato-container">
-                        <!-- Conteúdo de contato será carregado via JavaScript -->
-                    </div>
+                    <div class="contact-info" id="contato-container"></div>
                 </div>
             </div>
         </section>
@@ -262,27 +439,27 @@
 
     <footer role="contentinfo" class="text-center">
         <div class="container">
-            <p class="mb-1" id="footer-text">© 2025 - FLORESTA CAST - Os direitos estão reservados.</p>
-            <small id="footer-cnpj">Eunápolis, BA, Brasil. | CNPJ 55.900.830/0001-67</small>
+            <p class="mb-1" id="footer-text"></p>
+            <small id="footer-cnpj"></small>
         </div>
     </footer>
 
     <!-- Botão Flutuante WhatsApp -->
-    <div class="floating-whatsapp" aria-hidden="true">
+    <div class="floating-whatsapp">
         <a href="https://api.whatsapp.com/send?phone=5573999110708" class="btn btn-success btn-lg rounded-circle" 
-           target="_blank" aria-label="Contato via WhatsApp" 
+           target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp" 
            style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
             <i class="bi bi-whatsapp fs-4" aria-hidden="true"></i>
         </a>
     </div>
 
-    <!-- Modal para Captura de Dados -->
+    <!-- Modal Captura de Dados -->
     <div class="modal fade" id="modalCaptura" tabindex="-1" aria-labelledby="modalCapturaLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title" id="modalCapturaLabel">
-                        <i class="bi bi-download me-2" aria-hidden="true"></i>Baixar Portfólio
+                        <i class="bi bi-download me-2"></i>Baixar Portfólio
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
@@ -291,58 +468,68 @@
                         <div class="mb-3">
                             <label for="nomeCompleto" class="form-label">Nome Completo *</label>
                             <input type="text" class="form-control" id="nomeCompleto" required placeholder="Seu nome completo">
-                            <div class="invalid-feedback">Por favor, digite seu nome completo.</div>
                         </div>
                         <div class="mb-3">
                             <label for="telefone" class="form-label">Telefone/WhatsApp *</label>
                             <input type="tel" class="form-control" id="telefone" required placeholder="(00) 00000-0000">
-                            <div class="invalid-feedback">Por favor, digite um telefone válido.</div>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">E-mail *</label>
                             <input type="email" class="form-control" id="email" required placeholder="seu@email.com">
-                            <div class="invalid-feedback">Por favor, digite um e-mail válido.</div>
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="autorizacao" required>
                             <label class="form-check-label" for="autorizacao">
                                 Autorizo o contato para informações sobre crédito rural
                             </label>
-                            <div class="invalid-feedback">É necessário aceitar os termos.</div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="btnConfirmarDownload">**Baixar Portfólio**
-                        <i class="bi bi-download me-2" aria-hidden="true"></i>
+                    <button type="button" class="btn btn-primary" id="btnConfirmarDownload">
+                        <i class="bi bi-download me-2"></i>Baixar Portfólio
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Otimização: Scripts no final do body -->
-    <script src="./florestacast_files/bootstrap.bundle.min.js" defer></script>
+    <!-- Modal Visualizar Imagem -->
+    <div class="modal fade" id="modalImagem" tabindex="-1" aria-labelledby="modalImagemLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalImagemLabel">Visualizar Imagem</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="imagemAmpliada" src="" alt="Imagem ampliada" class="modal-image">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" defer></script>
     
     <script>
-        // JavaScript modular (mantendo a lógica e Google Script original)
         (function() {
             'use strict';
             
-            // Configurações globais (mantenha seu URL do Google Apps Script)
             const CONFIG = {
                 googleSheetsURL: 'https://script.google.com/macros/s/AKfycbz-tS-VUJKUh3D789IdJ4SAz-XVsS1LVoL-Ns0CtTXae_LAEePBza4j3Nktp5j0yFfLnw/exec',
                 storageKey: 'leads_florestacast',
                 animationThreshold: 0.1
             };
             
-            let appState = { downloadLinkPendente: '', scrollObserver: null, isInitialized: false };
+            let appState = { downloadLinkPendente: '', isInitialized: false };
             
             const dadosFallback = {
                 "empresa": {
                     "nome": "FLORESTA CAST",
-                    "logo": "head_fc.png",
                     "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção | Manejo Florestal Integrado",
                     "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo.",
                     "cnpj": "55.900.830/0001-67",
@@ -353,37 +540,19 @@
                         "id": "qualificacao",
                         "categoria": "QUALIFICAÇÃO",
                         "imagem": "images/qualificacao.jpg",
-                        "itens": [
-                            "Identificação do Negócio",
-                            "Licenças ambientais - atividade de operação",
-                            "Sistema de Gestão",
-                            "Inventários & Ativos",
-                            "Perícias - Laudos Técnicos"
-                        ]
+                        "itens": ["Identificação do Negócio", "Licenças ambientais - atividade de operação", "Sistema de Gestão", "Inventários & Ativos", "Perícias - Laudos Técnicos"]
                     },
                     {
                         "id": "transformacao",
                         "categoria": "TRANSFORMAÇÃO",
                         "imagem": "images/transformacao.jpg",
-                        "itens": [
-                            "Planejamento",
-                            "Logística de produto",
-                            "Estoque",
-                            "Auditoria",
-                            "Treinamentos & Atualizações"
-                        ]
+                        "itens": ["Planejamento", "Logística de produto", "Estoque", "Auditoria", "Treinamentos & Atualizações"]
                     },
                     {
                         "id": "agilidade",
                         "categoria": "AGILIDADE",
                         "imagem": "images/agilidade.jpg",
-                        "itens": [
-                            "Fornecedores",
-                            "Monitoramento",
-                            "Qualidade",
-                            "Relatórios & Indicadores",
-                            "Preço"
-                        ]
+                        "itens": ["Fornecedores", "Monitoramento", "Qualidade", "Relatórios & Indicadores", "Preço"]
                     },
                     {
                         "id": "credito",
@@ -398,15 +567,8 @@
                     "cargo": "Engenheiro Florestal - Fundador da Floresta Cast LTDA.",
                     "registro_crea": "PR-214168/D",
                     "descricao_registro": "Registro Profissional no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
-                    "formacao": [
-                        "Bacharel em Engenharia Florestal pela Universidade Federal do Paraná UFPR",
-                        "MBA Data Science Analytics, Escola Superior Luiz de Queiroz Esalq/USP"
-                    ],
-                    "competencias": [
-                        "Análise de dados florestais.",
-                        "Indicadores florestais.",
-                        "Conformidade florestal."
-                    ]
+                    "formacao": ["Bacharel em Engenharia Florestal pela Universidade Federal do Paraná UFPR", "MBA Data Science Analytics, Escola Superior Luiz de Queiroz Esalq/USP"],
+                    "competencias": ["Análise de dados florestais.", "Indicadores florestais.", "Conformidade florestal."]
                 },
                 "contato": {
                     "telefone": "(73) 99911-0708",
@@ -427,213 +589,349 @@
                     "area_atuacao": "Uma empresa florestal orgulhosamente brasileira da Bahia."
                 }
             };
-            
+
+            // Global function para ampliar imagem
+            window.ampliarImagem = function(src, alt) {
+                document.getElementById('imagemAmpliada').src = src;
+                document.getElementById('imagemAmpliada').alt = alt;
+                document.getElementById('modalImagemLabel').textContent = alt;
+                const modal = new bootstrap.Modal(document.getElementById('modalImagem'));
+                modal.show();
+            };
+
             // Utils
             const utils = {
-                debounce(func, wait){ let t; return (...a)=>{ clearTimeout(t); t = setTimeout(()=>func(...a), wait); }; },
-                aplicarMascaraTelefone(input){
-                    input.addEventListener('input', function(e){
-                        let v = e.target.value.replace(/\D/g, ''); if (v.length>11) v = v.substring(0,11);
-                        if (v.length>0){
-                            if (v.length<=2) v = `(${v}`;
-                            else if (v.length<=6) v = `(${v.substring(0,2)}) ${v.substring(2)}`;
-                            else if (v.length<=10) v = `(${v.substring(0,2)}) ${v.substring(2,6)}-${v.substring(6)}`;
-                            else v = `(${v.substring(0,2)}) ${v.substring(2,7)}-${v.substring(7)}`;
+                debounce(func, wait) {
+                    let timeout;
+                    return (...args) => {
+                        clearTimeout(timeout);
+                        timeout = setTimeout(() => func(...args), wait);
+                    };
+                },
+                
+                aplicarMascaraTelefone(input) {
+                    input.addEventListener('input', (e) => {
+                        let v = e.target.value.replace(/\D/g, '');
+                        if (v.length > 11) v = v.substring(0, 11);
+                        if (v.length > 0) {
+                            if (v.length <= 2) v = `(${v}`;
+                            else if (v.length <= 6) v = `(${v.substring(0, 2)}) ${v.substring(2)}`;
+                            else if (v.length <= 10) v = `(${v.substring(0, 2)}) ${v.substring(2, 6)}-${v.substring(6)}`;
+                            else v = `(${v.substring(0, 2)}) ${v.substring(2, 7)}-${v.substring(7)}`;
                         }
                         e.target.value = v;
                     });
                 },
-                validarFormulario({nome,telefone,email,autorizacao}){
+                
+                validarFormulario({ nome, telefone, email, autorizacao }) {
                     const errs = [];
-                    if (!nome || nome.length<2) errs.push('Nome completo é obrigatório');
-                    const telClean = (telefone||'').replace(/\D/g,'');
-                    if (!telefone || telClean.length<10) errs.push('Telefone válido é obrigatório');
-                    const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+                    if (!nome || nome.length < 2) errs.push('Nome completo é obrigatório');
+                    const telClean = (telefone || '').replace(/\D/g, '');
+                    if (!telefone || telClean.length < 10) errs.push('Telefone válido é obrigatório');
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     if (!email || !emailRegex.test(email)) errs.push('E-mail válido é obrigatório');
                     if (!autorizacao) errs.push('Aceite os termos é obrigatório');
                     return errs;
                 }
             };
             
+            // Data Manager
             const dataManager = {
-                async carregarDados(){
-                    try{
-                        const r = await fetch('data.json'); if(!r.ok) throw new Error('JSON não encontrado');
-                        return await r.json();
-                    }catch(e){ console.log('Usando fallback:', e.message); return dadosFallback; }
+                async carregarDados() {
+                    try {
+                        const response = await fetch('data.json');
+                        if (!response.ok) throw new Error('JSON não encontrado');
+                        return await response.json();
+                    } catch (error) {
+                        console.log('Usando dados fallback:', error.message);
+                        return dadosFallback;
+                    }
                 },
-                preencherConteudo(d){ this.preencherEmpresa(d); this.preencherServicos(d); this.preencherResponsavel(d); this.preencherContato(d); this.preencherFooter(d); },
-                preencherEmpresa(d){
-                    document.getElementById('empresa-nome').textContent = d.empresa.nome;
-                    document.getElementById('hero-slogan').textContent = d.empresa.slogan;
-                    document.getElementById('hero-descricao').textContent = d.empresa.descricao;
-                    document.getElementById('texto-destaque').textContent = d.textos_adicionais.destaque;
-                    document.getElementById('titulo-servicos').textContent = d.textos_adicionais.titulo_servicos;
+                
+                preencherConteudo(data) {
+                    this.preencherEmpresa(data);
+                    this.preencherServicos(data);
+                    this.preencherResponsavel(data);
+                    this.preencherContato(data);
+                    this.preencherFooter(data);
                 },
-                preencherServicos(d){
-                    const c = document.getElementById('servicos-container');
-                    c.innerHTML = '';
-                    d.servicos.forEach(s => {
-                        const wrapper = document.createElement('div');
-                        wrapper.className = 'col-md-6 col-lg-3 fade-in';
-                        wrapper.innerHTML = `
+                
+                preencherEmpresa(data) {
+                    document.getElementById('empresa-nome').textContent = data.empresa.nome;
+                    document.getElementById('hero-slogan').textContent = data.empresa.slogan;
+                    document.getElementById('hero-descricao').textContent = data.empresa.descricao;
+                    document.getElementById('texto-destaque').textContent = data.textos_adicionais.destaque;
+                    document.getElementById('titulo-servicos').textContent = data.textos_adicionais.titulo_servicos;
+                },
+                
+                preencherServicos(data) {
+                    const container = document.getElementById('servicos-container');
+                    container.innerHTML = '';
+                    
+                    data.servicos.forEach(servico => {
+                        const iconMap = { qualificacao: 'bi-file-earmark-text', transformacao: 'bi-lightbulb', agilidade: 'bi-speedometer2', credito: 'bi-cash-coin' };
+                        
+                        const col = document.createElement('div');
+                        col.className = 'col-md-6 col-lg-3 fade-in';
+                        
+                        let html = `
                             <div class="service-card h-100 text-center p-3">
-                                <div class="service-image-container mb-3">
-                                    <img src="${s.imagem}" alt="${s.categoria}" class="service-image" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                                    <div class="service-icon-fallback" style="display:none;"><i class="bi ${s.id==='qualificacao'?'bi-file-earmark-text':s.id==='transformacao'?'bi-lightbulb':s.id==='agilidade'?'bi-speedometer2':'bi-cash-coin'}"></i></div>
+                                <div class="service-image-container">
+                                    <img src="${servico.imagem}" alt="${servico.categoria}" class="service-image" 
+                                         loading="lazy" onclick="ampliarImagem('${servico.imagem}', '${servico.categoria}')"
+                                         onerror="this.style.display='none'; document.getElementById('fallback-${servico.id}').style.display='flex';">
+                                    <div id="fallback-${servico.id}" class="service-icon-fallback" style="display:none;">
+                                        <i class="bi ${iconMap[servico.id]}"></i>
+                                    </div>
+                                    <div class="image-overlay">
+                                        <i class="bi bi-zoom-in text-white fs-1"></i>
+                                    </div>
                                 </div>
-                                <h5 class="fw-bold">${s.categoria}</h5>
-                                ${s.id==='credito' ? `<p class="text-muted mt-2">${s.descricao}</p><button class="btn btn-primary mt-3 btn-baixar-portfolio" data-link="${s.link_portfolio}"><i class="bi bi-download me-2"></i>Baixar Portfólio</button>` : `<ul class="list-unstyled mt-3">${(s.itens||[]).map(i=>`<li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>${i}</li>`).join('')}</ul>`}
-                            </div>`;
-                        c.appendChild(wrapper);
+                                <h5 class="fw-bold">${servico.categoria}</h5>
+                        `;
+                        
+                        if (servico.id === 'credito') {
+                            html += `
+                                <p class="text-muted mt-2">${servico.descricao}</p>
+                                <button class="btn btn-primary mt-3 btn-baixar-portfolio" data-link="${servico.link_portfolio}">
+                                    <i class="bi bi-download me-2"></i>Baixar Portfólio
+                                </button>
+                            `;
+                        } else {
+                            html += `
+                                <ul class="list-unstyled mt-3">
+                                    ${servico.itens.map(item => 
+                                        `<li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>${item}</li>`
+                                    ).join('')}
+                                </ul>
+                            `;
+                        }
+                        
+                        html += `</div>`;
+                        col.innerHTML = html;
+                        container.appendChild(col);
                     });
-                    // listeners
-                    document.querySelectorAll('.btn-baixar-portfolio').forEach(btn=>btn.addEventListener('click', ()=>{
-                        const link = btn.getAttribute('data-link'); modalManager.abrirModalCaptura(link);
-                    }));
+                    
+                    document.querySelectorAll('.btn-baixar-portfolio').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            modalManager.abrirModalCaptura(btn.getAttribute('data-link'));
+                        });
+                    });
                 },
-                preencherResponsavel(d){
+                
+                preencherResponsavel(data) {
                     const el = document.getElementById('responsavel-container');
+                    const r = data.responsavel_tecnico;
+                    
                     el.innerHTML = `
-                        <h3 class="card-title fw-bold mb-3">${d.responsavel_tecnico.nome}</h3>
-                        <h6 class="card-subtitle mb-3 text-muted fs-6">${d.responsavel_tecnico.cargo}</h6>
-                        <div class="crea-badge mx-auto mb-3" style="max-width:600px;padding:16px;border-radius:8px;background:linear-gradient(135deg,#fff,#f8f9fa);border-left:5px solid #d00;">
+                        <h3 class="card-title fw-bold mb-3">${r.nome}</h3>
+                        <h6 class="card-subtitle mb-3 text-muted fs-6">${r.cargo}</h6>
+                        <div class="crea-badge mx-auto mb-3" style="max-width:600px;">
                             <h4><i class="bi bi-award-fill me-2 text-danger"></i>Registro Profissional</h4>
-                            <p class="mb-1">Engenheiro Florestal sob nº CREA ${d.responsavel_tecnico.registro_crea}</p>
-                            <small class="text-muted">${d.responsavel_tecnico.descricao_registro}</small>
+                            <p class="mb-1">Engenheiro Florestal sob nº CREA ${r.registro_crea}</p>
+                            <small class="text-muted">${r.descricao_registro}</small>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-6 text-start">
                                 <h5 class="fw-bold mb-2">Formação Acadêmica</h5>
-                                <ul class="list-unstyled">${(d.responsavel_tecnico.formacao||[]).map(f=>`<li class="mb-2"><i class="bi bi-mortarboard-fill me-2 text-primary"></i>${f}</li>`).join('')}</ul>
+                                <ul class="list-unstyled">${r.formacao.map(f => `<li class="mb-2"><i class="bi bi-mortarboard-fill me-2 text-primary"></i>${f}</li>`).join('')}</ul>
                             </div>
                             <div class="col-md-6 text-start">
                                 <h5 class="fw-bold mb-2">Competências Técnicas</h5>
-                                <ul class="list-unstyled">${(d.responsavel_tecnico.competencias||[]).map(c=>`<li class="mb-2"><i class="bi bi-check-square-fill me-2 text-success"></i>${c}</li>`).join('')}</ul>
+                                <ul class="list-unstyled">${r.competencias.map(c => `<li class="mb-2"><i class="bi bi-check-square-fill me-2 text-success"></i>${c}</li>`).join('')}</ul>
                             </div>
-                        </div>`;
+                        </div>
+                    `;
                 },
-                preencherContato(d){
+                
+                preencherContato(data) {
                     const el = document.getElementById('contato-container');
+                    const { contato, textos_adicionais } = data;
+                    
                     el.innerHTML = `
-                        <h3 class="text-center mb-3 fw-bold">${d.textos_adicionais.titulo_contato}</h3>
-                        <p class="text-center mb-3">${d.textos_adicionais.area_atuacao}</p>
+                        <h3 class="text-center mb-3 fw-bold">${textos_adicionais.titulo_contato}</h3>
+                        <p class="text-center mb-3">${textos_adicionais.area_atuacao}</p>
                         <div class="row text-center mb-3">
-                            <div class="col-md-3 mb-3"><i class="bi bi-telephone-fill fs-3 text-success"></i><p>${d.contato.telefone}</p></div>
-                            <div class="col-md-3 mb-3"><i class="bi bi-envelope-fill fs-3 text-success"></i><p>${d.contato.email}</p></div>
-                            <div class="col-md-3 mb-3"><i class="bi bi-geo-alt-fill fs-3 text-success"></i><p>${d.contato.localizacao}</p></div>
+                            <div class="col-md-3 mb-3"><i class="bi bi-telephone-fill fs-3 text-success"></i><p>${contato.telefone}</p></div>
+                            <div class="col-md-3 mb-3"><i class="bi bi-envelope-fill fs-3 text-success"></i><p>${contato.email}</p></div>
+                            <div class="col-md-3 mb-3"><i class="bi bi-geo-alt-fill fs-3 text-success"></i><p>${contato.localizacao}</p></div>
                             <div class="col-md-3 mb-3"><i class="bi bi-share-fill fs-3 text-success"></i><p>Siga-nos</p></div>
                         </div>
                         <div class="text-center mb-3">
-                            <a href="${d.contato.redes_sociais.linkedin}" target="_blank" class="btn btn-outline-primary me-2"><i class="bi bi-linkedin"></i></a>
-                            <a href="${d.contato.redes_sociais.whatsapp}" target="_blank" class="btn btn-success me-2"><i class="bi bi-whatsapp"></i></a>
-                            <a href="${d.contato.redes_sociais.instagram}" target="_blank" class="btn btn-outline-danger me-2"><i class="bi bi-instagram"></i></a>
-                            <a href="${d.contato.redes_sociais.tiktok}" target="_blank" class="btn btn-outline-dark"><i class="bi bi-tiktok"></i></a>
+                            <a href="${contato.redes_sociais.linkedin}" target="_blank" rel="noopener" class="btn btn-outline-primary me-2"><i class="bi bi-linkedin"></i></a>
+                            <a href="${contato.redes_sociais.whatsapp}" target="_blank" rel="noopener" class="btn btn-success me-2"><i class="bi bi-whatsapp"></i></a>
+                            <a href="${contato.redes_sociais.instagram}" target="_blank" rel="noopener" class="btn btn-outline-danger me-2"><i class="bi bi-instagram"></i></a>
+                            <a href="${contato.redes_sociais.tiktok}" target="_blank" rel="noopener" class="btn btn-outline-dark"><i class="bi bi-tiktok"></i></a>
                         </div>
-                        <div class="mt-3 rounded-3 overflow-hidden shadow"><iframe src="${d.contato.mapa_embed}" width="100%" height="300" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização da Floresta Cast"></iframe></div>`;
+                        <div class="mt-3 rounded-3 overflow-hidden shadow">
+                            <iframe src="${contato.mapa_embed}" width="100%" height="300" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização da Floresta Cast"></iframe>
+                        </div>
+                    `;
                 },
-                preencherFooter(d){
-                    document.getElementById('footer-text').textContent = `© 2025 - ${d.empresa.nome} - Os direitos estão reservados.`;
-                    document.getElementById('footer-cnpj').textContent = `${d.empresa.localidade} | CNPJ ${d.empresa.cnpj}`;
+                
+                preencherFooter(data) {
+                    document.getElementById('footer-text').textContent = `© 2025 - ${data.empresa.nome} - Os direitos estão reservados.`;
+                    document.getElementById('footer-cnpj').textContent = `${data.empresa.localidade} | CNPJ ${data.empresa.cnpj}`;
                 }
             };
             
+            // Modal Manager
             const modalManager = {
-                abrirModalCaptura(link){
+                abrirModalCaptura(link) {
                     appState.downloadLinkPendente = link;
                     const modal = new bootstrap.Modal(document.getElementById('modalCaptura'));
                     modal.show();
-                    setTimeout(()=>document.getElementById('nomeCompleto').focus(), 400);
+                    setTimeout(() => document.getElementById('nomeCompleto').focus(), 400);
                 },
-                processarDownload(){
-                    const form = document.getElementById('formCaptura');
+                
+                processarDownload() {
                     const formData = {
                         nome: document.getElementById('nomeCompleto').value.trim(),
                         telefone: document.getElementById('telefone').value.trim(),
                         email: document.getElementById('email').value.trim(),
                         autorizacao: document.getElementById('autorizacao').checked
                     };
-                    const errs = utils.validarFormulario(formData);
-                    if (errs.length>0){ alert('Corrija os erros:\\n' + errs.join('\\n')); return; }
+                    
+                    const erros = utils.validarFormulario(formData);
+                    if (erros.length > 0) {
+                        alert('Corrija os erros:\n' + erros.join('\n'));
+                        return;
+                    }
                     this.enviarDados(formData);
                 },
-                async enviarDados(formData){
+                
+                async enviarDados(formData) {
                     const btn = document.getElementById('btnConfirmarDownload');
                     const original = btn.innerHTML;
-                    btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Processando...'; btn.disabled = true;
-                    try{
+                    btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Processando...';
+                    btn.disabled = true;
+                    
+                    try {
                         await this.enviarParaGoogleSheets(formData);
                         this.sucesso(btn, original);
-                    }catch(e){ this.fallback(formData, btn, original, e); }
+                    } catch (error) {
+                        this.fallback(formData, btn, original, error);
+                    }
                 },
-                async enviarParaGoogleSheets({nome,telefone,email}){
-                    const res = await fetch(CONFIG.googleSheetsURL, { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams({ nome, telefone, email, produto:'Crédito Rural', data: new Date().toLocaleString('pt-BR'), timestamp: new Date().getTime() }) });
-                    const j = await res.json();
-                    if (j.status !== 'success') throw new Error(j.message || 'Erro no script');
-                    return j;
+                
+                async enviarParaGoogleSheets({ nome, telefone, email }) {
+                    const res = await fetch(CONFIG.googleSheetsURL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: new URLSearchParams({
+                            nome, telefone, email, produto: 'Crédito Rural',
+                            data: new Date().toLocaleString('pt-BR'),
+                            timestamp: new Date().getTime()
+                        })
+                    });
+                    const json = await res.json();
+                    if (json.status !== 'success') throw new Error(json.message || 'Erro no script');
+                    return json;
                 },
-                sucesso(btn, original){
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('modalCaptura')); if(modal) modal.hide();
+                
+                sucesso(btn, original) {
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('modalCaptura'));
+                    if (modal) modal.hide();
                     window.open(appState.downloadLinkPendente, '_blank');
                     document.getElementById('formCaptura').reset();
                     btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Sucesso!';
-                    setTimeout(()=>{ btn.innerHTML = original; btn.disabled = false; }, 1800);
+                    setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 1800);
                 },
-                fallback(formData, btn, original, e){
-                    console.warn('Fallback:', e);
-                    try{
+                
+                fallback(formData, btn, original, error) {
+                    console.warn('Fallback:', error);
+                    try {
                         const leads = JSON.parse(localStorage.getItem(CONFIG.storageKey) || '[]');
-                        leads.push({ ...formData, produto:'Crédito Rural', data:new Date().toLocaleString('pt-BR'), timestamp: new Date().getTime(), sincronizado:false });
+                        leads.push({
+                            ...formData, produto: 'Crédito Rural',
+                            data: new Date().toLocaleString('pt-BR'),
+                            timestamp: new Date().getTime(), sincronizado: false
+                        });
                         localStorage.setItem(CONFIG.storageKey, JSON.stringify(leads));
-                        const modal = bootstrap.Modal.getInstance(document.getElementById('modalCaptura')); if(modal) modal.hide();
+                        
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('modalCaptura'));
+                        if (modal) modal.hide();
                         window.open(appState.downloadLinkPendente, '_blank');
                         document.getElementById('formCaptura').reset();
                         btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Salvo Localmente!';
-                    }catch(err){
+                    } catch (err) {
                         console.error('Erro fallback:', err);
-                        alert('Não foi possível processar. Tente novamente.');
-                        btn.innerHTML = original; btn.disabled = false;
+                        alert('Erro ao processar. Tente novamente.');
                     }
-                    setTimeout(()=>{ btn.innerHTML = original; btn.disabled = false; }, 2000);
+                    setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 2000);
                 }
             };
             
+            // Animation Manager
             const animationManager = {
-                init(){ this.observer = new IntersectionObserver(entries=>{ entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('visible'); }); }, { threshold: 0.12 }); document.querySelectorAll('.fade-in').forEach(el=>this.observer.observe(el)); }
+                init() {
+                    const observer = new IntersectionObserver(entries => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) entry.target.classList.add('visible');
+                        });
+                    }, { threshold: CONFIG.animationThreshold });
+                    
+                    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+                }
             };
             
+            // Scroll Manager
             const scrollManager = {
-                init(){ this._bind(); },
-                _bind(){ window.addEventListener('scroll', utils.debounce(()=>{
-                    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-                    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    const sc = (winScroll/height)*100; document.querySelector('.progress-bar').style.width = sc + '%';
-                    // navbar scrolled
-                    const navbar = document.querySelector('.navbar');
-                    if(window.scrollY>90) navbar.classList.add('navbar-scrolled'); else navbar.classList.remove('navbar-scrolled');
-                }, 10)); }
+                init() {
+                    window.addEventListener('scroll', utils.debounce(() => {
+                        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                        const scrollPercent = (scrollTop / docHeight) * 100;
+                        document.querySelector('.progress-bar').style.width = scrollPercent + '%';
+                        
+                        const navbar = document.querySelector('.navbar');
+                        if (window.scrollY > 90) {
+                            navbar.classList.add('navbar-scrolled');
+                        } else {
+                            navbar.classList.remove('navbar-scrolled');
+                        }
+                    }, 10));
+                }
             };
             
-            function configurarEventListeners(){
-                document.getElementById('btnConfirmarDownload').addEventListener('click', ()=>modalManager.processarDownload());
-                document.getElementById('formCaptura').addEventListener('submit', e=>{ e.preventDefault(); modalManager.processarDownload(); });
-                const tel = document.getElementById('telefone'); if(tel) utils.aplicarMascaraTelefone(tel);
-                // smooth scroll anchors
-                document.querySelectorAll('a[href^="#"]').forEach(a=> a.addEventListener('click', function(e){ e.preventDefault(); const t = document.querySelector(this.getAttribute('href')); if(t) t.scrollIntoView({ behavior:'smooth', block:'start' }); } ));
+            // Event Listeners
+            function configurarEventListeners() {
+                document.getElementById('btnConfirmarDownload').addEventListener('click', () => modalManager.processarDownload());
+                document.getElementById('formCaptura').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    modalManager.processarDownload();
+                });
+                
+                const tel = document.getElementById('telefone');
+                if (tel) utils.aplicarMascaraTelefone(tel);
+                
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const target = document.querySelector(anchor.getAttribute('href'));
+                        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    });
+                });
             }
             
-            async function init(){
-                if(appState.isInitialized) return;
+            // Initialization
+            async function init() {
+                if (appState.isInitialized) return;
+                
                 const data = await dataManager.carregarDados();
                 dataManager.preencherConteudo(data);
                 animationManager.init();
                 scrollManager.init();
                 configurarEventListeners();
                 appState.isInitialized = true;
-                console.log('Inicializado');
+                console.log('✅ App iniciado com sucesso');
             }
             
-            if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
         })();
     </script>
 </body>
