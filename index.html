@@ -568,85 +568,152 @@
             document.getElementById('footer-cnpj').textContent = `${data.empresa.localidade} | CNPJ ${data.empresa.cnpj}`;
         }
 
-        // Função para abrir o modal de captura
+                // Função para abrir o modal de captura
         function abrirModalCaptura(linkDownload) {
             downloadLinkPendente = linkDownload;
             const modal = new bootstrap.Modal(document.getElementById('modalCaptura'));
             modal.show();
+            
+            // Focar no primeiro campo
+            setTimeout(() => {
+                document.getElementById('nomeCompleto').focus();
+            }, 500);
         }
-        
+
         // ========== FUNÇÕES DE CAPTURA DE LEADS ==========
 
         // Função para processar o download após captura
         function processarDownload() {
-            const nome = document.getElementById('nomeCompleto').value;
-            const telefone = document.getElementById('telefone').value;
-            const email = document.getElementById('email').value;
+            const nome = document.getElementById('nomeCompleto').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
+            const email = document.getElementById('email').value.trim();
             const autorizacao = document.getElementById('autorizacao').checked;
             
-            if (!nome || !telefone || !email || !autorizacao) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
+            // Validações mais robustas
+            if (!validarFormulario(nome, telefone, email, autorizacao)) {
                 return;
             }
-            
-            // 1. ENVIAR PARA GOOGLE SHEETS
-            enviarParaGoogleSheets(nome, telefone, email);
-            
-            console.log('Lead capturado:', { nome, telefone, email });
-            
-            const modal = bootstrap.Modal.getInstance(document.getElementById('modalCaptura'));
-            modal.hide();
-            
-            window.open(downloadLinkPendente, '_blank');
-            document.getElementById('formCaptura').reset();
-        }
-
-        // 1. ENVIAR PARA GOOGLE SHEETS (FUNCIONAL)
-        function enviarParaGoogleSheets(nome, telefone, email) {
-            // ⚠️ URL DO GOOGLE APPS SCRIPT
-            const scriptURL = 'https://script.google.com/macros/s/1TTKgqBrbj-RSV65X26oCvo_eVuXkGsEZD16kVh4kExonCBw5vGMH5MMZ/exec';
             
             // Mostrar loading
             const btn = document.getElementById('btnConfirmarDownload');
             const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i> Enviando...';
+            btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i> Processando...';
             btn.disabled = true;
             
-            fetch(scriptURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    'nome': nome,
-                    'telefone': telefone,
-                    'email': email,
-                    'produto': 'Crédito Rural'
+            console.log('📝 Lead capturado:', { nome, telefone, email });
+            
+            // 1. Tentar enviar para Google Sheets primeiro
+            enviarParaGoogleSheets(nome, telefone, email)
+                .then(() => {
+                    // Sucesso - fechar modal e fazer download
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('modalCaptura'));
+                    modal.hide();
+                    
+                    window.open(downloadLinkPendente, '_blank');
+                    document.getElementById('formCaptura').reset();
+                    
+                    btn.innerHTML = '<i class="bi bi-check-circle me-2"></i> Sucesso!';
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    }, 2000);
                 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('✅ Lead salvo no Google Sheets!', data);
-                btn.innerHTML = '<i class="bi bi-check-circle me-2"></i> Sucesso!';
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                }, 2000);
-            })
-            .catch(error => {
-                console.error('❌ Erro ao salvar lead:', error);
-                btn.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i> Erro';
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                }, 2000);
+                .catch((error) => {
+                    // Fallback para salvar localmente
+                    console.warn('⚠️ Fallback para armazenamento local:', error);
+                    const sucessoLocal = salvarLocalmente(nome, telefone, email);
+                    
+                    if (sucessoLocal) {
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('modalCaptura'));
+                        modal.hide();
+                        window.open(downloadLinkPendente, '_blank');
+                        document.getElementById('formCaptura').reset();
+                        
+                        btn.innerHTML = '<i class="bi bi-check-circle me-2"></i> Salvo Localmente!';
+                    } else {
+                        btn.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i> Erro ao Salvar';
+                        alert('Erro ao processar seus dados. Tente novamente.');
+                    }
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    }, 2000);
+                });
+        }
+
+        // Função de validação melhorada
+        function validarFormulario(nome, telefone, email, autorizacao) {
+            // Validar nome
+            if (!nome || nome.length < 2) {
+                alert('Por favor, digite seu nome completo.');
+                document.getElementById('nomeCompleto').focus();
+                return false;
+            }
+            
+            // Validar telefone (mínimo 10 caracteres)
+            const telefoneLimpo = telefone.replace(/\D/g, '');
+            if (!telefone || telefoneLimpo.length < 10) {
+                alert('Por favor, digite um telefone válido com DDD.');
+                document.getElementById('telefone').focus();
+                return false;
+            }
+            
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                alert('Por favor, digite um e-mail válido.');
+                document.getElementById('email').focus();
+                return false;
+            }
+            
+            // Validar autorização
+            if (!autorizacao) {
+                alert('Por favor, aceite os termos de uso e política de privacidade.');
+                document.getElementById('autorizacao').focus();
+                return false;
+            }
+            
+            return true;
+        }
+
+        // 1. ENVIAR PARA GOOGLE SHEETS (Melhorado com Promise)
+        function enviarParaGoogleSheets(nome, telefone, email) {
+            return new Promise((resolve, reject) => {
+                const scriptURL = 'https://script.google.com/macros/s/1TTKgqBrbj-RSV65X26oCvo_eVuXkGsEZD16kVh4kExonCBw5vGMH5MMZ/exec';
                 
-                // Fallback: salvar localmente
-                salvarLocalmente(nome, telefone, email);
+                fetch(scriptURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        'nome': nome,
+                        'telefone': telefone,
+                        'email': email,
+                        'produto': 'Crédito Rural',
+                        'data': new Date().toLocaleString('pt-BR'),
+                        'timestamp': new Date().getTime()
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erro HTTP: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('✅ Lead salvo no Google Sheets!', data);
+                    resolve(data);
+                })
+                .catch(error => {
+                    console.error('❌ Erro ao salvar no Google Sheets:', error);
+                    reject(error);
+                });
             });
         }
 
-        // 2. SALVAR LOCALMENTE (Fallback)
+        // 2. SALVAR LOCALMENTE (Fallback Melhorado)
         function salvarLocalmente(nome, telefone, email) {
             try {
                 const leads = JSON.parse(localStorage.getItem('leads_florestacast') || '[]');
@@ -657,7 +724,8 @@
                     email: email,
                     produto: 'Crédito Rural',
                     data: new Date().toLocaleString('pt-BR'),
-                    timestamp: new Date().getTime()
+                    timestamp: new Date().getTime(),
+                    sincronizado: false // Marcar para sincronização posterior
                 };
                 
                 leads.push(novoLead);
@@ -671,7 +739,7 @@
             }
         }
 
-        // 3. VER LEADS CAPTURADOS (para você ver os dados)
+        // 3. VER LEADS CAPTURADOS (Função Administrativa)
         function verLeadsSalvos() {
             try {
                 const leads = JSON.parse(localStorage.getItem('leads_florestacast') || '[]');
@@ -679,11 +747,11 @@
                 
                 if (leads.length === 0) {
                     console.log('Nenhum lead capturado ainda.');
-                    return;
+                    return [];
                 }
                 
                 leads.forEach((lead, index) => {
-                    console.log(`${index + 1}. ${lead.data} | ${lead.nome} | ${lead.telefone} | ${lead.email}`);
+                    console.log(`${index + 1}. ${lead.data} | ${lead.nome} | ${lead.telefone} | ${lead.email} | Sinc: ${lead.sincronizado ? 'Sim' : 'Não'}`);
                 });
                 
                 console.log(`Total: ${leads.length} leads`);
@@ -694,15 +762,68 @@
             }
         }
 
-        // Event listener para o botão de confirmar download
+        // 4. SINCRONIZAR LEADS PENDENTES
+        function sincronizarLeadsPendentes() {
+            const leads = JSON.parse(localStorage.getItem('leads_florestacast') || '[]');
+            const leadsPendentes = leads.filter(lead => !lead.sincronizado);
+            
+            if (leadsPendentes.length === 0) {
+                console.log('✅ Nenhum lead pendente para sincronizar.');
+                return;
+            }
+            
+            console.log(`🔄 Sincronizando ${leadsPendentes.length} leads pendentes...`);
+            
+            leadsPendentes.forEach((lead, index) => {
+                setTimeout(() => {
+                    enviarParaGoogleSheets(lead.nome, lead.telefone, lead.email)
+                        .then(() => {
+                            // Marcar como sincronizado
+                            lead.sincronizado = true;
+                            localStorage.setItem('leads_florestacast', JSON.stringify(leads));
+                            console.log(`✅ Lead ${index + 1} sincronizado: ${lead.nome}`);
+                        })
+                        .catch(error => {
+                            console.warn(`⚠️ Falha ao sincronizar lead ${index + 1}:`, error);
+                        });
+                }, index * 1000); // Delay de 1 segundo entre cada
+            });
+        }
+
+        // Event Listeners
         document.addEventListener('DOMContentLoaded', function() {
-            carregarDados();
             document.getElementById('btnConfirmarDownload').addEventListener('click', processarDownload);
             
             document.getElementById('formCaptura').addEventListener('submit', function(e) {
                 e.preventDefault();
                 processarDownload();
             });
+            
+            // Tentar sincronizar leads pendentes ao carregar a página
+            sincronizarLeadsPendentes();
+            
+            // Adicionar máscara de telefone
+            const telefoneInput = document.getElementById('telefone');
+            if (telefoneInput) {
+                telefoneInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 11) value = value.substring(0, 11);
+                    
+                    if (value.length > 0) {
+                        if (value.length <= 2) {
+                            value = `(${value}`;
+                        } else if (value.length <= 6) {
+                            value = `(${value.substring(0,2)}) ${value.substring(2)}`;
+                        } else if (value.length <= 10) {
+                            value = `(${value.substring(0,2)}) ${value.substring(2,6)}-${value.substring(6)}`;
+                        } else {
+                            value = `(${value.substring(0,2)}) ${value.substring(2,7)}-${value.substring(7)}`;
+                        }
+                    }
+                    
+                    e.target.value = value;
+                });
+            }
         });
         </script>
 </body>
