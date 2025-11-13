@@ -327,37 +327,83 @@
             border-radius: 8px;
         }
         
+        /* Corrigir scroll para não ficar escondido pela navbar */
+        section {
+            scroll-margin-top: calc(var(--navbar-height) + 20px);
+        }
+        
+        /* Botão Voltar ao Topo - Flutuante */
+        .btn-voltar-topo {
+            position: fixed;
+            bottom: 100px;
+            right: 22px;
+            z-index: 1199;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
+            border: none;
+            color: white;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 140, 99, 0.3);
+        }
+        
+        .btn-voltar-topo:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(74, 140, 99, 0.4);
+        }
+        
+        .btn-voltar-topo.show {
+            display: flex;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-section {
-                padding: 3.5rem 0;
+            :root {
+                --navbar-height: 92px;
             }
             
-            .display-4 {
-                font-size: 2.2rem;
-            }
-            
-            .service-image, .service-icon-fallback {
-                height: 160px;
-            }
-            
-            .navbar-brand img {
-                height: 64px;
-            }
+             .hero-section {
+                 padding: 3.5rem 0;
+             }
+             
+             .display-4 {
+                 font-size: 2.2rem;
+             }
+             
+             .service-image, .service-icon-fallback {
+                 height: 160px;
+             }
+             
+             .navbar-brand img {
+                 height: 64px;
+             }
 
-            #empresa-nome {
-                font-size: 1.2rem;
-            }
-            
-            .service-card {
-                padding: 1.5rem;
-            }
-            
-            .floating-whatsapp {
-                bottom: 15px;
-                right: 15px;
-            }
-        }
+             #empresa-nome {
+                 font-size: 1.2rem;
+             }
+             
+             .service-card {
+                 padding: 1.5rem;
+             }
+             
+             .floating-whatsapp {
+-                bottom: 15px;
++                bottom: 90px;
+                 right: 15px;
+             }
++            
++            .btn-voltar-topo {
++                bottom: 80px;
++                right: 15px;
++                width: 45px;
++                height: 45px;
++            }
+         }
     </style>
 </head>
 
@@ -463,6 +509,11 @@
             <i class="bi bi-whatsapp fs-4" aria-hidden="true"></i>
         </a>
     </div>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="btn-voltar-topo" id="btnVoltarTopo" aria-label="Voltar ao topo da página" title="Voltar ao topo">
+        <i class="bi bi-chevron-up fs-5"></i>
+    </button>
 
     <!-- Modal Captura de Dados -->
     <div class="modal fade" id="modalCaptura" tabindex="-1" aria-labelledby="modalCapturaLabel" aria-hidden="true">
@@ -901,6 +952,14 @@
                         } else {
                             navbar.classList.remove('navbar-scrolled');
                         }
+                       
+                       // Mostrar/esconder botão voltar ao topo
+                       const btnVoltar = document.getElementById('btnVoltarTopo');
+                       if (window.scrollY > 300) {
+                           btnVoltar.classList.add('show');
+                       } else {
+                           btnVoltar.classList.remove('show');
+                       }
                     }, 10));
                 }
             };
@@ -923,6 +982,11 @@
                         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     });
                 });
+               
+               // Botão voltar ao topo
+               document.getElementById('btnVoltarTopo').addEventListener('click', () => {
+                   window.scrollTo({ top: 0, behavior: 'smooth' });
+               });
             }
             
             // Initialization
