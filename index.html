@@ -728,7 +728,10 @@
                 
                 preencherServicos(data) {
                     const container = document.getElementById('servicos-container');
-                    container.innerHTML = '';
+                    // Limpar completamente antes de adicionar novos elementos
+                    while (container.firstChild) {
+                        container.removeChild(container.firstChild);
+                    }
                     
                     data.servicos.forEach(servico => {
                         const iconMap = { qualificacao: 'bi-file-earmark-text', transformacao: 'bi-lightbulb', agilidade: 'bi-speedometer2', credito: 'bi-cash-coin' };
@@ -737,8 +740,7 @@
                         col.className = 'col-12 col-md-6 col-lg-3';
                         
                         let html = `
--                           <div class="service-card fade-in h-100 ${servico.id === 'credito' ? 'text-center' : 'text-start'} p-3">
-+                           <div class="service-card fade-in h-100 text-center p-3">
+                            <div class="service-card fade-in h-100 text-center p-3">
                                 <div class="service-image-container">
                                     <img src="${servico.imagem}" alt="${servico.categoria}" class="service-image" 
                                          loading="lazy" onclick="ampliarImagem('${servico.imagem}', '${servico.categoria}')"
@@ -750,8 +752,7 @@
                                         <i class="bi bi-zoom-in text-white fs-1"></i>
                                     </div>
                                 </div>
--                               <h5 class="fw-bold ${servico.id === 'credito' ? '' : 'text-center'}">${servico.categoria}</h5>
-+                               <h5 class="fw-bold">${servico.categoria}</h5>
+                                <h5 class="fw-bold">${servico.categoria}</h5>
                         `;
                         
                         if (servico.id === 'credito') {
@@ -763,8 +764,7 @@
                             `;
                         } else {
                             html += `
--                               <ul class="list-unstyled mt-3">
-+                               <ul class="list-unstyled mt-3 text-start">
+                                <ul class="list-unstyled mt-3 text-start">
                                     ${servico.itens.map(item => 
                                         `<li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>${item}</li>`
                                     ).join('')}
@@ -995,13 +995,13 @@
             // Initialization
             async function init() {
                 if (appState.isInitialized) return;
+                appState.isInitialized = true;
                 
                 const data = await dataManager.carregarDados();
                 dataManager.preencherConteudo(data);
                 animationManager.init();
                 scrollManager.init();
                 configurarEventListeners();
-                appState.isInitialized = true;
                 console.log('✅ App iniciado com sucesso');
             }
             
