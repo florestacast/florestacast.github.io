@@ -817,10 +817,9 @@
                         <h3 class="text-center mb-3 fw-bold">${textos_adicionais.titulo_contato}</h3>
                         <p class="text-center mb-3">${textos_adicionais.area_atuacao}</p>
                         <div class="row text-center mb-3">
-                            <div class="col-md-3 mb-3"><i class="bi bi-telephone-fill fs-3 text-success"></i><p>${contato.telefone}</p></div>
-                            <div class="col-md-3 mb-3"><i class="bi bi-envelope-fill fs-3 text-success"></i><p>${contato.email}</p></div>
-                            <div class="col-md-3 mb-3"><i class="bi bi-geo-alt-fill fs-3 text-success"></i><p>${contato.localizacao}</p></div>
-                            <div class="col-md-3 mb-3"><i class="bi bi-share-fill fs-3 text-success"></i><p>Siga-nos</p></div>
+                            <div class="col-md-4 mb-3"><i class="bi bi-telephone-fill fs-3 text-success"></i><p>${contato.telefone}</p></div>
+                            <div class="col-md-4 mb-3"><i class="bi bi-geo-alt-fill fs-3 text-success"></i><p>${contato.localizacao}</p></div>
+                            <div class="col-md-4 mb-3"><i class="bi bi-share-fill fs-3 text-success"></i><p>Siga-nos</p></div>
                         </div>
                         <div class="text-center mb-3">
                             <a href="${contato.redes_sociais.linkedin}" target="_blank" rel="noopener" class="btn btn-outline-primary me-2"><i class="bi bi-linkedin"></i></a>
@@ -835,7 +834,7 @@
                 },
                 
                 preencherFooter(data) {
-                    document.getElementById('footer-text').textContent = `© 2025 - ${data.empresa.nome} - Os direitos estão reservados.`;
+                    document.getElementById('footer-text').textContent = `© ${new Date().getFullYear()} - ${data.empresa.nome} - Os direitos estão reservados.`;
                     document.getElementById('footer-cnpj').textContent = `${data.empresa.localidade} | CNPJ ${data.empresa.cnpj}`;
                 }
             };
