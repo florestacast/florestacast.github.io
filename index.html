@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floresta Cast - Consultoria e Gestão Florestal em Eunápolis, BA</title>
-    <meta name="description" content="Consultoria florestal especializada em qualificação, transformação, agilidade operacional e crédito rural em Eunápolis, Bahia.">
+    <title>Floresta Cast - Responsável técnico florestal em Eunápolis, Sul da Bahia</title>
     
     <!-- Preload crítico -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" as="style">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" as="style">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
@@ -24,21 +20,13 @@
             --verde-claro: #8FC99E;
             --bege: #F5F0E6;
             --marrom: #8C6D4A;
-            --musgo-profundo: #1f3a2a;
-            --folha-viva: #6da27d;
-            --areia-clara: #f7f2e8;
-            --texto-escuro: #202620;
-            --sombra: 0 18px 45px rgba(31, 58, 42, 0.14);
             --navbar-height: 92px; /* ajuste global para evitar que o conteúdo fique sob a navbar */
         }
         
         body {
-            font-family: 'Barlow', 'Segoe UI', Geneva, sans-serif;
-            color: var(--texto-escuro);
-            background:
-                radial-gradient(circle at 10% 0%, rgba(143, 201, 158, 0.22), transparent 38%),
-                radial-gradient(circle at 90% 15%, rgba(74, 140, 99, 0.16), transparent 45%),
-                linear-gradient(180deg, #fbf8f1 0%, #f2ecdf 100%);
+            font-family: Segoe UI, Geneva, sans-serif;
+            color: #333;
+            background-color: var(--bege);
             line-height: 1.6;
             margin: 0;
             /* deixa espaço superior suficiente para a navbar fixa */
@@ -52,11 +40,9 @@
         
         /* Navbar flutuante */
         .navbar {
-            background: linear-gradient(90deg, rgba(31, 58, 42, 0.95), rgba(46, 88, 58, 0.9));
-            -webkit-backdrop-filter: blur(6px);
-            backdrop-filter: blur(6px);
+            background-color: var(--verde-escuro);
             padding: 0.5rem 0;
-            transition: box-shadow 0.25s ease, background-color 0.25s ease;
+            transition: box-shadow 0.25s ease;
             height: var(--navbar-height);
             display: flex;
             align-items: center;
@@ -64,7 +50,7 @@
         
         .navbar.navbar-scrolled {
             /* manter mesma altura para evitar encolhimento */
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .navbar-brand {
@@ -89,120 +75,56 @@
         .navbar-brand, .nav-link {
             color: white !important;
         }
-
-        .nav-link {
-            position: relative;
-            font-weight: 600;
-            letter-spacing: 0.2px;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0.5rem;
-            right: 0.5rem;
-            bottom: 0.25rem;
-            height: 2px;
-            border-radius: 2px;
-            background: var(--verde-claro);
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.25s ease;
-        }
-
-        .nav-link:hover::after {
-            transform: scaleX(1);
-        }
  
         #empresa-nome {
             font-weight: 400;
             font-size: 1.4rem;
-            letter-spacing: 0.8px;
         }
         
         /* Hero Section */
         .hero-section {
-            background-image:
-                linear-gradient(115deg, rgba(20, 38, 27, 0.72), rgba(29, 52, 38, 0.45)),
+            /* imagem centralizada sem qualquer overlay/transparência */
+            background-image: url('cabecalho.jpg');
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-size: cover;
+            background-color: #2E583A; /* fallback sólido caso a imagem não carregue */
+            color: white;
+            padding: 5.5rem 0;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* remover pseudo-overlay que aplicava transparência sobre a imagem */
+        .hero-section {
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
                 url('cabecalho.jpg');
             background-repeat: no-repeat;
             background-position: top center;
             background-size: cover;
-            background-color: #2E583A;
-            color: white;
-            padding: 6rem 0 6.5rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            width: 340px;
-            height: 340px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(143, 201, 158, 0.35), transparent 70%);
-            top: -130px;
-            right: -120px;
-            pointer-events: none;
-        }
-
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(109, 162, 125, 0.28), transparent 70%);
-            bottom: -140px;
-            left: -90px;
-            pointer-events: none;
-        }
-
-        .hero-kicker {
-            display: inline-block;
-            margin-bottom: 1rem;
-            padding: 0.35rem 0.85rem;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1.4px;
-            border-radius: 999px;
-            text-transform: uppercase;
-            background: rgba(255, 255, 255, 0.16);
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            -webkit-backdrop-filter: blur(2px);
-            backdrop-filter: blur(2px);
+            /* resto do código permanece igual */
         }
         
         .display-4 {
-            font-family: 'Playfair Display', Georgia, serif;
             font-weight: 800;
-            letter-spacing: 0.2px;
-            overflow-wrap: anywhere;
-        }
-
-        #hero-slogan,
-        #hero-descricao {
-            max-width: 860px;
-            margin-left: auto;
-            margin-right: auto;
+            letter-spacing: -0.5px;
         }
         
         /* Service Cards */
         .service-card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(251, 248, 240, 0.95));
-            border-radius: 16px;
+            background: white;
+            border-radius: 12px;
             padding: 1.6rem;
             margin-bottom: 1.6rem;
-            box-shadow: var(--sombra);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
             transition: transform 0.32s cubic-bezier(.2,.8,.2,1), box-shadow 0.32s ease;
-            border-top: 4px solid var(--folha-viva);
+            border-top: 5px solid var(--verde-medio);
             height: 100%;
             overflow: hidden;
             position: relative;
-            border: 1px solid rgba(74, 140, 99, 0.18);
         }
         
         .service-card::before {
@@ -222,8 +144,8 @@
         }
         
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 24px 40px rgba(31, 58, 42, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.12);
         }
         
         /* Service Image */
@@ -239,7 +161,7 @@
             width: 100%;
             height: 180px;
             object-fit: cover;
-            border: 2px solid #9bcba9;
+            border: 3px solid var(--verde-claro);
             border-radius: 10px;
             transition: transform 0.45s ease, filter 0.25s ease;
             display: block;
@@ -289,9 +211,8 @@
             background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
             border: none;
             padding: 10px 24px;
-            font-weight: 700;
-            border-radius: 10px;
-            letter-spacing: 0.2px;
+            font-weight: 600;
+            border-radius: 8px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             box-shadow: 0 4px 15px rgba(74, 140, 99, 0.3);
         }
@@ -299,34 +220,6 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(74, 140, 99, 0.4);
-        }
-
-        .hero-confianca {
-            margin-top: 0.9rem;
-            font-size: 0.95rem;
-            opacity: 0.92;
-        }
-
-        .contact-cta-grid .btn {
-            min-height: 52px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-
-        .hero-confianca {
-            margin-top: 0.9rem;
-            font-size: 0.95rem;
-            opacity: 0.92;
-        }
-
-        .contact-cta-grid .btn {
-            min-height: 52px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
         }
         
         .btn-success {
@@ -368,21 +261,10 @@
         
         /* Contact & Footer */
         .contact-info {
-            background: linear-gradient(145deg, #e6f3e9, #d8ecd8);
+            background: linear-gradient(135deg, var(--verde-claro), #A8D5BA);
             padding: 2.5rem;
-            border-radius: 18px;
+            border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            border: 1px solid rgba(74, 140, 99, 0.22);
-        }
-
-        .site-main section {
-            margin-bottom: 1.75rem;
-        }
-
-        #titulo-servicos {
-            font-family: 'Playfair Display', Georgia, serif;
-            color: var(--musgo-profundo);
-            margin-bottom: 2rem !important;
         }
         
         footer {
@@ -408,14 +290,6 @@
             z-index: 1200;
             animation: float 3s ease-in-out infinite;
         }
-
-        .floating-whatsapp .btn {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
         
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -437,21 +311,13 @@
         /* Animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(18px) scale(0.99);
+            transform: translateY(18px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
         
         .fade-in.visible {
             opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-                scroll-behavior: auto !important;
-            }
+            transform: translateY(0);
         }
 
         /* Modal Image */
@@ -506,17 +372,12 @@
             }
             
              .hero-section {
-                 padding: 4rem 0 4.2rem;
+                 padding: 3.5rem 0;
              }
              
 
              .display-4 {
                  font-size: 2.2rem;
-             }
-
-             .hero-kicker {
-                 font-size: 0.72rem;
-                 letter-spacing: 1.1px;
              }
              
              .service-image, .service-icon-fallback {
@@ -582,19 +443,17 @@
         
         <section class="hero-section" id="inicio" role="banner" aria-labelledby="hero-titulo">
             <div class="container position-relative">
-                <p class="hero-kicker">Consultoria Florestal Estratégica</p>
-                <h1 class="display-4 fw-bold mb-3" id="hero-titulo">FLORESTA CAST</h1>
+                <h1 class="display-4 fw-bold mb-3" id="hero-titulo">É AGRO Consultoria Florestal.</h1>
                 <p class="lead fs-5 mb-2" id="hero-slogan"></p>
                 <p class="mb-3 fs-6" id="hero-descricao"></p>
                 <div class="mt-3">
-                    <a href="#contato" id="hero-whatsapp-cta" class="btn btn-primary btn-lg me-2">
-                        <i class="bi bi-whatsapp me-2"></i>Diagnóstico via WhatsApp
+                    <a href="#contato" class="btn btn-primary btn-lg me-2">
+                        <i class="bi bi-chat-dots me-2"></i>Fale Conosco
                     </a>
-                    <a href="#servico-credito" class="btn btn-outline-light btn-lg">
-                        <i class="bi bi-cash-coin me-2"></i>Crédito Rural
+                    <a href="#servicos" class="btn btn-outline-light btn-lg">
+                        <i class="bi bi-eye me-2"></i>Nossos Serviços
                     </a>
                 </div>
-                <p class="hero-confianca"><i class="bi bi-check2-circle me-1"></i>Atendimento inicial em até 1 dia útil</p>
             </div>
         </section>
 
@@ -608,7 +467,7 @@
         </section>
     </header>
 
-    <main class="container site-main" role="main">
+    <main class="container" role="main">
         <section aria-labelledby="titulo-servicos">
             <h2 id="titulo-servicos" class="text-center mb-4 display-6 fw-bold"></h2>
             <div class="row g-3" id="servicos">
@@ -644,8 +503,9 @@
 
     <!-- Botão Flutuante WhatsApp -->
     <div class="floating-whatsapp">
-          <a href="#" id="floating-whatsapp-link" class="btn btn-success btn-lg rounded-circle" 
-              target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp">
+        <a href="https://api.whatsapp.com/send?phone=5573999110708" class="btn btn-success btn-lg rounded-circle" 
+           target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp" 
+           style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
             <i class="bi bi-whatsapp fs-4" aria-hidden="true"></i>
         </a>
     </div>
@@ -834,36 +694,6 @@
                     if (!email || !emailRegex.test(email)) errs.push('E-mail válido é obrigatório');
                     if (!autorizacao) errs.push('Aceite os termos é obrigatório');
                     return errs;
-                },
-
-                escapeHTML(value = '') {
-                    const map = {
-                        '&': '&amp;',
-                        '<': '&lt;',
-                        '>': '&gt;',
-                        '"': '&quot;',
-                        "'": '&#39;'
-                    };
-                    return String(value).replace(/[&<>"']/g, (char) => map[char]);
-                },
-
-                sanitizeUrl(value = '', fallback = '#') {
-                    const candidate = String(value || '').trim();
-                    if (!candidate) return fallback;
-
-                    if (candidate.startsWith('/') || candidate.startsWith('./') || candidate.startsWith('../')) {
-                        return candidate;
-                    }
-
-                    try {
-                        const parsed = new URL(candidate, window.location.origin);
-                        if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
-                            return parsed.href;
-                        }
-                        return fallback;
-                    } catch {
-                        return fallback;
-                    }
                 }
             };
             
@@ -890,16 +720,10 @@
                 
                 preencherEmpresa(data) {
                     document.getElementById('empresa-nome').textContent = data.empresa.nome;
-                    document.getElementById('hero-titulo').textContent = data.empresa.nome;
                     document.getElementById('hero-slogan').textContent = data.empresa.slogan;
                     document.getElementById('hero-descricao').textContent = data.empresa.descricao;
                     document.getElementById('texto-destaque').textContent = data.textos_adicionais.destaque;
                     document.getElementById('titulo-servicos').textContent = data.textos_adicionais.titulo_servicos;
-
-                    const whatsappLink = document.getElementById('floating-whatsapp-link');
-                    if (whatsappLink && data?.contato?.redes_sociais?.whatsapp) {
-                        whatsappLink.href = utils.sanitizeUrl(data.contato.redes_sociais.whatsapp, '#contato');
-                    }
                 },
                 
                 preencherServicos(data) {
@@ -915,13 +739,11 @@
                         const col = document.createElement('div');
                         col.className = 'col-12 col-md-6 col-lg-3';
                         
-                        const categoria = utils.escapeHTML(servico.categoria);
-                        const imagem = utils.sanitizeUrl(servico.imagem, '');
                         let html = `
-                            <div class="service-card fade-in h-100 text-center p-3" id="servico-${servico.id}">`;
+                            <div class="service-card fade-in h-100 text-center p-3">
                                 <div class="service-image-container">
-                                    <img src="${imagem}" alt="${categoria}" class="service-image" 
-                                         loading="lazy" onclick="ampliarImagem('${imagem}', '${categoria}')"
+                                    <img src="${servico.imagem}" alt="${servico.categoria}" class="service-image" 
+                                         loading="lazy" onclick="ampliarImagem('${servico.imagem}', '${servico.categoria}')"
                                          onerror="this.style.display='none'; document.getElementById('fallback-${servico.id}').style.display='flex';">
                                     <div id="fallback-${servico.id}" class="service-icon-fallback" style="display:none;">
                                         <i class="bi ${iconMap[servico.id]}"></i>
@@ -930,21 +752,21 @@
                                         <i class="bi bi-zoom-in text-white fs-1"></i>
                                     </div>
                                 </div>
-                                <h5 class="fw-bold">${categoria}</h5>
+                                <h5 class="fw-bold">${servico.categoria}</h5>
                         `;
                         
                         if (servico.id === 'credito') {
                             html += `
-                                <p class="text-muted mt-2">${utils.escapeHTML(servico.descricao || '')}</p>
-                                <button class="btn btn-primary mt-3 btn-baixar-portfolio" data-link="${utils.sanitizeUrl(servico.link_portfolio, '#')}">
-                                    <i class="bi bi-download me-2"></i>Baixar Portfólio Completo
+                                <p class="text-muted mt-2">${servico.descricao}</p>
+                                <button class="btn btn-primary mt-3 btn-baixar-portfolio" data-link="${servico.link_portfolio}">
+                                    <i class="bi bi-download me-2"></i>Baixar Portfólio
                                 </button>
                             `;
                         } else {
                             html += `
                                 <ul class="list-unstyled mt-3 text-start">
                                     ${servico.itens.map(item => 
-                                        `<li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>${utils.escapeHTML(item)}</li>`
+                                        `<li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>${item}</li>`
                                     ).join('')}
                                 </ul>
                             `;
@@ -967,21 +789,21 @@
                     const r = data.responsavel_tecnico;
                     
                     el.innerHTML = `
-                        <h3 class="card-title fw-bold mb-3">${utils.escapeHTML(r.nome)}</h3>
-                        <h6 class="card-subtitle mb-3 text-muted fs-6">${utils.escapeHTML(r.cargo)}</h6>
+                        <h3 class="card-title fw-bold mb-3">${r.nome}</h3>
+                        <h6 class="card-subtitle mb-3 text-muted fs-6">${r.cargo}</h6>
                         <div class="crea-badge mx-auto mb-3" style="max-width:600px;">
                             <h4><i class="bi bi-award-fill me-2 text-danger"></i>Registro Profissional</h4>
-                            <p class="mb-1">Engenheiro Florestal sob nº CREA ${utils.escapeHTML(r.registro_crea)}</p>
-                            <small class="text-muted">${utils.escapeHTML(r.descricao_registro)}</small>
+                            <p class="mb-1">Engenheiro Florestal sob nº CREA ${r.registro_crea}</p>
+                            <small class="text-muted">${r.descricao_registro}</small>
                         </div>
                         <div class="row mt-3 justify-content-center">
                             <div class="col-md-5">
                                 <h5 class="fw-bold mb-3 text-center">Formação Acadêmica</h5>
-                                <ul class="list-unstyled text-center">${r.formacao.map(f => `<li class="mb-3"><i class="bi bi-mortarboard-fill me-2 text-primary"></i>${utils.escapeHTML(f)}</li>`).join('')}</ul>
+                                <ul class="list-unstyled text-center">${r.formacao.map(f => `<li class="mb-3"><i class="bi bi-mortarboard-fill me-2 text-primary"></i>${f}</li>`).join('')}</ul>
                             </div>
                             <div class="col-md-5">
                                 <h5 class="fw-bold mb-3 text-center">Competências Técnicas</h5>
-                                <ul class="list-unstyled text-center">${r.competencias.map(c => `<li class="mb-3"><i class="bi bi-check-square-fill me-2 text-success"></i>${utils.escapeHTML(c)}</li>`).join('')}</ul>
+                                <ul class="list-unstyled text-center">${r.competencias.map(c => `<li class="mb-3"><i class="bi bi-check-square-fill me-2 text-success"></i>${c}</li>`).join('')}</ul>
                             </div>
                         </div>
                     `;
@@ -990,52 +812,25 @@
                 preencherContato(data) {
                     const el = document.getElementById('contato-container');
                     const { contato, textos_adicionais } = data;
-                    const servicoCredito = Array.isArray(data.servicos) ? data.servicos.find((s) => s.id === 'credito') : null;
                     
-                    const linkedin = utils.sanitizeUrl(contato.redes_sociais.linkedin, '#');
-                    const whatsapp = utils.sanitizeUrl(contato.redes_sociais.whatsapp, '#');
-                    const instagram = utils.sanitizeUrl(contato.redes_sociais.instagram, '#');
-                    const tiktok = utils.sanitizeUrl(contato.redes_sociais.tiktok, '#');
-                    const mapa = utils.sanitizeUrl(contato.mapa_embed, 'https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed');
-                    const portfolioCredito = utils.sanitizeUrl(servicoCredito?.link_portfolio || '#', '#');
-
                     el.innerHTML = `
-                        <h3 class="text-center mb-3 fw-bold">${utils.escapeHTML(textos_adicionais.titulo_contato)}</h3>
-                        <p class="text-center mb-3">${utils.escapeHTML(textos_adicionais.area_atuacao)}</p>
+                        <h3 class="text-center mb-3 fw-bold">${textos_adicionais.titulo_contato}</h3>
+                        <p class="text-center mb-3">${textos_adicionais.area_atuacao}</p>
                         <div class="row text-center mb-3">
-                            <div class="col-md-4 mb-3"><i class="bi bi-telephone-fill fs-3 text-success"></i><p>${utils.escapeHTML(contato.telefone)}</p></div>
-                            <div class="col-md-4 mb-3"><i class="bi bi-geo-alt-fill fs-3 text-success"></i><p>${utils.escapeHTML(contato.localizacao)}</p></div>
+                            <div class="col-md-4 mb-3"><i class="bi bi-telephone-fill fs-3 text-success"></i><p>${contato.telefone}</p></div>
+                            <div class="col-md-4 mb-3"><i class="bi bi-geo-alt-fill fs-3 text-success"></i><p>${contato.localizacao}</p></div>
                             <div class="col-md-4 mb-3"><i class="bi bi-share-fill fs-3 text-success"></i><p>Siga-nos</p></div>
                         </div>
                         <div class="text-center mb-3">
-                            <a href="${linkedin}" target="_blank" rel="noopener" class="btn btn-outline-primary me-2"><i class="bi bi-linkedin"></i></a>
-                            <a href="${whatsapp}" target="_blank" rel="noopener" class="btn btn-success me-2"><i class="bi bi-whatsapp"></i></a>
-                            <a href="${instagram}" target="_blank" rel="noopener" class="btn btn-outline-danger me-2"><i class="bi bi-instagram"></i></a>
-                            <a href="${tiktok}" target="_blank" rel="noopener" class="btn btn-outline-dark"><i class="bi bi-tiktok"></i></a>
+                            <a href="${contato.redes_sociais.linkedin}" target="_blank" rel="noopener" class="btn btn-outline-primary me-2"><i class="bi bi-linkedin"></i></a>
+                            <a href="${contato.redes_sociais.whatsapp}" target="_blank" rel="noopener" class="btn btn-success me-2"><i class="bi bi-whatsapp"></i></a>
+                            <a href="${contato.redes_sociais.instagram}" target="_blank" rel="noopener" class="btn btn-outline-danger me-2"><i class="bi bi-instagram"></i></a>
+                            <a href="${contato.redes_sociais.tiktok}" target="_blank" rel="noopener" class="btn btn-outline-dark"><i class="bi bi-tiktok"></i></a>
                         </div>
-                        <div class="row g-2 justify-content-center contact-cta-grid mb-3">
-                            <div class="col-md-6 d-grid">
-                                <a href="${whatsapp}" target="_blank" rel="noopener" class="btn btn-success btn-lg">
-                                    <i class="bi bi-whatsapp me-2"></i>Chamar no WhatsApp
-                                </a>
-                            </div>
-                            <div class="col-md-6 d-grid">
-                                <button type="button" class="btn btn-primary btn-lg btn-baixar-portfolio-contato" data-link="${portfolioCredito}">
-                                    <i class="bi bi-file-earmark-arrow-down me-2"></i>Solicitar Portfólio de Crédito Rural
-                                </button>
-                            </div>
-                        </div>
-                        <p class="text-center small text-muted mb-3">Resposta rápida para diagnóstico inicial sem compromisso.</p>
                         <div class="mt-3 rounded-3 overflow-hidden shadow">
-                            <iframe src="${mapa}" width="100%" height="300" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização da Floresta Cast"></iframe>
+                            <iframe src="${contato.mapa_embed}" width="100%" height="300" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização da Floresta Cast"></iframe>
                         </div>
                     `;
-
-                    el.querySelectorAll('.btn-baixar-portfolio-contato').forEach((btn) => {
-                        btn.addEventListener('click', () => {
-                            modalManager.abrirModalCaptura(btn.getAttribute('data-link'));
-                        });
-                    });
                 },
                 
                 preencherFooter(data) {
