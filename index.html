@@ -20,12 +20,30 @@
             --verde-claro: #8FC99E;
             --bege: #F5F0E6;
             --marrom: #8C6D4A;
+            --texto-principal: #333333;
+            --superficie: #ffffff;
+            --superficie-suave: #f8f9fa;
+            --navbar-bg: #ffffff;
+            --navbar-borda: rgba(46, 88, 58, 0.15);
             --navbar-height: 92px; /* ajuste global para evitar que o conteúdo fique sob a navbar */
+        }
+
+        [data-theme="dark"] {
+            --verde-escuro: #1f7a5c;
+            --verde-medio: #25D366;
+            --verde-claro: #6ec98a;
+            --bege: #121212;
+            --marrom: #9a7b58;
+            --texto-principal: #e8e8e8;
+            --superficie: #1d1d1d;
+            --superficie-suave: #262626;
+            --navbar-bg: #181818;
+            --navbar-borda: rgba(255, 255, 255, 0.14);
         }
         
         body {
             font-family: Segoe UI, Geneva, sans-serif;
-            color: #333;
+            color: var(--texto-principal);
             background-color: var(--bege);
             line-height: 1.6;
             margin: 0;
@@ -40,13 +58,13 @@
         
         /* Navbar flutuante */
         .navbar {
-            background-color: #ffffff;
+            background-color: var(--navbar-bg);
             padding: 0.5rem 0;
             transition: box-shadow 0.25s ease;
             height: var(--navbar-height);
             display: flex;
             align-items: center;
-            border-bottom: 1px solid rgba(46, 88, 58, 0.15);
+            border-bottom: 1px solid var(--navbar-borda);
         }
         
         .navbar.navbar-scrolled {
@@ -76,6 +94,15 @@
         
         .navbar-brand, .nav-link {
             color: var(--verde-escuro) !important;
+        }
+
+        [data-theme="dark"] .navbar-brand,
+        [data-theme="dark"] .nav-link {
+            color: var(--verde-claro) !important;
+        }
+
+        [data-theme="dark"] .navbar-toggler-icon {
+            filter: invert(1) brightness(2);
         }
  
         #empresa-nome {
@@ -118,7 +145,7 @@
         
         /* Service Cards */
         .service-card {
-            background: white;
+            background: var(--superficie);
             border-radius: 12px;
             padding: 1.6rem;
             margin-bottom: 1.6rem;
@@ -269,6 +296,10 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
         }
+
+        [data-theme="dark"] .contact-info {
+            background: linear-gradient(135deg, #1f3d2d, #2d5a43);
+        }
         
         footer {
             background: linear-gradient(135deg, var(--verde-escuro), #26432F);
@@ -278,11 +309,41 @@
         }
         
         .crea-badge {
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            background: linear-gradient(135deg, var(--superficie-suave), var(--superficie));
             border-left: 5px solid #d00;
             padding: 16px;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        [data-theme="dark"] .text-muted {
+            color: #b9b9b9 !important;
+        }
+
+        [data-theme="dark"] .card,
+        [data-theme="dark"] .modal-content {
+            background-color: var(--superficie);
+            color: var(--texto-principal);
+        }
+
+        [data-theme="dark"] .modal-header,
+        [data-theme="dark"] .modal-footer {
+            border-color: #343434;
+        }
+
+        [data-theme="dark"] .form-control {
+            background-color: #252525;
+            border-color: #3a3a3a;
+            color: var(--texto-principal);
+        }
+
+        [data-theme="dark"] .form-control::placeholder {
+            color: #9c9c9c;
+        }
+
+        [data-theme="dark"] .btn-secondary {
+            background-color: #3c3c3c;
+            border-color: #3c3c3c;
         }
         
         /* Floating WhatsApp */
@@ -425,6 +486,9 @@
                     <img src="head_fc_25D366.png" alt="Floresta Cast - Logo" width="80" height="80" loading="eager">
                     <span id="empresa-nome">FLORESTA CAST</span>
                 </a>
+                <button class="btn btn-outline-secondary btn-sm ms-auto me-2" id="themeToggle" type="button" aria-label="Alternar modo escuro">
+                    <i class="bi bi-moon-stars" id="themeToggleIcon" aria-hidden="true"></i>
+                </button>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
                     <span class="navbar-toggler-icon"></span>
@@ -591,6 +655,42 @@
             };
             
             let appState = { downloadLinkPendente: '', isInitialized: false };
+
+            const themeManager = {
+                storageKey: 'florestacast_theme',
+
+                getTemaInicial() {
+                    const salvo = localStorage.getItem(this.storageKey);
+                    if (salvo === 'light' || salvo === 'dark') return salvo;
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                },
+
+                aplicarTema(tema) {
+                    document.documentElement.setAttribute('data-theme', tema);
+                    const icon = document.getElementById('themeToggleIcon');
+                    const btn = document.getElementById('themeToggle');
+                    if (icon) icon.className = tema === 'dark' ? 'bi bi-sun' : 'bi bi-moon-stars';
+                    if (btn) btn.setAttribute('aria-label', tema === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro');
+                },
+
+                alternarTema() {
+                    const atual = document.documentElement.getAttribute('data-theme') || 'light';
+                    const proximo = atual === 'dark' ? 'light' : 'dark';
+                    localStorage.setItem(this.storageKey, proximo);
+                    this.aplicarTema(proximo);
+                },
+
+                init() {
+                    this.aplicarTema(this.getTemaInicial());
+
+                    const media = window.matchMedia('(prefers-color-scheme: dark)');
+                    media.addEventListener('change', (e) => {
+                        if (!localStorage.getItem(this.storageKey)) {
+                            this.aplicarTema(e.matches ? 'dark' : 'light');
+                        }
+                    });
+                }
+            };
             
             const dadosFallback = {
                 "empresa": {
@@ -974,6 +1074,11 @@
                     e.preventDefault();
                     modalManager.processarDownload();
                 });
+
+                const btnTema = document.getElementById('themeToggle');
+                if (btnTema) {
+                    btnTema.addEventListener('click', () => themeManager.alternarTema());
+                }
                 
                 const tel = document.getElementById('telefone');
                 if (tel) utils.aplicarMascaraTelefone(tel);
@@ -996,6 +1101,8 @@
             async function init() {
                 if (appState.isInitialized) return;
                 appState.isInitialized = true;
+
+                themeManager.init();
                 
                 const data = await dataManager.carregarDados();
                 dataManager.preencherConteudo(data);
