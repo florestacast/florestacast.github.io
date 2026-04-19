@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias - Floresta Cast</title>
+    
+    <!-- Preload crítico -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" as="style">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="icon" href="head_fc_25D366.png">
+    
+    <style>
+        :root {
+            --verde-escuro: #128C7E;
+            --verde-medio: #25D366;
+            --verde-claro: #8FC99E;
+            --bege: #F5F0E6;
+            --marrom: #8C6D4A;
+            --texto-principal: #333333;
+            --superficie: #ffffff;
+            --superficie-suave: #f8f9fa;
+            --navbar-bg: #ffffff;
+            --navbar-borda: rgba(46, 88, 58, 0.15);
+            --navbar-height: 92px;
+        }
+
+        [data-theme="dark"] {
+            --verde-escuro: #1f7a5c;
+            --verde-medio: #25D366;
+            --verde-claro: #6ec98a;
+            --bege: #121212;
+            --marrom: #9a7b58;
+            --texto-principal: #e8e8e8;
+            --superficie: #1d1d1d;
+            --superficie-suave: #262626;
+            --navbar-bg: #181818;
+            --navbar-borda: rgba(255, 255, 255, 0.14);
+        }
+        
+        body {
+            font-family: Segoe UI, Geneva, sans-serif;
+            color: var(--texto-principal);
+            background-color: var(--bege);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            padding-top: var(--navbar-height);
+        }
+
+        input, button, select, textarea {
+            font-family: inherit;
+        }
+        
+        /* Navbar flutuante */
+        .navbar {
+            background-color: var(--navbar-bg);
+            padding: 0.5rem 0;
+            transition: box-shadow 0.25s ease;
+            height: var(--navbar-height);
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--navbar-borda);
+        }
+        
+        .navbar.navbar-scrolled {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            background-color: transparent !important;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar-brand img {
+            background: transparent !important;
+            height: 80px;
+            width: auto;
+            max-height: 80px;
+            transition: transform 0.2s ease;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        
+        .navbar-brand, .nav-link {
+            color: var(--verde-escuro) !important;
+        }
+
+        [data-theme="dark"] .navbar-brand,
+        [data-theme="dark"] .nav-link {
+            color: var(--verde-claro) !important;
+        }
+
+        [data-theme="dark"] .navbar-toggler-icon {
+            filter: invert(1) brightness(2);
+        }
+ 
+        #empresa-nome {
+            font-weight: 400;
+            font-size: 1.4rem;
+            color: var(--verde-medio) !important;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--verde-claro), var(--verde-medio));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        .hero-section h1 {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            font-size: 3rem;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        /* News Cards */
+        .news-card {
+            background: var(--superficie);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: transform 0.32s cubic-bezier(.2,.8,.2,1), box-shadow 0.32s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(37, 211, 102, 0.1);
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.45s ease, filter 0.25s ease;
+            display: block;
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.08);
+            filter: brightness(0.93);
+        }
+
+        .news-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-date {
+            color: var(--verde-medio);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-title {
+            color: var(--texto-principal);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .news-excerpt {
+            color: var(--texto-principal);
+            opacity: 0.75;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(37, 211, 102, 0.1);
+            padding-top: 1rem;
+            margin-top: auto;
+        }
+
+        .news-author {
+            font-size: 0.85rem;
+            color: var(--verde-escuro);
+            font-weight: 500;
+        }
+
+        .btn-leia-mais {
+            background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-leia-mais:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            color: white;
+        }
+
+        /* Filtros */
+        .news-filters {
+            margin-bottom: 2.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid var(--verde-medio);
+            background: transparent;
+            color: var(--verde-escuro);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--verde-medio);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--superficie);
+            border-top: 1px solid var(--navbar-borda);
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Botões Flutuantes */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-voltar-topo {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            z-index: 999;
+            background: var(--verde-medio);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 12px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-voltar-topo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-voltar-topo.show {
+            display: flex;
+        }
+
+        /* Dark Mode */
+        [data-theme="dark"] .news-card {
+            background: var(--superficie);
+            border-color: rgba(37, 211, 102, 0.2);
+        }
+
+        [data-theme="dark"] .news-title {
+            color: var(--texto-principal);
+        }
+
+        [data-theme="dark"] .news-excerpt {
+            color: var(--texto-principal);
+        }
+
+        [data-theme="dark"] .news-footer {
+            border-top-color: rgba(37, 211, 102, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .navbar-brand img {
+                height: 64px;
+            }
+
+            #empresa-nome {
+                font-size: 1.2rem;
+            }
+
+            .news-filters {
+                flex-direction: column;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+
+            .floating-whatsapp {
+                bottom: 90px;
+                right: 15px;
+            }
+
+            .btn-voltar-topo {
+                bottom: 80px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar" aria-hidden="true"></div>
+    
+    <header role="banner">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation" aria-label="Navegação principal">
+            <div class="container">
+                <a class="navbar-brand" href="index.html" aria-label="Floresta Cast - Página inicial">
+                    <img src="head_fc_25D366.png" alt="Floresta Cast - Logo" width="80" height="80" loading="eager">
+                    <span id="empresa-nome">FLORESTA CAST</span>
+                </a>
+                <button class="btn btn-outline-secondary btn-sm ms-auto me-2" id="themeToggle" type="button" aria-label="Alternar modo escuro">
+                    <i class="bi bi-moon-stars" id="themeToggleIcon" aria-hidden="true"></i>
+                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#servicos">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#responsavel">Responsável Técnico</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="news.html">Notícias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#contato">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <section class="hero-section" id="inicio" role="banner" aria-labelledby="hero-titulo">
+            <div class="container">
+                <h1 id="hero-titulo">Notícias</h1>
+                <p>Acompanhe as últimas novidades sobre gestão florestal, sustentabilidade e manejo florestal integrado</p>
+            </div>
+        </section>
+    </header>
+
+    <main class="container" role="main">
+        <!-- Filtros de Notícias -->
+        <section class="news-filters" id="filtros-secao">
+            <button class="filter-btn active" data-filter="todos">Todas</button>
+            <button class="filter-btn" data-filter="manejo">Manejo Florestal</button>
+            <button class="filter-btn" data-filter="sustentabilidade">Sustentabilidade</button>
+            <button class="filter-btn" data-filter="legislacao">Legislação</button>
+            <button class="filter-btn" data-filter="eventos">Eventos</button>
+        </section>
+
+        <!-- Grid de Notícias -->
+        <section id="news-container" class="mb-5">
+            <div class="row g-4" id="noticias-grid">
+                <!-- Notícias serão carregadas aqui dinamicamente -->
+            </div>
+        </section>
+
+        <!-- Mensagem quando não houver notícias -->
+        <div id="empty-state" style="display: none; text-align: center; padding: 4rem 0;">
+            <i class="bi bi-inbox" style="font-size: 4rem; color: var(--verde-medio); margin-bottom: 1rem; display: block;"></i>
+            <h3>Nenhuma notícia encontrada</h3>
+            <p style="opacity: 0.7;">Volte em breve para mais atualizações</p>
+        </div>
+    </main>
+
+    <footer role="contentinfo" class="text-center">
+        <div class="container">
+            <p class="mb-1">© 2024 Floresta Cast - Responsável técnico florestal em Eunápolis, BA</p>
+            <p style="font-size: 0.9rem; opacity: 0.7;">CNPJ: 55.900.830/0001-67</p>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <div class="floating-whatsapp">
+        <a href="https://api.whatsapp.com/send?phone=5573999110708" class="btn btn-success btn-lg rounded-circle" 
+           target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp" 
+           style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+            <i class="bi bi-whatsapp fs-4" aria-hidden="true"></i>
+        </a>
+    </div>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="btn-voltar-topo" id="btnVoltarTopo" aria-label="Voltar ao topo da página" title="Voltar ao topo">
+        <i class="bi bi-chevron-up fs-5"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Dados de notícias de exemplo - você pode adicionar suas próprias notícias aqui
+        const noticias = [
+            {
+                id: 1,
+                titulo: "Novas diretrizes de manejo florestal sustentável",
+                excerpt: "Conheça as principais diretrizes que devem ser seguidas para um manejo florestal mais sustentável e responsável.",
+                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+                data: "15 de abril de 2026",
+                autor: "Floresta Cast",
+                imagem: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=220&fit=crop",
+                categoria: "manejo"
+            },
+            {
+                id: 2,
+                titulo: "Sustentabilidade na indústria florestal",
+                excerpt: "A importância de práticas sustentáveis para a preservação das florestas e biodiversidade.",
+                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+                data: "10 de abril de 2026",
+                autor: "Floresta Cast",
+                imagem: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=220&fit=crop",
+                categoria: "sustentabilidade"
+            },
+            {
+                id: 3,
+                titulo: "Legislação ambiental: Mudanças importantes em 2026",
+                excerpt: "Confira as principais mudanças nas leis ambientais que afetam o setor florestal.",
+                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+                data: "05 de abril de 2026",
+                autor: "Equipe Legal",
+                imagem: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=220&fit=crop",
+                categoria: "legislacao"
+            },
+            {
+                id: 4,
+                titulo: "Workshop de Georreferenciamento em Eunápolis",
+                excerpt: "Participe do nosso workshop e aprenda técnicas modernas de georreferenciamento.",
+                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+                data: "20 de abril de 2026",
+                autor: "Floresta Cast",
+                imagem: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=220&fit=crop",
+                categoria: "eventos"
+            },
+            {
+                id: 5,
+                titulo: "Certificações florestais e acesso a mercados",
+                excerpt: "Como as certificações florestais abrem portas para novos mercados e oportunidades de negócio.",
+                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+                data: "12 de abril de 2026",
+                autor: "Floresta Cast",
+                imagem: "https://images.unsplash.com/photo-1557804506-669714d2e9d8?w=400&h=220&fit=crop",
+                categoria: "sustentabilidade"
+            },
+            {
+                id: 6,
+                titulo: "Seminário sobre regularização fundiária",
+                excerpt: "Participe do seminário que abordará questões importantes sobre regularização de propriedades rurais.",
+                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+                data: "08 de abril de 2026",
+                autor: "Coordenação",
+                imagem: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=220&fit=crop",
+                categoria: "eventos"
+            }
+        ];
+
+        // Função para renderizar notícias
+        function renderNoticias(filtro = 'todos') {
+            const container = document.getElementById('noticias-grid');
+            const emptyState = document.getElementById('empty-state');
+            
+            let noticiasFiltradas = noticias;
+            if (filtro !== 'todos') {
+                noticiasFiltradas = noticias.filter(n => n.categoria === filtro);
+            }
+
+            if (noticiasFiltradas.length === 0) {
+                container.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            container.innerHTML = noticiasFiltradas.map(noticia => `
+                <div class="col-lg-4 col-md-6">
+                    <article class="news-card">
+                        <img src="${noticia.imagem}" alt="${noticia.titulo}" class="news-image">
+                        <div class="news-body">
+                            <span class="news-date">${noticia.categoria.toUpperCase()}</span>
+                            <h3 class="news-title">${noticia.titulo}</h3>
+                            <p class="news-excerpt">${noticia.excerpt}</p>
+                            <div class="news-footer">
+                                <span class="news-author">${noticia.data}</span>
+                                <a href="#" class="btn-leia-mais" onclick="console.log('Clicado em notícia: ${noticia.id}'); return false;">
+                                    Leia mais <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            `).join('');
+        }
+
+        // Event listeners para filtros
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderNoticias(this.dataset.filter);
+            });
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        // Carregar tema salvo
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('themeToggleIcon');
+            icon.className = theme === 'dark' ? 'bi bi-sun-fill' : 'bi bi-moon-stars';
+        }
+
+        // Botão voltar ao topo
+        const btnVoltarTopo = document.getElementById('btnVoltarTopo');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                btnVoltarTopo.classList.add('show');
+            } else {
+                btnVoltarTopo.classList.remove('show');
+            }
+        });
+
+        btnVoltarTopo.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.querySelector('.progress-bar').style.width = scrollPercent + '%';
+        });
+
+        // Renderizar notícias ao carregar
+        renderNoticias();
+    </script>
+</body>
+</html>
