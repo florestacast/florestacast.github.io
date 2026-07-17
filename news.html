@@ -226,6 +226,7 @@
             color: white;
         }
 
+
         /* Filtros */
         .news-filters {
             margin-bottom: 2.5rem;
@@ -304,6 +305,40 @@
 
         .btn-voltar-topo.show {
             display: flex;
+        }
+
+        .empty-state {
+            display: none;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            color: var(--verde-medio);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .empty-state-text,
+        .footer-secondary {
+            opacity: 0.7;
+        }
+
+        .footer-secondary {
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-button {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-noticia-texto {
+            white-space: pre-line;
         }
 
         /* Dark Mode */
@@ -423,25 +458,24 @@
         </section>
 
         <!-- Mensagem quando não houver notícias -->
-        <div id="empty-state" style="display: none; text-align: center; padding: 4rem 0;">
-            <i class="bi bi-inbox" style="font-size: 4rem; color: var(--verde-medio); margin-bottom: 1rem; display: block;"></i>
+        <div id="empty-state" class="empty-state">
+            <i class="bi bi-inbox empty-state-icon"></i>
             <h3>Nenhuma notícia encontrada</h3>
-            <p style="opacity: 0.7;">Volte em breve para mais atualizações</p>
+            <p class="empty-state-text">Volte em breve para mais atualizações</p>
         </div>
     </main>
 
     <footer role="contentinfo" class="text-center">
         <div class="container">
             <p class="mb-1">© 2024 Floresta Cast - Responsável técnico florestal em Eunápolis, BA</p>
-            <p style="font-size: 0.9rem; opacity: 0.7;">CNPJ: 55.900.830/0001-67</p>
+            <p class="footer-secondary">CNPJ: 55.900.830/0001-67</p>
         </div>
     </footer>
 
     <!-- Botão Flutuante WhatsApp -->
     <div class="floating-whatsapp">
-        <a href="https://api.whatsapp.com/send?phone=5573999110708" class="btn btn-success btn-lg rounded-circle" 
-           target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp" 
-           style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+        <a href="https://api.whatsapp.com/send?phone=5573999110708" class="btn btn-success btn-lg rounded-circle whatsapp-button" 
+           target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp">
             <i class="bi bi-whatsapp fs-4" aria-hidden="true"></i>
         </a>
     </div>
@@ -451,72 +485,50 @@
         <i class="bi bi-chevron-up fs-5"></i>
     </button>
 
+    <div class="modal fade" id="modalNoticia" tabindex="-1" aria-labelledby="modalNoticiaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <p class="mb-1 news-date" id="modalNoticiaCategoria"></p>
+                        <h2 class="modal-title h4 mb-0" id="modalNoticiaLabel"></h2>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="news-author mb-3" id="modalNoticiaMeta"></p>
+                    <img id="modalNoticiaImagem" class="img-fluid rounded mb-3" alt="">
+                    <p id="modalNoticiaTexto" class="mb-0 modal-noticia-texto"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Dados de notícias de exemplo - você pode adicionar suas próprias notícias aqui
-        const noticias = [
-            {
-                id: 1,
-                titulo: "Novas diretrizes de manejo florestal sustentável",
-                excerpt: "Conheça as principais diretrizes que devem ser seguidas para um manejo florestal mais sustentável e responsável.",
-                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-                data: "15 de abril de 2026",
-                autor: "Floresta Cast",
-                imagem: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=220&fit=crop",
-                categoria: "manejo"
-            },
-            {
-                id: 2,
-                titulo: "Sustentabilidade na indústria florestal",
-                excerpt: "A importância de práticas sustentáveis para a preservação das florestas e biodiversidade.",
-                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-                data: "10 de abril de 2026",
-                autor: "Floresta Cast",
-                imagem: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=220&fit=crop",
-                categoria: "sustentabilidade"
-            },
-            {
-                id: 3,
-                titulo: "Legislação ambiental: Mudanças importantes em 2026",
-                excerpt: "Confira as principais mudanças nas leis ambientais que afetam o setor florestal.",
-                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-                data: "05 de abril de 2026",
-                autor: "Equipe Legal",
-                imagem: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=220&fit=crop",
-                categoria: "legislacao"
-            },
-            {
-                id: 4,
-                titulo: "Workshop de Georreferenciamento em Eunápolis",
-                excerpt: "Participe do nosso workshop e aprenda técnicas modernas de georreferenciamento.",
-                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-                data: "20 de abril de 2026",
-                autor: "Floresta Cast",
-                imagem: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=220&fit=crop",
-                categoria: "eventos"
-            },
-            {
-                id: 5,
-                titulo: "Certificações florestais e acesso a mercados",
-                excerpt: "Como as certificações florestais abrem portas para novos mercados e oportunidades de negócio.",
-                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-                data: "12 de abril de 2026",
-                autor: "Floresta Cast",
-                imagem: "https://images.unsplash.com/photo-1557804506-669714d2e9d8?w=400&h=220&fit=crop",
-                categoria: "sustentabilidade"
-            },
-            {
-                id: 6,
-                titulo: "Seminário sobre regularização fundiária",
-                excerpt: "Participe do seminário que abordará questões importantes sobre regularização de propriedades rurais.",
-                conteudo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-                data: "08 de abril de 2026",
-                autor: "Coordenação",
-                imagem: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=220&fit=crop",
-                categoria: "eventos"
+        let noticias = [];
+        let modalNoticia;
+
+        async function carregarNoticias() {
+            try {
+                const resposta = await fetch('noticias.json', { cache: 'no-store' });
+                if (!resposta.ok) {
+                    throw new Error('Falha ao carregar noticias.json');
+                }
+
+                noticias = await resposta.json();
+                renderNoticias();
+            } catch (erro) {
+                console.error(erro);
+                const container = document.getElementById('noticias-grid');
+                const emptyState = document.getElementById('empty-state');
+                container.innerHTML = '';
+                emptyState.style.display = 'block';
+                emptyState.querySelector('h3').textContent = 'Nao foi possivel carregar as noticias';
+                emptyState.querySelector('p').textContent = 'Verifique o arquivo noticias.json e tente novamente.';
             }
-        ];
+        }
 
         // Função para renderizar notícias
         function renderNoticias(filtro = 'todos') {
@@ -542,10 +554,10 @@
                         <div class="news-body">
                             <span class="news-date">${noticia.categoria.toUpperCase()}</span>
                             <h3 class="news-title">${noticia.titulo}</h3>
-                            <p class="news-excerpt">${noticia.excerpt}</p>
+                            <p class="news-excerpt">${noticia.resumo}</p>
                             <div class="news-footer">
                                 <span class="news-author">${noticia.data}</span>
-                                <a href="#" class="btn-leia-mais" onclick="console.log('Clicado em notícia: ${noticia.id}'); return false;">
+                                <a href="#" class="btn-leia-mais" data-noticia-id="${noticia.id}">
                                     Leia mais <i class="bi bi-arrow-right ms-1"></i>
                                 </a>
                             </div>
@@ -553,6 +565,28 @@
                     </article>
                 </div>
             `).join('');
+
+            container.querySelectorAll('[data-noticia-id]').forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    abrirNoticia(Number(link.dataset.noticiaId));
+                });
+            });
+        }
+
+        function abrirNoticia(id) {
+            const noticia = noticias.find((item) => item.id === id);
+            if (!noticia) {
+                return;
+            }
+
+            document.getElementById('modalNoticiaCategoria').textContent = noticia.categoria.toUpperCase();
+            document.getElementById('modalNoticiaLabel').textContent = noticia.titulo;
+            document.getElementById('modalNoticiaMeta').textContent = `${noticia.data} | ${noticia.autor}`;
+            document.getElementById('modalNoticiaImagem').src = noticia.imagem;
+            document.getElementById('modalNoticiaImagem').alt = noticia.titulo;
+            document.getElementById('modalNoticiaTexto').textContent = noticia.texto;
+            modalNoticia.show();
         }
 
         // Event listeners para filtros
@@ -608,8 +642,8 @@
             document.querySelector('.progress-bar').style.width = scrollPercent + '%';
         });
 
-        // Renderizar notícias ao carregar
-        renderNoticias();
+        modalNoticia = new bootstrap.Modal(document.getElementById('modalNoticia'));
+        carregarNoticias();
     </script>
 </body>
 </html>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "titulo": "Novas diretrizes de manejo florestal sustentável",
+    "resumo": "Conheça as principais diretrizes para um manejo florestal mais sustentável e responsável.",
+    "texto": "As novas diretrizes de manejo florestal reforçam a necessidade de planejamento operacional, controle de origem da matéria-prima, monitoramento de impactos e uso racional dos recursos naturais. A adoção dessas práticas melhora a rastreabilidade da produção, fortalece a conformidade ambiental e aumenta a competitividade do negócio florestal.",
+    "data": "15 de abril de 2026",
+    "autor": "Floresta Cast",
+    "imagem": "images/transformacao.jpg",
+    "categoria": "manejo"
+  },
+  {
+    "id": 2,
+    "titulo": "Sustentabilidade na indústria florestal",
+    "resumo": "Práticas sustentáveis ajudam a preservar florestas, biodiversidade e eficiência produtiva.",
+    "texto": "A sustentabilidade na indústria florestal depende da integração entre produtividade, conservação ambiental e responsabilidade social. Isso inclui planejamento do uso da terra, gestão de resíduos, melhoria contínua dos processos e indicadores que permitam medir resultados ao longo do tempo.",
+    "data": "10 de abril de 2026",
+    "autor": "Floresta Cast",
+    "imagem": "images/agilidade.jpg",
+    "categoria": "sustentabilidade"
+  },
+  {
+    "id": 3,
+    "titulo": "Legislação ambiental: mudanças relevantes em 2026",
+    "resumo": "Veja os pontos regulatórios que merecem atenção no setor florestal este ano.",
+    "texto": "As mudanças regulatórias de 2026 exigem atenção especial à documentação técnica, aos processos de regularização e ao acompanhamento das exigências de órgãos ambientais. A atualização constante reduz riscos, evita autuações e melhora a segurança jurídica das operações no campo e na indústria.",
+    "data": "5 de abril de 2026",
+    "autor": "Equipe Técnica",
+    "imagem": "images/credito.jpg",
+    "categoria": "legislacao"
+  },
+  {
+    "id": 4,
+    "titulo": "Workshop de georreferenciamento em Eunápolis",
+    "resumo": "Evento reúne orientações práticas sobre mapeamento, cadastro e controle territorial.",
+    "texto": "O workshop apresenta aplicações do georreferenciamento para gestão de propriedades, planejamento florestal e suporte a processos de regularização. A proposta é mostrar como dados espaciais podem apoiar decisões mais precisas, reduzir retrabalho e melhorar a organização das informações técnicas.",
+    "data": "20 de abril de 2026",
+    "autor": "Floresta Cast",
+    "imagem": "images/qualificacao.jpg",
+    "categoria": "eventos"
+  }
+]
