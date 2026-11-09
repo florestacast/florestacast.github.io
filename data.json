@@ -2,8 +2,8 @@
   "empresa": {
     "nome": "Floresta Cast",
     "logo": "head_fc.png",
-    "slogan": "É ÁGRO Consultoria Florestal",
-    "descricao": "Soluções Integradas Ambiental e Rural.",
+    "slogan": "Soluções Integradas Ambiental e Rural.",
+    "descricao": "A Floresta Cast presta serviços a pequenos e médios produtores rurais que desejam retificar as suas atividades.",
     "cnpj": "55.900.830/0001-67",
     "localidade": "Eunápolis, BA, Brasil."
   },
@@ -13,12 +13,10 @@
       "categoria": "QUALIFICAÇÃO",
       "imagem": "images/qualificacao.jpg",
       "itens": [
-        "Requisitos legais",
-        "Licença ambiental",
-        "Sistema de Gestão",
-        "Inventários",
-        "Certificação na Cadeia de Custódia",
-        "Levantamentos e laudos"
+        "Requisitos legais para produzir",
+        "Inventário",
+        "Licenças ambientais",
+        "Laudos"
       ]
     },
     {
@@ -28,8 +26,9 @@
       "itens": [
         "Planejamento",
         "Operação",
-        "Estoques"
-       ]
+        "Estoques",
+        "Sistema de Gestão"
+      ]
     },
     {
       "id": "agilidade",
@@ -38,7 +37,8 @@
       "itens": [
         "Fornecedores",
         "Informação",
-        "Relatórios & Indicadores"
+        "Relatórios e Indicadores",
+        "Cadeia de Custódia"
       ]
     },
     {
@@ -56,12 +56,12 @@
     "descricao_registro": "Registro Profissional no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
     "formacao": [
       "Engenheiro Florestal",
-      "Mestrado Profissional em Metrologia e Qualidade, Instituto Nacional de Metrologia Inmetro"
+      "Mestrando Profissional em Metrologia e Qualidade"
     ],
     "competencias": [
-      "Análise",
-      "Projeto",
-      "Orçamento"
+      "Análise de dados",
+      "Projetos",
+      "Orçamentos"
     ]
   },
   "contato": {
@@ -75,9 +75,9 @@
     "mapa_embed": "https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed"
   },
   "textos_adicionais": {
-    "destaque": "Obtenha diagnóstico dos recursos operacionais dimensionados para seu empreendimento. Otimize o recurso mais escasso que é a sua renda.",
-    "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA FLORESTAL",
+    "destaque": "É possível você deixar seu negócio mais eficiente e sustentável com a gente.",
+    "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA",
     "titulo_contato": "ENTRE EM CONTATO",
-    "area_atuacao": "Uma empresa florestal orgulhosamente brasileira da Bahia."
+    "area_atuacao": "Uma empresa rural orgulhosamente brasileira da Bahia."
   }
 }
