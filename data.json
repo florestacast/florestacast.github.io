@@ -1,9 +1,9 @@
 {
   "empresa": {
-    "nome": "FLORESTA CAST",
+    "nome": "Floresta Cast",
     "logo": "head_fc.png",
-    "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção | Manejo Florestal Integrado",
-    "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo.",
+    "slogan": "É ÁGRO Consultoria Florestal",
+    "descricao": "Soluções Integradas Ambiental e Rural.",
     "cnpj": "55.900.830/0001-67",
     "localidade": "Eunápolis, BA, Brasil."
   },
@@ -13,11 +13,12 @@
       "categoria": "QUALIFICAÇÃO",
       "imagem": "images/qualificacao.jpg",
       "itens": [
-        "Identificação do Negócio",
-        "Licenças ambientais - atividade de operação",
+        "Requisitos legais",
+        "Licença ambiental",
         "Sistema de Gestão",
-        "Inventários & Ativos",
-        "Perícias - Laudos Técnicos"
+        "Inventários",
+        "Certificação na Cadeia de Custódia",
+        "Levantamentos e laudos"
       ]
     },
     {
@@ -26,11 +27,9 @@
       "imagem": "images/transformacao.jpg",
       "itens": [
         "Planejamento",
-        "Logística de produto",
-        "Estoque",
-        "Auditoria",
-        "Treinamentos & Atualizações"
-      ]
+        "Operação",
+        "Estoques",
+       ]
     },
     {
       "id": "agilidade",
@@ -38,10 +37,8 @@
       "imagem": "images/agilidade.jpg",
       "itens": [
         "Fornecedores",
-        "Monitoramento",
-        "Qualidade",
+        "Informação",
         "Relatórios & Indicadores",
-        "Preço"
       ]
     },
     {
@@ -58,14 +55,13 @@
     "registro_crea": "PR-214168/D",
     "descricao_registro": "Registro Profissional no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
     "formacao": [
-      "Bacharel em Engenharia Florestal pela Universidade Federal do Paraná UFPR",
-      "MBA Data Science Analytics, Escola Superior Luiz de Queiroz Esalq/USP",
+      "Engenheiro Florestal",
       "Mestrado Profissional em Metrologia e Qualidade, Instituto Nacional de Metrologia Inmetro"
     ],
     "competencias": [
-      "Análise de dados florestais.",
-      "Indicadores florestais.",
-      "Conformidade florestal."
+      "Análise",
+      "Projeto",
+      "Orçamento"
     ]
   },
   "contato": {
@@ -74,7 +70,6 @@
     "redes_sociais": {
       "linkedin": "https://linkedin.com/company/florestacast",
       "whatsapp": "https://api.whatsapp.com/send?phone=5573999110708",
-      "instagram": "https://instagram.com/florestacast",
       "tiktok": "https://tiktok.com/@florestacast"
     },
     "mapa_embed": "https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed"
