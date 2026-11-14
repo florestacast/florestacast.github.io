@@ -70,6 +70,7 @@
     "redes_sociais": {
       "linkedin": "https://linkedin.com/company/florestacast",
       "whatsapp": "https://api.whatsapp.com/send?phone=5573999110708",
+      "instagram": "https://instagram.com/florestacast",
       "tiktok": "https://tiktok.com/@florestacast"
     },
     "mapa_embed": "https://www.google.com/maps?q=Eunápolis,+Bahia&output=embed"
@@ -79,5 +80,73 @@
     "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA",
     "titulo_contato": "ENTRE EM CONTATO",
     "area_atuacao": "Uma empresa rural orgulhosamente brasileira da Bahia."
+  },
+  "textos_interface": {
+    "titulo_pagina": "Floresta Cast - Soluções Integradas Ambiental e Rural no Sul da Bahia, Brasil",
+    "navegacao": {
+      "aria_label": "Navegação principal",
+      "pagina_inicial": "Floresta Cast - Página inicial",
+      "logo_alt": "Floresta Cast - Logo",
+      "servicos": "Serviços",
+      "responsavel_tecnico": "Responsável Técnico",
+      "contato": "Contato",
+      "alternar": "Alternar navegação"
+    },
+    "tema": {
+      "alternar_escuro": "Alternar modo escuro",
+      "ativar_claro": "Ativar modo claro",
+      "ativar_escuro": "Ativar modo escuro"
+    },
+    "hero": {
+      "titulo": "É AGRO Consultoria Florestal.",
+      "botao_contato": "Fale Conosco",
+      "botao_servicos": "Nossos Serviços"
+    },
+    "whatsapp": {
+      "contato": "Contato via WhatsApp"
+    },
+    "voltar_topo": {
+      "aria_label": "Voltar ao topo da página",
+      "titulo": "Voltar ao topo"
+    },
+    "portfolio": {
+      "titulo": "Baixar Portfólio",
+      "nome_completo": "Nome Completo *",
+      "placeholder_nome": "Seu nome completo",
+      "telefone": "Telefone/WhatsApp *",
+      "placeholder_telefone": "(00) 00000-0000",
+      "email": "E-mail *",
+      "placeholder_email": "seu@email.com",
+      "autorizacao": "Autorizo o contato para informações sobre crédito rural",
+      "cancelar": "Cancelar",
+      "baixar": "Baixar Portfólio",
+      "produto": "Crédito Rural"
+    },
+    "imagem": {
+      "visualizar": "Visualizar Imagem",
+      "ampliada": "Imagem ampliada"
+    },
+    "acoes": {
+      "fechar": "Fechar",
+      "siga_nos": "Siga-nos",
+      "registro_profissional": "Registro Profissional",
+      "formacao_academica": "Formação Acadêmica",
+      "competencias_tecnicas": "Competências Técnicas",
+      "localizacao": "Localização da Floresta Cast"
+    },
+    "formulario": {
+      "erro_prefixo": "Corrija os erros:",
+      "erro_nome": "Nome completo é obrigatório",
+      "erro_telefone": "Telefone válido é obrigatório",
+      "erro_email": "E-mail válido é obrigatório",
+      "erro_autorizacao": "Aceite os termos é obrigatório",
+      "erro_processamento": "Erro ao processar. Tente novamente."
+    },
+    "status": {
+      "processando": "Processando...",
+      "sucesso": "Sucesso!",
+      "salvo_localmente": "Salvo Localmente!"
+    },
+    "rodape": "© {ano} - {empresa} - Os direitos estão reservados."
   }
 }
