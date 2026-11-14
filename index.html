@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floresta Cast - Soluções Integradas Ambiental e Rural no Sul da Bahia, Brasil</title>
+    <title data-texto="textos_interface.titulo_pagina"></title>
     
     <!-- Preload crítico -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" as="style">
@@ -480,29 +480,29 @@
     <div class="progress-bar" aria-hidden="true"></div>
     
     <header role="banner">
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation" aria-label="Navegação principal">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation" data-aria-label="textos_interface.navegacao.aria_label">
             <div class="container">
-                <a class="navbar-brand" href="#inicio" aria-label="Floresta Cast - Página inicial">
-                    <img src="head_fc_25D366.png" alt="Floresta Cast - Logo" width="80" height="80" loading="eager">
-                    <span id="empresa-nome">FLORESTA CAST</span>
+            <a class="navbar-brand" href="#inicio" data-aria-label="textos_interface.navegacao.pagina_inicial">
+                    <img src="head_fc_25D366.png" data-alt="textos_interface.navegacao.logo_alt" width="80" height="80" loading="eager">
+                    <span id="empresa-nome"></span>
                 </a>
-                <button class="btn btn-outline-secondary btn-sm ms-auto me-2" id="themeToggle" type="button" aria-label="Alternar modo escuro">
+            <button class="btn btn-outline-secondary btn-sm ms-auto me-2" id="themeToggle" type="button" data-aria-label="textos_interface.tema.alternar_escuro">
                     <i class="bi bi-moon-stars" id="themeToggleIcon" aria-hidden="true"></i>
                 </button>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+                        aria-controls="navbarNav" aria-expanded="false" data-aria-label="textos_interface.navegacao.alternar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#servicos">Serviços</a>
+                            <a class="nav-link" href="#servicos" data-texto="textos_interface.navegacao.servicos"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#responsavel">Responsável Técnico</a>
+                            <a class="nav-link" href="#responsavel" data-texto="textos_interface.navegacao.responsavel_tecnico"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contato">Contato</a>
+                            <a class="nav-link" href="#contato" data-texto="textos_interface.navegacao.contato"></a>
                         </li>
                     </ul>
                 </div>
@@ -511,15 +511,15 @@
         
         <section class="hero-section" id="inicio" role="banner" aria-labelledby="hero-titulo">
             <div class="container position-relative">
-                <h1 class="display-4 fw-bold mb-3" id="hero-titulo">É AGRO Consultoria Florestal.</h1>
+                <h1 class="display-4 fw-bold mb-3" id="hero-titulo" data-texto="textos_interface.hero.titulo"></h1>
                 <p class="lead fs-5 mb-2" id="hero-slogan"></p>
                 <p class="mb-3 fs-6" id="hero-descricao"></p>
                 <div class="mt-3">
                     <a href="#contato" class="btn btn-primary btn-lg me-2">
-                        <i class="bi bi-chat-dots me-2"></i>Fale Conosco
+                        <i class="bi bi-chat-dots me-2"></i><span data-texto="textos_interface.hero.botao_contato"></span>
                     </a>
                     <a href="#servicos" class="btn btn-outline-light btn-lg">
-                        <i class="bi bi-eye me-2"></i>Nossos Serviços
+                        <i class="bi bi-eye me-2"></i><span data-texto="textos_interface.hero.botao_servicos"></span>
                     </a>
                 </div>
             </div>
@@ -570,15 +570,15 @@
 
     <!-- Botão Flutuante WhatsApp -->
     <div class="floating-whatsapp">
-        <a href="https://api.whatsapp.com/send?phone=5573999110708" class="btn btn-success btn-lg rounded-circle" 
-           target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp" 
+        <a href="#" data-href="contato.redes_sociais.whatsapp" class="btn btn-success btn-lg rounded-circle"
+           target="_blank" rel="noopener noreferrer" data-aria-label="textos_interface.whatsapp.contato"
            style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
             <i class="bi bi-whatsapp fs-4" aria-hidden="true"></i>
         </a>
     </div>
 
     <!-- Botão Voltar ao Topo -->
-    <button class="btn-voltar-topo" id="btnVoltarTopo" aria-label="Voltar ao topo da página" title="Voltar ao topo">
+    <button class="btn-voltar-topo" id="btnVoltarTopo" data-aria-label="textos_interface.voltar_topo.aria_label" data-title="textos_interface.voltar_topo.titulo">
         <i class="bi bi-chevron-up fs-5"></i>
     </button>
 
@@ -588,36 +588,36 @@
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title" id="modalCapturaLabel">
-                        <i class="bi bi-download me-2"></i>Baixar Portfólio
+                        <i class="bi bi-download me-2"></i><span data-texto="textos_interface.portfolio.titulo"></span>
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" data-aria-label="textos_interface.acoes.fechar"></button>
                 </div>
                 <div class="modal-body">
                     <form id="formCaptura" novalidate>
                         <div class="mb-3">
-                            <label for="nomeCompleto" class="form-label">Nome Completo *</label>
-                            <input type="text" class="form-control" id="nomeCompleto" required placeholder="Seu nome completo">
+                            <label for="nomeCompleto" class="form-label" data-texto="textos_interface.portfolio.nome_completo"></label>
+                            <input type="text" class="form-control" id="nomeCompleto" required data-placeholder="textos_interface.portfolio.placeholder_nome">
                         </div>
                         <div class="mb-3">
-                            <label for="telefone" class="form-label">Telefone/WhatsApp *</label>
-                            <input type="tel" class="form-control" id="telefone" required placeholder="(00) 00000-0000">
+                            <label for="telefone" class="form-label" data-texto="textos_interface.portfolio.telefone"></label>
+                            <input type="tel" class="form-control" id="telefone" required data-placeholder="textos_interface.portfolio.placeholder_telefone">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">E-mail *</label>
-                            <input type="email" class="form-control" id="email" required placeholder="seu@email.com">
+                            <label for="email" class="form-label" data-texto="textos_interface.portfolio.email"></label>
+                            <input type="email" class="form-control" id="email" required data-placeholder="textos_interface.portfolio.placeholder_email">
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="autorizacao" required>
                             <label class="form-check-label" for="autorizacao">
-                                Autorizo o contato para informações sobre crédito rural
+                                <span data-texto="textos_interface.portfolio.autorizacao"></span>
                             </label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-texto="textos_interface.portfolio.cancelar"></button>
                     <button type="button" class="btn btn-primary" id="btnConfirmarDownload">
-                        <i class="bi bi-download me-2"></i>Baixar Portfólio
+                        <i class="bi bi-download me-2"></i><span data-texto="textos_interface.portfolio.baixar"></span>
                     </button>
                 </div>
             </div>
@@ -629,14 +629,14 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalImagemLabel">Visualizar Imagem</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    <h5 class="modal-title" id="modalImagemLabel" data-texto="textos_interface.imagem.visualizar"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" data-aria-label="textos_interface.acoes.fechar"></button>
                 </div>
                 <div class="modal-body text-center">
-                    <img id="imagemAmpliada" src="" alt="Imagem ampliada" class="modal-image">
+                    <img id="imagemAmpliada" src="" data-alt="textos_interface.imagem.ampliada" class="modal-image">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-texto="textos_interface.acoes.fechar"></button>
                 </div>
             </div>
         </div>
@@ -654,7 +654,7 @@
                 animationThreshold: 0.1
             };
             
-            let appState = { downloadLinkPendente: '', isInitialized: false };
+            let appState = { downloadLinkPendente: '', isInitialized: false, dados: null };
 
             const themeManager = {
                 storageKey: 'florestacast_theme',
@@ -670,7 +670,10 @@
                     const icon = document.getElementById('themeToggleIcon');
                     const btn = document.getElementById('themeToggle');
                     if (icon) icon.className = tema === 'dark' ? 'bi bi-sun' : 'bi bi-moon-stars';
-                    if (btn) btn.setAttribute('aria-label', tema === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro');
+                    if (btn) {
+                        const textos = appState.dados.textos_interface.tema;
+                        btn.setAttribute('aria-label', tema === 'dark' ? textos.ativar_claro : textos.ativar_escuro);
+                    }
                 },
 
                 alternarTema() {
@@ -692,68 +695,6 @@
                 }
             };
             
-            const dadosFallback = {
-                "empresa": {
-                    "nome": "FLORESTA CAST",
-                    "slogan": "Automação do planejamento de produção | Controle de estoque de área | Extrato de recursos envolvidos na produção | Manejo Florestal Integrado",
-                    "descricao": "Retifique seu patrimônio. Obter selos e certificados é oportunidade para negociar em qualquer lugar do mundo.",
-                    "cnpj": "55.900.830/0001-67",
-                    "localidade": "Eunápolis, BA, Brasil."
-                },
-                "servicos": [
-                    {
-                        "id": "qualificacao",
-                        "categoria": "QUALIFICAÇÃO",
-                        "imagem": "images/qualificacao.jpg",
-                        "itens": ["Identificação do Negócio", "Licenças ambientais - atividade de operação", "Sistema de Gestão", "Inventários & Ativos", "Perícias - Laudos Técnicos"]
-                    },
-                    {
-                        "id": "transformacao",
-                        "categoria": "TRANSFORMAÇÃO",
-                        "imagem": "images/transformacao.jpg",
-                        "itens": ["Planejamento", "Logística de produto", "Estoque", "Auditoria", "Treinamentos & Atualizações"]
-                    },
-                    {
-                        "id": "agilidade",
-                        "categoria": "AGILIDADE",
-                        "imagem": "images/agilidade.jpg",
-                        "itens": ["Fornecedores", "Monitoramento", "Qualidade", "Relatórios & Indicadores", "Preço"]
-                    },
-                    {
-                        "id": "credito",
-                        "categoria": "CRÉDITO RURAL",
-                        "imagem": "images/credito.jpg",
-                        "descricao": "É consultoria completa para obter crédito rural em bancos públicos.",
-                        "link_portfolio": "Credito_rural.pdf"
-                    }
-                ],
-                "responsavel_tecnico": {
-                    "nome": "Anderson Mendes Souza",
-                    "cargo": "Engenheiro Florestal - Fundador da Floresta Cast LTDA.",
-                    "registro_crea": "PR-214168/D",
-                    "descricao_registro": "Registro Profissional no Conselho Regional de Engenharia e Agronomia da Bahia e do Paraná.",
-                    "formacao": ["Engenheiro Florestal - Fundador da Floresta Cast LTDA.", "Mestrando Profissional em Metrologia e Qualidade"],
-                    "competencias": ["Análise de dados", "Projetos", "Orçamentos"]
-                },
-                "contato": {
-                    "telefone": "(73) 99911-0708",
-                    "localizacao": "Eunápolis, Bahia, Brasil",
-                    "redes_sociais": {
-                        "linkedin": "https://linkedin.com/company/florestacast",
-                        "whatsapp": "https://api.whatsapp.com/send?phone=5573999110708",
-                        "instagram": "https://instagram.com/florestacast",
-                        "tiktok": "https://tiktok.com/@florestacast"
-                    },
-                    "mapa_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15298.117247967123!2d-39.582132!3d-16.371202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x73693e9b3b8a6a5%3A0x5afb476b2f0c1b0d!2sEunápolis%2C%20BA!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
-                },
-                "textos_adicionais": {
-                    "destaque": "É possível você deixar seu negócio mais eficiente e sustentável com a gente.",
-                    "titulo_servicos": "ASSESSORIA ADMINISTRATIVA ESPECIALIZADA",
-                    "titulo_contato": "ENTRE EM CONTATO",
-                    "area_atuacao": "Uma empresa rural orgulhosamente brasileira da Bahia."
-                }
-            };
-
             // Global function para ampliar imagem
             window.ampliarImagem = function(src, alt) {
                 document.getElementById('imagemAmpliada').src = src;
@@ -787,14 +728,14 @@
                     });
                 },
                 
-                validarFormulario({ nome, telefone, email, autorizacao }) {
+                validarFormulario({ nome, telefone, email, autorizacao }, textos) {
                     const errs = [];
-                    if (!nome || nome.length < 2) errs.push('Nome completo é obrigatório');
+                    if (!nome || nome.length < 2) errs.push(textos.erro_nome);
                     const telClean = (telefone || '').replace(/\D/g, '');
-                    if (!telefone || telClean.length < 10) errs.push('Telefone válido é obrigatório');
+                    if (!telefone || telClean.length < 10) errs.push(textos.erro_telefone);
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!email || !emailRegex.test(email)) errs.push('E-mail válido é obrigatório');
-                    if (!autorizacao) errs.push('Aceite os termos é obrigatório');
+                    if (!email || !emailRegex.test(email)) errs.push(textos.erro_email);
+                    if (!autorizacao) errs.push(textos.erro_autorizacao);
                     return errs;
                 }
             };
@@ -802,22 +743,41 @@
             // Data Manager
             const dataManager = {
                 async carregarDados() {
-                    try {
-                        const response = await fetch('data.json');
-                        if (!response.ok) throw new Error('JSON não encontrado');
-                        return await response.json();
-                    } catch (error) {
-                        console.log('Usando dados fallback:', error.message);
-                        return dadosFallback;
-                    }
+                    const response = await fetch('data.json');
+                    if (!response.ok) throw new Error(`Falha ao carregar data.json (${response.status})`);
+                    return await response.json();
                 },
                 
                 preencherConteudo(data) {
+                    this.preencherTextosInterface(data);
                     this.preencherEmpresa(data);
                     this.preencherServicos(data);
                     this.preencherResponsavel(data);
                     this.preencherContato(data);
                     this.preencherFooter(data);
+                },
+
+                preencherTextosInterface(data) {
+                    const obterTexto = caminho => caminho.split('.').reduce((valor, chave) => valor[chave], data);
+                    const atributos = {
+                        'data-texto': 'textContent',
+                        'data-placeholder': 'placeholder',
+                        'data-aria-label': 'aria-label',
+                        'data-title': 'title',
+                        'data-alt': 'alt',
+                        'data-href': 'href'
+                    };
+
+                    Object.entries(atributos).forEach(([seletor, atributo]) => {
+                        document.querySelectorAll(`[${seletor}]`).forEach(elemento => {
+                            const texto = obterTexto(elemento.getAttribute(seletor));
+                            if (atributo === 'textContent' || atributo === 'placeholder') {
+                                elemento[atributo] = texto;
+                            } else {
+                                elemento.setAttribute(atributo, texto);
+                            }
+                        });
+                    });
                 },
                 
                 preencherEmpresa(data) {
@@ -861,7 +821,7 @@
                             html += `
                                 <p class="text-muted mt-2">${servico.descricao}</p>
                                 <button class="btn btn-primary mt-3 btn-baixar-portfolio" data-link="${servico.link_portfolio}">
-                                    <i class="bi bi-download me-2"></i>Baixar Portfólio
+                                    <i class="bi bi-download me-2"></i>${data.textos_interface.portfolio.baixar}
                                 </button>
                             `;
                         } else {
@@ -894,17 +854,17 @@
                         <h3 class="card-title fw-bold mb-3">${r.nome}</h3>
                         <h6 class="card-subtitle mb-3 text-muted fs-6">${r.cargo}</h6>
                         <div class="crea-badge mx-auto mb-3" style="max-width:600px;">
-                            <h4><i class="bi bi-award-fill me-2 text-danger"></i>Registro Profissional</h4>
+                            <h4><i class="bi bi-award-fill me-2 text-danger"></i>${data.textos_interface.acoes.registro_profissional}</h4>
                             <p class="mb-1">Engenheiro Florestal sob nº CREA ${r.registro_crea}</p>
                             <small class="text-muted">${r.descricao_registro}</small>
                         </div>
                         <div class="row mt-3 justify-content-center">
                             <div class="col-md-5">
-                                <h5 class="fw-bold mb-3 text-center">Formação Acadêmica</h5>
+                                <h5 class="fw-bold mb-3 text-center">${data.textos_interface.acoes.formacao_academica}</h5>
                                 <ul class="list-unstyled text-center">${r.formacao.map(f => `<li class="mb-3"><i class="bi bi-mortarboard-fill me-2 text-primary"></i>${f}</li>`).join('')}</ul>
                             </div>
                             <div class="col-md-5">
-                                <h5 class="fw-bold mb-3 text-center">Competências Técnicas</h5>
+                                <h5 class="fw-bold mb-3 text-center">${data.textos_interface.acoes.competencias_tecnicas}</h5>
                                 <ul class="list-unstyled text-center">${r.competencias.map(c => `<li class="mb-3"><i class="bi bi-check-square-fill me-2 text-success"></i>${c}</li>`).join('')}</ul>
                             </div>
                         </div>
@@ -920,7 +880,7 @@
                         <p class="text-center mb-3">${textos_adicionais.area_atuacao}</p>
                         <div class="row text-center mb-3 justify-content-center">
                             <div class="col-md-5 mb-3"><i class="bi bi-telephone-fill fs-3 text-success"></i><p>${contato.telefone}</p></div>
-                            <div class="col-md-5 mb-3"><i class="bi bi-share-fill fs-3 text-success"></i><p>Siga-nos</p></div>
+                            <div class="col-md-5 mb-3"><i class="bi bi-share-fill fs-3 text-success"></i><p>${data.textos_interface.acoes.siga_nos}</p></div>
                         </div>
                         <div class="text-center mb-3">
                             <a href="${contato.redes_sociais.linkedin}" target="_blank" rel="noopener" class="btn btn-outline-primary me-2"><i class="bi bi-linkedin"></i></a>
@@ -929,13 +889,15 @@
                             <a href="${contato.redes_sociais.tiktok}" target="_blank" rel="noopener" class="btn btn-outline-dark"><i class="bi bi-tiktok"></i></a>
                         </div>
                         <div class="mt-3 rounded-3 overflow-hidden shadow">
-                            <iframe src="${contato.mapa_embed}" width="100%" height="300" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização da Floresta Cast"></iframe>
+                            <iframe src="${contato.mapa_embed}" width="100%" height="300" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="${data.textos_interface.acoes.localizacao}"></iframe>
                         </div>
                     `;
                 },
                 
                 preencherFooter(data) {
-                    document.getElementById('footer-text').textContent = `© ${new Date().getFullYear()} - ${data.empresa.nome} - Os direitos estão reservados.`;
+                    document.getElementById('footer-text').textContent = data.textos_interface.rodape
+                        .replace('{ano}', new Date().getFullYear())
+                        .replace('{empresa}', data.empresa.nome);
                 }
             };
             
@@ -956,9 +918,10 @@
                         autorizacao: document.getElementById('autorizacao').checked
                     };
                     
-                    const erros = utils.validarFormulario(formData);
+                    const textos = appState.dados.textos_interface.formulario;
+                    const erros = utils.validarFormulario(formData, textos);
                     if (erros.length > 0) {
-                        alert('Corrija os erros:\n' + erros.join('\n'));
+                        alert(textos.erro_prefixo + '\n' + erros.join('\n'));
                         return;
                     }
                     this.enviarDados(formData);
@@ -967,7 +930,7 @@
                 async enviarDados(formData) {
                     const btn = document.getElementById('btnConfirmarDownload');
                     const original = btn.innerHTML;
-                    btn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Processando...';
+                    btn.innerHTML = `<i class="bi bi-hourglass-split me-2"></i>${appState.dados.textos_interface.status.processando}`;
                     btn.disabled = true;
                     
                     try {
@@ -983,7 +946,7 @@
                         method: 'POST',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         body: new URLSearchParams({
-                            nome, telefone, email, produto: 'Crédito Rural',
+                            nome, telefone, email, produto: appState.dados.textos_interface.portfolio.produto,
                             data: new Date().toLocaleString('pt-BR'),
                             timestamp: new Date().getTime()
                         })
@@ -998,7 +961,7 @@
                     if (modal) modal.hide();
                     window.open(appState.downloadLinkPendente, '_blank');
                     document.getElementById('formCaptura').reset();
-                    btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Sucesso!';
+                    btn.innerHTML = `<i class="bi bi-check-circle me-2"></i>${appState.dados.textos_interface.status.sucesso}`;
                     setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 1800);
                 },
                 
@@ -1007,7 +970,7 @@
                     try {
                         const leads = JSON.parse(localStorage.getItem(CONFIG.storageKey) || '[]');
                         leads.push({
-                            ...formData, produto: 'Crédito Rural',
+                            ...formData, produto: appState.dados.textos_interface.portfolio.produto,
                             data: new Date().toLocaleString('pt-BR'),
                             timestamp: new Date().getTime(), sincronizado: false
                         });
@@ -1017,10 +980,10 @@
                         if (modal) modal.hide();
                         window.open(appState.downloadLinkPendente, '_blank');
                         document.getElementById('formCaptura').reset();
-                        btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Salvo Localmente!';
+                        btn.innerHTML = `<i class="bi bi-check-circle me-2"></i>${appState.dados.textos_interface.status.salvo_localmente}`;
                     } catch (err) {
                         console.error('Erro fallback:', err);
-                        alert('Erro ao processar. Tente novamente.');
+                        alert(appState.dados.textos_interface.formulario.erro_processamento);
                     }
                     setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 2000);
                 }
@@ -1101,14 +1064,19 @@
                 if (appState.isInitialized) return;
                 appState.isInitialized = true;
 
-                themeManager.init();
-                
-                const data = await dataManager.carregarDados();
-                dataManager.preencherConteudo(data);
-                animationManager.init();
-                scrollManager.init();
-                configurarEventListeners();
-                console.log('✅ App iniciado com sucesso');
+                try {
+                    const data = await dataManager.carregarDados();
+                    appState.dados = data;
+                    dataManager.preencherConteudo(data);
+                    themeManager.init();
+                    animationManager.init();
+                    scrollManager.init();
+                    configurarEventListeners();
+                    console.log('App iniciado com sucesso');
+                } catch (error) {
+                    console.error('Não foi possível iniciar a página:', error);
+                    document.getElementById('hero-descricao').textContent = 'Não foi possível carregar o conteúdo da página.';
+                }
             }
             
             if (document.readyState === 'loading') {
